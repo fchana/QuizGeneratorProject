@@ -1,0 +1,43 @@
+<div class="grid">  
+    <div class="container">
+        <form #loginForm="ngForm">
+            <!-- {{loginForm.value | json}} -->
+            <div class="grid">
+                <div class="col-6 center">
+                    <div class="form-group ">
+                        <label class="loginLabel">Username:</label>
+                        <input type="text" [(ngModel)]="username" name="username" pInputText placeholder="Please enter your username" class="form-control loginInput">
+                    </div>
+                </div>
+                <div class="col-6 center">
+                    <h1 style="margin-top: 50px;">- Online  proposition generateror</h1>
+                    <h1>- Login page</h1>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="col-6 center">
+                    <div class="form-group ">
+                        <label class="loginLabel">Password:</label>
+                        <input type="password" [(ngModel)]="password" name="password" pInputText placeholder="Please enter your password" class="form-control loginInput">
+                    </div>
+                </div>
+                <div class="col-6">
+
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="col-6">
+                    <div class="form-group centerBtn">
+                        <button class="loginBtn" style="margin: 20px;" pButton type="button" type="submit" label="Login"></button>
+                        <button class="loginBtn" style="margin: 20px;" pButton type="button" label="Register" ></button>
+                    </div>
+                </div>
+                <div class="col-6">
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

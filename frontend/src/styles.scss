@@ -1,1 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+.container {
+    //  margin: 100px;
+    padding-left: 100px;
+    padding-left: 100px;
+    padding-top: 50px;
+    width: 100%;
+    height: 100%;
+}
+
+.loginInput {
+    position: absolute;
+    left: 170px;
+    top: 2px;
+    width: 600px;
+}
+
+.loginLabel {
+    font-size: 30px;
+    font-weight: 200;
+    margin-right: 50px;
+    height: 90px;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.col-6{
+    position: relative;
+}
+
+.loginBtn {
+    width: 40%;
+    padding: 10px;
+}
+
+.centerBtn{
+    // margin: auto;
+    width: 100%;
+    margin-top: 50px;
+}
