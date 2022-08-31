@@ -1,0 +1,115 @@
+<div class="grid">
+    <div class="container">
+        <form #loginForm="ngForm">
+            <!-- {{loginForm.value | json}} -->
+            <div class="grid">
+                <div class="col-5 center">
+                    <div class="form-group ">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                            <input [(ngModel)]="username" name="username" type="text" pInputText placeholder="Username">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+
+                </div>
+                <div class="col-6 center">
+                    <h1 style="margin-top: 50px;">- Online proposition generateror</h1>
+                    <h1>- Register page</h1>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="col-5 center">
+                    <div class="form-group ">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+                            <input [(ngModel)]="password" type="password" name="password" pInputText
+                                placeholder="Password">
+                        </div>
+                        <!-- <label class="loginLabel">Password:</label>
+                        <input type="password" [(ngModel)]="password" name="password" pInputText placeholder="Please enter your password." class="form-control loginInput"> -->
+                    </div>
+                </div>
+                <div class="col-1">
+
+                </div>
+                <div class="col-6">
+
+                </div>
+            </div>
+
+            <div class="grid loginGrid" style="margin-top: 60px;">
+                <div class="col-5 center">
+                    <div class="form-group ">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+                            <input [(ngModel)]="confirmPassword" type="password" name="confirmPassword" pInputText
+                                placeholder="Confirm password">
+                            <!-- <label class="loginLabel">Confirm password:</label>
+                        <input type="text" [(ngModel)]="confirmPassword" name="confirmPassword" pInputText placeholder="Please enter your password again." class="form-control loginInput"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+
+                </div>
+                <div class="col-6">
+
+                </div>
+            </div>
+
+            <div class="grid" style="margin-top: 60px;">
+                <div class="col-5 center">
+                    <div class="form-group ">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
+                            <input [(ngModel)]="firstName" name="firstName" type="text" pInputText placeholder="Firstname">
+                        </div>
+                        <!-- <input type="text" [(ngModel)]="firstName" name="firstName" pInputText
+                            placeholder="Please enter your firstname." class="form-control loginInput"> -->
+                    </div>
+                </div>
+                <div class="col-1">
+
+                </div>
+                <div class="col-6">
+
+                </div>
+            </div>
+
+            <div class="grid" style="margin-top: 60px;">
+                <div class="col-5 center">
+                    <div class="form-group ">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
+                            <input [(ngModel)]="lastName" name="lastName" type="text" pInputText placeholder="Lastname">
+                        </div>
+                        <!-- <input type="text" [(ngModel)]="lastName" name="lastName" pInputText
+                            placeholder="Please enter your lastname." class="form-control loginInput"> -->
+                    </div>
+                </div>
+                <div class="col-1">
+
+                </div>
+                <div class="col-6">
+
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="col-6">
+                    <div class="form-group centerBtn">
+                        <button class="loginBtn" style="margin: 20px;" pButton type="button" type="submit" label="Login"
+                            [routerLink]="['/register']"></button>
+                        <button class="loginBtn" style="margin: 20px;" pButton type="button" label="Register"></button>
+                    </div>
+                </div>
+                <div class="col-6">
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
