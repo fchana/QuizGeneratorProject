@@ -11,12 +11,15 @@ import {InputTextModule} from 'primeng/inputtext';
 import {CardModule} from 'primeng/card';
 import { FormsModule } from '@angular/forms';
 import {PanelMenuModule} from 'primeng/panelmenu';
+import { RegisterPageComponent } from './register-page/register-page.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
-    NavbarComponent
+    NavbarComponent,
+    RegisterPageComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,8 @@ import {PanelMenuModule} from 'primeng/panelmenu';
     InputTextModule,
     CardModule,
     FormsModule,
-    PanelMenuModule
+    PanelMenuModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

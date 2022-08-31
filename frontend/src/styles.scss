@@ -9,8 +9,8 @@
 }
 
 .loginInput {
-    position: absolute;
-    left: 170px;
+    // position: absolute;
+    // left: 270px;
     top: 2px;
     width: 600px;
 }
@@ -33,7 +33,7 @@
 }
 
 .loginBtn {
-    width: 40%;
+    width: 37%;
     padding: 10px;
 }
 
@@ -41,4 +41,8 @@
     // margin: auto;
     width: 100%;
     margin-top: 50px;
+}
+
+.loginGrid{
+    margin-top: 20px;
 }
