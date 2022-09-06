@@ -13,7 +13,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import org.bson.types.ObjectId;
-@Path("/repository/user")
+@Path("api/user")
 @Consumes("application/json")
 @Produces("application/json")
 public class UserResource {
