@@ -12,7 +12,7 @@ import {CardModule} from 'primeng/card';
 import { FormsModule } from '@angular/forms';
 import {PanelMenuModule} from 'primeng/panelmenu';
 import { RegisterPageComponent } from './register-page/register-page.component';
-
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,6 +31,7 @@ import { RegisterPageComponent } from './register-page/register-page.component';
     CardModule,
     FormsModule,
     PanelMenuModule,
+    HttpClientModule
 
   ],
   providers: [],

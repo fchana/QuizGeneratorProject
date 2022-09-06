@@ -16,7 +16,7 @@ import org.acme.mongodb.panache.repository.Person;
 import org.acme.mongodb.panache.repository.PersonRepository;
 import org.bson.types.ObjectId;
 
-@Path("/repository/proposition")
+@Path("/proposition")
 @Consumes("application/json")
 @Produces("application/json")
 public class PropositionResource {
