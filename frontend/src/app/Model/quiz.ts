@@ -1,6 +1,7 @@
 import { Choice } from "./choice";
 
 export interface Quiz {
+    
     choice: Array<Choice>;
 
     content: String;

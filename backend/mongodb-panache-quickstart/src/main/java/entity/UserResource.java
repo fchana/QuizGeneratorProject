@@ -43,6 +43,13 @@ public class UserResource {
     		userRepository.persist(user);
         return Response.status(201).build();
     }
+
+    // @PUT
+    // @Path("/{id}/prop")
+    // public Response createProp(User user) {
+    // 		userRepository.persist(user);
+    //     return Response.status(201).build();
+    // }
     
     @PUT
     @Path("/{id}")

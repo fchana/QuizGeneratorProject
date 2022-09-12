@@ -7,11 +7,11 @@ export interface Proposition {
 
     prop_name: String;
 
-    prop_time: number;
+    prop_time: String;
 
-    quiz_amount: number;
+    quiz_amount: String;
 
-    max_score: number;
+    max_score: String;
 
     start_date: Date;
 

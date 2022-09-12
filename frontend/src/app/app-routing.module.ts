@@ -4,13 +4,17 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { AuthGuard } from '@auth0/auth0-angular';
 import { PropListComponent } from './prop-list/prop-list.component';
+import { CreatePropPageComponent } from './create-prop-page/create-prop-page.component';
+import { EditPropPageComponent } from './edit-prop-page/edit-prop-page.component';
 
 const routes: Routes = [
   {path: '',   redirectTo: '/login', pathMatch: 'full' },
   {path: 'login', component: LoginPageComponent},
-  {path: 'register', component: RegisterPageComponent, canActivate: [!AuthGuard]},
+  {path: 'editProp/:id', component: EditPropPageComponent, canActivate: [AuthGuard]},
+  {path: 'register', component: RegisterPageComponent, canDeactivate: [AuthGuard]},
   {path: 'props', component: PropListComponent, canActivate: [AuthGuard]},
-  {path: '**', component: LoginPageComponent },
+  {path: 'createProp', component: CreatePropPageComponent, canActivate: [AuthGuard]},
+  {path: '**', component: LoginPageComponent }
 ];
 
 @NgModule({

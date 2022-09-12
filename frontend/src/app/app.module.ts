@@ -22,6 +22,8 @@ import { PropListComponent } from './prop-list/prop-list.component';
 import { DialogModule } from 'primeng/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableModule } from 'primeng/table';
+import { CreatePropPageComponent } from './create-prop-page/create-prop-page.component';
+import { EditPropPageComponent } from './edit-prop-page/edit-prop-page.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { TableModule } from 'primeng/table';
     LoginButtonComponent,
     AuthenticationButtonComponent,
     LogoutButtonComponent,
-    PropListComponent
+    PropListComponent,
+    CreatePropPageComponent,
+    EditPropPageComponent
     
   ],
   imports: [

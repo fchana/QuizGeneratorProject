@@ -18,14 +18,27 @@ export class PropListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.auth.idTokenClaims$.subscribe(
-      (profile) => (
-        this.http.get<User>('/api/user/' + profile?.email).subscribe((response) => {
-          this.profileJson = response;
-          this.proposition = this.profileJson.proposition;
+    this.CallProfile();
+    }
+
+    DeleteProp(index: number){
+      this.profileJson?.proposition.splice(index, 1);
+
+      this.http.put('/api/user/'+this.profileJson?.id, this.profileJson).subscribe((response) => {
+        this.CallProfile();
       })
-      ),
-      );
+
+    }
+
+    CallProfile(){
+      this.auth.idTokenClaims$.subscribe(
+        (profile) => (
+          this.http.get<User>('/api/user/' + profile?.email).subscribe((response) => {
+            this.profileJson = response;
+            this.proposition = this.profileJson.proposition;
+        })
+        ),
+        );
     }
 
   }
