@@ -7,7 +7,26 @@
                     <div class="form-group ">
                         <div class="p-inputgroup">
                             <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                            <input [(ngModel)]="usernameInput" name="usernameInput" type="text" pInputText placeholder="Username">
+                            <input [(ngModel)]="emailInput" name="emailInput" type="text" pInputText
+                                placeholder="Email">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+
+                </div>
+                <div class="col-6 center">
+                    <!-- <h1 style="margin-top: 50px;">- Online proposition generateror</h1>
+                    <h1>- Register page</h1> -->
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-5 center">
+                    <div class="form-group ">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                            <input [(ngModel)]="usernameInput" name="usernameInput" type="text" pInputText
+                                placeholder="username">
                         </div>
                     </div>
                 </div>
@@ -19,7 +38,6 @@
                     <h1>- Register page</h1>
                 </div>
             </div>
-
             <div class="grid">
                 <div class="col-5 center">
                     <div class="form-group ">
@@ -45,8 +63,8 @@
                     <div class="form-group ">
                         <div class="p-inputgroup">
                             <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
-                            <input [(ngModel)]="confirmPasswordInput" type="password" name="confirmPasswordInput" pInputText
-                                placeholder="Confirm password">
+                            <input [(ngModel)]="confirmPasswordInput" type="password" name="confirmPasswordInput"
+                                pInputText placeholder="Confirm password">
                             <!-- <label class="loginLabel">Confirm password:</label>
                         <input type="text" [(ngModel)]="confirmPassword" name="confirmPassword" pInputText placeholder="Please enter your password again." class="form-control loginInput"> -->
                         </div>
@@ -65,7 +83,8 @@
                     <div class="form-group ">
                         <div class="p-inputgroup">
                             <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
-                            <input [(ngModel)]="firstNameInput" name="firstNameInput" type="text" pInputText placeholder="Firstname">
+                            <input [(ngModel)]="firstNameInput" name="firstNameInput" type="text" pInputText
+                                placeholder="Firstname">
                         </div>
                         <!-- <input type="text" [(ngModel)]="firstName" name="firstName" pInputText
                             placeholder="Please enter your firstname." class="form-control loginInput"> -->
@@ -84,7 +103,8 @@
                     <div class="form-group ">
                         <div class="p-inputgroup">
                             <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
-                            <input [(ngModel)]="lastNameInput" name="lastNameInput" type="text" pInputText placeholder="Lastname">
+                            <input [(ngModel)]="lastNameInput" name="lastNameInput" type="text" pInputText
+                                placeholder="Lastname">
                         </div>
                         <!-- <input type="text" [(ngModel)]="lastName" name="lastName" pInputText
                             placeholder="Please enter your lastname." class="form-control loginInput"> -->
@@ -101,8 +121,10 @@
             <div class="grid">
                 <div class="col-6">
                     <div class="form-group centerBtn">
-                        <button class="loginBtn" style="margin: 20px;" pButton type="button" type="submit" label="Login" [routerLink]="['/login']"></button>
-                        <button class="loginBtn" style="margin: 20px;" pButton type="button" label="Register" (click)="Register()"></button>
+                        <button class="loginBtn" style="margin: 20px;" pButton type="button" type="submit" label="Login"
+                            [routerLink]="['/login']"></button>
+                        <button class="loginBtn" style="margin: 20px;" pButton type="button" label="Register"
+                            (click)="Register()"></button>
                     </div>
                 </div>
                 <div class="col-6">

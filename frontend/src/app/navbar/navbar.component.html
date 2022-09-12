@@ -2,10 +2,7 @@
     <!-- <ng-template pTemplate="end">
         <div class="inline">
             <h3>Chanathip Amoncheewasilapakul</h3>
-            <button pButton label="Logout" style="
-        right: 0px;
-        width: 300px;
-        padding: 10px;" icon="pi pi-power-off"></button>
         </div>
     </ng-template> -->
+    <app-logout-button *ngIf="auth.isAuthenticated$ | async"></app-logout-button>
 </p-menubar>

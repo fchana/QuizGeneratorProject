@@ -7,7 +7,7 @@
                     <div class="form-group ">
                         <div class="p-inputgroup">
                             <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                            <input [(ngModel)]="username" name="username" type="text" pInputText placeholder="Username">         
+                            <input [(ngModel)]="email" name="email" type="text" pInputText placeholder="email">         
                         </div>
                         <!-- <label class="loginLabel">Username:</label>
                         <input type="text" [(ngModel)]="username" name="username" pInputText placeholder="Please enter your username." class="form-control loginInput"> -->
@@ -44,7 +44,8 @@
             <div class="grid">
                 <div class="col-6">
                     <div class="form-group centerBtn">
-                        <button class="loginBtn" style="margin: 20px;" pButton type="button" type="submit" label="Login" ></button>
+                        <!-- <button class="loginBtn" style="margin: 20px;" pButton type="button" type="submit" label="Login" ></button> -->
+                        <app-login-button></app-login-button>
                         <button class="loginBtn" style="margin: 20px;" pButton type="button" label="Register" [routerLink]="['/register']"></button>
                     </div>
                 </div>

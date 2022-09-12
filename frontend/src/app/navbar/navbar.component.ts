@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { AuthService  } from '@auth0/auth0-angular'
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,7 @@ import { MenuItem } from 'primeng/api';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public  auth: AuthService) { }
 
   items!: MenuItem[];
 

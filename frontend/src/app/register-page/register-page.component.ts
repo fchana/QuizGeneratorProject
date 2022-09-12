@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { UserRequestService } from 'app/service/user-request.service';
 
 @Component({
   selector: 'app-register-page',
@@ -9,13 +8,15 @@ import { UserRequestService } from 'app/service/user-request.service';
 })
 export class RegisterPageComponent implements OnInit {
 
-  usernameInput!: string;
+  emailInput!: string;
   passwordInput?: string;
   confirmPasswordInput?: string;
   firstNameInput?: string;
   lastNameInput?: string;
+  usernameInput?: string;
 
-  constructor(private http: HttpClient, private userService:UserRequestService) { }
+  constructor(private http: HttpClient) { }
+
 
   ngOnInit(): void {
 
@@ -23,21 +24,20 @@ export class RegisterPageComponent implements OnInit {
 
   Register(){
     const userInfo = {
+      email: this.emailInput,
       username: this.usernameInput,
       password: this.passwordInput,
       firstname: this.firstNameInput,
       lastname: this.lastNameInput,
       account_type: false,
       score: [{}],
-      proposition: [{}]
+      proposition: [{}],
     }
 
     this.http.post('/api/user', userInfo).subscribe((response) => {
       console.log(response);
     })
-
-    console.log(userInfo);  
+  
   }
-
 
 }

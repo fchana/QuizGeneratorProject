@@ -3,6 +3,8 @@ package entity;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.management.Query;
+import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -13,6 +15,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import org.bson.types.ObjectId;
+
+import com.mongodb.BasicDBObject;
 @Path("api/user")
 @Consumes("application/json")
 @Produces("application/json")
@@ -20,10 +24,19 @@ public class UserResource {
 	@Inject
     UserRepository userRepository;
 
+    
+
     @GET
     public List<User> list() {
         return userRepository.listAll();
     }
+    
+    @GET
+    @Path("/{email}")
+    public User user(String email) {
+    	return userRepository.findByEmail(email);
+    }
+    
     
     @POST
     public Response create(User user) {
