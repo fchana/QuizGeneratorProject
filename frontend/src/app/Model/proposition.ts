@@ -9,7 +9,7 @@ export interface Proposition {
 
     prop_time: String;
 
-    quiz_amount: String;
+    quiz_amount: number;
 
     max_score: String;
 

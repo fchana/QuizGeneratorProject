@@ -18,7 +18,7 @@ export class EditPropPageComponent implements OnInit {
   propNameInput: String;
   maxScoreInput: String;
   timeLimitInput: String;
-  quizAmountInput: String;
+  quizAmountInput: number;
   startDateInput: Date  ;
   startTimeInput: Time;
   allowed: Array<String>;
@@ -48,11 +48,11 @@ export class EditPropPageComponent implements OnInit {
 
   EditProp(){
       const userUpdate = {
-      allowed: this.allowed,
+      allowed: this.proposition[this.id].allowed,
       max_score: this.maxScoreInput,
       prop_name: this.propNameInput,
       prop_time: this.timeLimitInput,
-      quiz: this.quiz,
+      quiz: this.proposition[this.id].quiz,
       quiz_amount: this.quizAmountInput,
       start_date: this.startDateInput,
     }

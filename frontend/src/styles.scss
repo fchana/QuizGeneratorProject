@@ -70,3 +70,9 @@
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
   }
+
+.tableList:hover {
+    cursor: pointer;
+    background-color: grey;
+    color: red;
+}

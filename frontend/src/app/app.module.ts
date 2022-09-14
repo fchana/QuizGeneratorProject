@@ -24,6 +24,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableModule } from 'primeng/table';
 import { CreatePropPageComponent } from './create-prop-page/create-prop-page.component';
 import { EditPropPageComponent } from './edit-prop-page/edit-prop-page.component';
+import { QuizListComponent } from './quiz-list/quiz-list.component';
+import { EditQuizPageComponent } from './edit-quiz-page/edit-quiz-page.component';
+import { CreateQuizPageComponent } from './create-quiz-page/create-quiz-page.component';
+import { ChoiceListComponent } from './choice-list/choice-list.component';
+import { CreateChoicePageComponent } from './create-choice-page/create-choice-page.component';
+import {SelectButtonModule} from 'primeng/selectbutton';
+import { EditChoicePageComponent } from './edit-choice-page/edit-choice-page.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +43,13 @@ import { EditPropPageComponent } from './edit-prop-page/edit-prop-page.component
     LogoutButtonComponent,
     PropListComponent,
     CreatePropPageComponent,
-    EditPropPageComponent
+    EditPropPageComponent,
+    QuizListComponent,
+    EditQuizPageComponent,
+    CreateQuizPageComponent,
+    ChoiceListComponent,
+    CreateChoicePageComponent,
+    EditChoicePageComponent
     
   ],
   imports: [
@@ -52,6 +65,7 @@ import { EditPropPageComponent } from './edit-prop-page/edit-prop-page.component
     HttpClientModule,
     DialogModule,
     BrowserAnimationsModule,
+    SelectButtonModule,
     AuthModule.forRoot({
       ...env.auth,
     }),

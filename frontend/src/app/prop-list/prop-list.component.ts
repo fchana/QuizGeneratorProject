@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/comm
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { Proposition } from 'app/Model/proposition';
+import { Quiz } from 'app/Model/quiz';
 import { User } from 'app/Model/user';
 
 @Component({
@@ -22,8 +23,7 @@ export class PropListComponent implements OnInit {
     }
 
     DeleteProp(index: number){
-      this.profileJson?.proposition.splice(index, 1);
-
+      this.profileJson?.proposition.splice(index, 1);   
       this.http.put('/api/user/'+this.profileJson?.id, this.profileJson).subscribe((response) => {
         this.CallProfile();
       })

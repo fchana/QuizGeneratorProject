@@ -1,0 +1,97 @@
+<div class="grid">
+    <div class="container">
+        <form #loginForm="ngForm">
+            <!-- {{loginForm.value | json}} -->
+            <div class="grid">
+                <div class="col-5 center">
+                    <div class="form-group ">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                            <input [(ngModel)]="quizContentInput" name="quizContentInput" type="text" pInputText
+                                placeholder="Please enter your quiz content.">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+
+                </div>
+                <div class="col-6 center">
+                    <!-- <h1 style="margin-top: 50px;">- Online proposition generateror</h1>
+                    <h1>- Register page</h1> -->
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-5 center">
+                    <div class="form-group ">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                            <input [(ngModel)]="choiceTypeInput" name="choiceTypeInput" type="text" pInputText
+                                placeholder="Please enter your chocie type.">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+
+                </div>
+                <div class="col-6 center">
+                    <h1 style="margin-top: 50px;">- Online proposition generateror</h1>
+                    <h1>- Create propositionpage</h1>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-5 center">
+                    <div class="form-group ">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+                            <input [(ngModel)]="timeLimitInput" type="text" name="timeLimitInput" pInputText
+                                placeholder="Please enter your quiz time limit.">
+                        </div>
+                        <!-- <label class="loginLabel">Password:</label>
+                        <input type="password" [(ngModel)]="password" name="password" pInputText placeholder="Please enter your password." class="form-control loginInput"> -->
+                    </div>
+                </div>
+                <div class="col-1">
+
+                </div>
+                <div class="col-6">
+
+                </div>
+            </div>
+
+            <div class="grid loginGrid" style="margin-top: 60px;">
+                <div class="col-5 center">
+                    <div class="form-group ">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+                            <input [(ngModel)]="choiceAmountInput" type="text" name="choiceAmountInput"
+                                pInputText placeholder="Please enter your quiz choice amount.">
+                            <!-- <label class="loginLabel">Confirm password:</label>
+                        <input type="text" [(ngModel)]="confirmPassword" name="confirmPassword" pInputText placeholder="Please enter your password again." class="form-control loginInput"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+
+                </div>
+                <div class="col-6">
+
+                </div>
+            </div>
+
+
+            <div class="grid">
+                <div class="col-6">
+                    <div class="form-group centerBtn">
+                        <button class="loginBtn" style="margin: 20px;" pButton type="button" label="Cancel"
+                            [routerLink]="['/props/' + this.pid + '/quizs']"></button>
+                        <button class="loginBtn" style="margin: 20px;" pButton type="button" label="Edit"
+                            (click)="EditQuiz()"></button>
+                    </div>
+                </div>
+                <div class="col-6">
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

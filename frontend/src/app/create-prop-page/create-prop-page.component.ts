@@ -18,7 +18,7 @@ export class CreatePropPageComponent implements OnInit {
   propNameInput: string;
   maxScoreInput: string;
   timeLimitInput: string;
-  quizAmountInput: string;
+  quizAmountInput: number;
   startDateInput: Date  ;
   startTimeInput: Time;
   allowed: Array<String>;
@@ -40,13 +40,13 @@ export class CreatePropPageComponent implements OnInit {
   }
 
   CreateProp(){
-    // for(let i = 0; i< parseInt(this.quizAmountInput); i++) this.quizs.push({
-    //   choice: [],
-    //   content: "",
-    //   choice_type: 0,
-    //   time_limit: 0,
-    //   choice_amount: 0
-    // });
+    for(let i = 0; i< this.quizAmountInput; i++) this.quizs.push({
+      choice: [],
+      content: "",
+      choice_type: 0,
+      time_limit: 0,
+      choice_amount: 0
+    });
     const userUpdate = {
       allowed: this.allowed,
       max_score: this.maxScoreInput,
