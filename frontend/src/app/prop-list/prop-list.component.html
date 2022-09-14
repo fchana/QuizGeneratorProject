@@ -1,0 +1,53 @@
+<div class="propCont propCent">
+  <p-table [value]="proposition">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>
+          proposition name
+        </th>
+        <th>
+          max score
+        </th>
+        <th>
+          time limit
+        </th>
+        <th>
+          quiz amount
+        </th>
+        <th>
+          start date
+        </th>
+        <th>
+
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-prop let-rowIndex="rowIndex">
+      <tr class="tableList" [routerLink]="['/props/' + rowIndex +  '/quizs']">
+        <td>
+          {{ prop.prop_name }}
+        </td>
+        <td>
+          {{ prop.max_score }}
+        </td>
+        <td>
+          {{ prop.prop_time }}
+        </td>
+        <td>
+          {{ prop.quiz_amount }}
+        </td>
+        <td>
+          {{ prop.start_date }}
+        </td>
+        <td>
+          <button style="width: 40%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-pencil"
+            iconPos="left" [routerLink]="['/editProp/'+rowIndex]"></button>
+          <button style="width: 40%;" type="button" pButton icon="pi pi-trash" iconPos="left"
+            (click)="DeleteProp(rowIndex)"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <button class="loginBtn" style="width: 100%; margin-top: 20px;" pButton type="button" type="submit"
+    label="Create proposition" [routerLink]="['/createProp']"></button>
+</div>

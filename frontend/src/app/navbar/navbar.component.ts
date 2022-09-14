@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { AuthService } from '@auth0/auth0-angular'
+import { Proposition } from 'app/Model/proposition';
+import { HttpClient } from '@angular/common/http';
+import { User } from 'app/Model/user';
+
 
 @Component({
   selector: 'app-navbar',
@@ -7,8 +12,10 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  profileJson!: User;
+  proposition!: Proposition[];
 
-  constructor() { }
+  constructor(private http: HttpClient, public auth: AuthService) { }
 
   items!: MenuItem[];
 
@@ -33,6 +40,14 @@ export class NavbarComponent implements OnInit {
           ]
       }
   ];
+  this.auth.idTokenClaims$.subscribe(
+    (profile) => (
+      this.http.get<User>('/api/user/' + profile?.email).subscribe((response) => {
+        this.profileJson = response;
+        this.proposition = this.profileJson.proposition;
+    })
+    ),
+    );
   }
 
 }

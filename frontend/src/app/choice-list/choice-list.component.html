@@ -1,0 +1,60 @@
+<div class="propCont propCent">
+    <p-table [value]="choice">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>
+                    number
+                </th>
+                <th>
+                    content
+                </th>
+                <th>
+                    choice correct
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-choice let-rowIndex="rowIndex">
+            <tr *ngIf="choice.content == ''; else next" [routerLink]="['/props/' + this.pid +  '/quizs/' + this.qid + '/createChoice/' + rowIndex]" class="tableList">
+                <td>
+                    {{ rowIndex + 1 }}
+                </td>
+                <td>
+                    {{ choice.content }}
+                </td>
+                <td>
+                    {{ choice.correct }}
+                </td>
+                <td>
+                    <button style="width: 40%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-pencil"
+                        iconPos="left" [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]"></button>
+                    <button style="width: 40%;" type="button" pButton icon="pi pi-trash" iconPos="left"
+                        (click)="DeleteChoice(rowIndex)"></button>
+                </td>
+            </tr>
+        <ng-template #next>
+            <tr [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]" class="tableList">
+                <td>
+                    {{ rowIndex + 1 }}
+                </td>
+                <td>
+                    {{ choice.content }}
+                </td>
+                <td>
+                    {{ choice.correct }}
+                </td>
+                <td>
+                    <button style="width: 40%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-pencil"
+                    iconPos="left" [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]"></button>
+                    <button style="width: 40%;" type="button" pButton icon="pi pi-trash" iconPos="left"
+                        (click)="DeleteChoice(rowIndex)"></button>
+                </td>
+            </tr>
+            </ng-template>
+        </ng-template>
+    </p-table>
+    <!-- <button class="loginBtn" style="width: 100%; margin-top: 20px;" pButton type="button" type="submit"
+        label="Create proposition" [routerLink]="['/createProp']"></button> -->
+</div>

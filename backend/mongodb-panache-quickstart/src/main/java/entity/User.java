@@ -6,9 +6,11 @@ import org.bson.types.ObjectId;
 
 import io.quarkus.mongodb.panache.common.MongoEntity;
 
-@MongoEntity(collection = "user")
+@MongoEntity(collection = "users")
 public class User {
     public ObjectId id;
+
+	public String email;
 
 	public String username;
 	
@@ -23,6 +25,10 @@ public class User {
 	public List<Score> score;
 	
 	public List<Proposition> proposition;
+	
+	public ObjectId getId() {
+		return id;
+	}
 
 	public String getUsername() {
 		return username;
@@ -30,6 +36,14 @@ public class User {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {

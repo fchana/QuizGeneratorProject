@@ -1,11 +1,6 @@
 <p-menubar [model]="items">
-    <!-- <ng-template pTemplate="end">
-        <div class="inline">
-            <h3>Chanathip Amoncheewasilapakul</h3>
-            <button pButton label="Logout" style="
-        right: 0px;
-        width: 300px;
-        padding: 10px;" icon="pi pi-power-off"></button>
-        </div>
-    </ng-template> -->
+    <ng-template pTemplate="end">
+            <h3 *ngIf="auth.isAuthenticated$ | async">User : {{ profileJson.email }}</h3>
+            <app-logout-button *ngIf="auth.isAuthenticated$ | async"></app-logout-button>
+    </ng-template>
 </p-menubar>
