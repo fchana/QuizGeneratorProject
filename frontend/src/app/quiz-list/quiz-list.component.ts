@@ -54,4 +54,19 @@ export class QuizListComponent implements OnInit {
         );
     }
 
+    AddQuiz(){
+      this.profileJson?.proposition[this.id].quiz.push({
+        choice: [],
+        content: "",
+        choice_type: 0,
+        time_limit: 0,
+        choice_amount: 0
+      })
+      if (this.profileJson?.proposition[this.id].quiz_amount != undefined) {
+        this.profileJson.proposition[this.id].quiz_amount += 1;
+      }
+      this.http.put('/api/user/'+this.profileJson?.id, this.profileJson).subscribe((response) => {
+        console.log(response);
+      })
+    }
 }

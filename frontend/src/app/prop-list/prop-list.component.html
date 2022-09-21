@@ -37,12 +37,14 @@
           {{ prop.quiz_amount }}
         </td>
         <td>
-          {{ prop.start_date }}
+          {{ prop.start_date | date }}
         </td>
         <td>
-          <button style="width: 40%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-pencil"
+          <button style="width: 25%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-eye"
+          iconPos="left" [routerLink]="['/props/preview/'+rowIndex]"></button>
+          <button style="width: 25%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-pencil"
             iconPos="left" [routerLink]="['/editProp/'+rowIndex]"></button>
-          <button style="width: 40%;" type="button" pButton icon="pi pi-trash" iconPos="left"
+          <button style="width: 25%;" type="button" pButton icon="pi pi-trash" iconPos="left"
             (click)="DeleteProp(rowIndex)"></button>
         </td>
       </tr>

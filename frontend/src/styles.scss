@@ -76,3 +76,41 @@
     background-color: grey;
     color: red;
 }
+
+.quiz-header{
+    color: white;
+    width: 100%;
+    height: 200px;
+    background-color: #5d45aa;
+    position: relative;
+    font-size: 48px;
+    font-weight: bold;
+    border: 2px;
+    border-radius: 15px;
+    margin-bottom: 5px;
+}
+
+.quiz-content{
+    // background-color: #5d45aa;
+    // width: 100%;
+    // height: 100%;
+    font-size: 48px;
+    font-weight: bold;
+    // border: 5px;
+    // border-radius: 15px;
+    margin-bottom: 15px;
+    // border-color: #5d45aa;
+}
+
+.quiz-container {
+    margin-top: 30px;
+    width: 90%;
+    height: 100%;
+}
+
+.quiz-header-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
