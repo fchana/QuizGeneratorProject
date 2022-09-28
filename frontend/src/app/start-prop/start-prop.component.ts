@@ -78,7 +78,7 @@ export class StartPropComponent implements OnInit {
               function pushProp() {
                 _this.quizs = _this.proposition[_this.id].quiz;
                 _this.totalRecords2 = _this.quizs.length;
-                console.log("pushProp ")
+                console.log(_this.quizs)
               }
 
               async function pushAllUser() {
@@ -90,6 +90,7 @@ export class StartPropComponent implements OnInit {
                   })
                 });
                 await pushProp();
+                _this.quizs = _this.shuffle(_this.quizs);
               }
               pushAllUser()
             })
@@ -130,9 +131,20 @@ export class StartPropComponent implements OnInit {
 
   }
 
-  Disable(){
-    return true;
+  shuffle(array: Array<Quiz>) { 
+    let currentIndex = array.length,  randomIndex;
+  
+    while (currentIndex != 0) {
+  
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+        [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
   }
+  
 
 }
 
