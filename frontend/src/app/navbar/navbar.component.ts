@@ -78,7 +78,7 @@ export class NavbarComponent implements OnInit {
           this.profileJson = response;
           this.proposition = this.profileJson.proposition;
 
-          console.log("response_undefined : ", response == undefined);
+          // console.log("response_undefined : ", response == undefined);
 
 
           if (response.account_type == true) {
