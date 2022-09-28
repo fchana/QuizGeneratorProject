@@ -6,6 +6,7 @@
     padding-top: 50px;
     width: 100%;
     height: 100%;
+    text-align: center;
 }
 
 .propCont {
@@ -41,6 +42,12 @@
 .center {
     margin: auto;
     width: 50%;
+    padding: 10px;
+}
+
+.center2 {
+    margin: auto;
+    width: 100%;
     padding: 10px;
 }
 
@@ -80,7 +87,7 @@
 .quiz-header{
     color: white;
     width: 100%;
-    height: 200px;
+    height: 300px;
     background-color: #5d45aa;
     position: relative;
     font-size: 48px;
@@ -94,7 +101,6 @@
     // background-color: #5d45aa;
     // width: 100%;
     // height: 100%;
-    font-size: 48px;
     font-weight: bold;
     // border: 5px;
     // border-radius: 15px;
@@ -109,8 +115,17 @@
 }
 
 .quiz-header-content{
+    font-size: 60px;
     position: absolute;
     top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.quiz-des{
+    font-size: 17px;
+    position: absolute;
+    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
 }

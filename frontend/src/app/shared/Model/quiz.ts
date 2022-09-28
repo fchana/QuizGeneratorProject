@@ -11,4 +11,6 @@ export interface Quiz {
     time_limit: number;
 
     choice_amount: number;
+
+    score: number
 }

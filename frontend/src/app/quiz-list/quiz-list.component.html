@@ -18,6 +18,9 @@
                     choice amount
                 </th>
                 <th>
+                    quiz score
+                </th>
+                <th>
 
                 </th>
             </tr>
@@ -39,6 +42,9 @@
                 </td>
                 <td>
                     {{ quiz.choice_amount }}
+                </td>
+                <td>
+                    {{ quiz.score }}
                 </td>
                 <td>
                     <button *ngIf="quiz.content === undefined || quiz.content !== ''; else elseBtn"
@@ -70,6 +76,9 @@
                     <td>
                         {{ quiz.choice_amount }}
                     </td>
+                    <td>
+                        {{ quiz.score }}
+                    </td>    
                     <td>
                         <button *ngIf="quiz.content === undefined || quiz.content !== ''; else elseBtn"
                             style="width: 40%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-pencil"

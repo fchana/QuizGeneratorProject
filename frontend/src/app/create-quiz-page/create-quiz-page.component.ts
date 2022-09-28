@@ -3,10 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
-import { Choice } from 'app/Model/choice';
-import { Proposition } from 'app/Model/proposition';
-import { Quiz } from 'app/Model/quiz';
-import { User } from 'app/Model/user';
+import { Choice } from 'app/shared/Model/choice';
+import { Proposition } from 'app/shared/Model/proposition';
+import { Quiz } from 'app/shared/Model/quiz';
+import { User } from 'app/shared/Model/user';
 
 @Component({
   selector: 'app-create-quiz-page',
@@ -17,6 +17,7 @@ export class CreateQuizPageComponent implements OnInit {
   profileJson!: User;
   proposition!: Proposition[];
 
+  scoreInput: number;
   quizContentInput: String;
   choiceTypeInput: number;
   timeLimitInput: number;
@@ -56,7 +57,8 @@ export class CreateQuizPageComponent implements OnInit {
       choice_type: this.choiceTypeInput,
       time_limit: this.timeLimitInput,
       choice_amount: this.choiceAmountInput,
-      choice: this.choices
+      choice: this.choices,
+      score: this.scoreInput
     }
 
     this.profileJson?.proposition[this.pid].quiz.splice(this.id, 1, userUpdate);

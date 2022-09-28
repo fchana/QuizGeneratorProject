@@ -3,10 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
-import { Choice } from 'app/Model/choice';
-import { Proposition } from 'app/Model/proposition';
-import { Quiz } from 'app/Model/quiz';
-import { User } from 'app/Model/user';
+import { Choice } from 'app/shared/Model/choice';
+import { Proposition } from 'app/shared/Model/proposition';
+import { Quiz } from 'app/shared/Model/quiz';
+import { User } from 'app/shared/Model/user';
 
 
 @Component({

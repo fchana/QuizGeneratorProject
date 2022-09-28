@@ -38,6 +38,8 @@ import { GivePermissionComponent } from './give-permission/give-permission.compo
 import {PickListModule} from 'primeng/picklist';
 import {DropdownModule} from 'primeng/dropdown';
 import { PropInfoComponent } from './prop-info/prop-info.component';
+import { TimeConvertorPipe } from './shared/timeConvertor/time-convertor.pipe';
+import { StartPropComponent } from './start-prop/start-prop.component';
 
 @NgModule({
   declarations: [
@@ -59,8 +61,9 @@ import { PropInfoComponent } from './prop-info/prop-info.component';
     EditChoicePageComponent,
     PreviewPropComponent,
     GivePermissionComponent,
-    PropInfoComponent
-    
+    PropInfoComponent,
+    TimeConvertorPipe,
+    StartPropComponent,
   ],
   imports: [
     BrowserModule,

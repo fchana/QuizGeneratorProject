@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { AuthService } from '@auth0/auth0-angular'
-import { Proposition } from 'app/Model/proposition';
+import { Proposition } from 'app/shared/Model/proposition';
 import { HttpClient } from '@angular/common/http';
-import { User } from 'app/Model/user';
+import { User } from 'app/shared/Model/user';
 
 
 @Component({
@@ -18,38 +18,100 @@ export class NavbarComponent implements OnInit {
   constructor(private http: HttpClient, public auth: AuthService) { }
 
   items!: MenuItem[];
+  items2!: MenuItem[];
+  items3!: MenuItem[];
 
   ngOnInit(): void {
-    this.items = [
-      {
-        label: 'Online Quiz Generator',
-        items: [{
-          label: 'Proposition list',
-          routerLink: '/props',
-        },
+    console.log("profileJson : ", this.profileJson == undefined);
+    if (this.profileJson == undefined) {
+      this.items = [
         {
-          label: 'Proposition',
-          items: [],
-        }, {
-          label: 'Permission',
-          routerLink: '/permission'
-        }
-        ]
-      },
-      // {
-      //     label: 'Edit',
-      //     icon: 'pi pi-fw pi-pencil',
-      //     items: [
-      //         {label: 'Delete', icon: 'pi pi-fw pi-trash'},
-      //         {label: 'Refresh', icon: 'pi pi-fw pi-refresh'}
-      //     ]
-      // }
-    ];
+          label: 'Online Quiz Generator',
+          items: [{
+            label: 'Online Quiz Generator',
+            routerLink: '/props',
+          }
+          ]
+        },
+      ];
+    }
+    // this.items = [
+    //   {
+    //     label: 'Online Quiz Generator',
+    //     items: [{
+    //       label: 'Proposition list',
+    //       routerLink: '/props',
+    //     },
+    //     {
+    //       label: 'Proposition',
+    //       items: [],
+    //     }, {
+    //       label: 'Permission',
+    //       routerLink: '/permission'
+    //     }
+    //     ]
+    //   },
+    // ];
+    // this.items2 = [
+    //   {
+    //     label: 'Online Quiz Generator',
+    //     items: [{
+    //       label: 'Proposition list',
+    //       routerLink: '/props',
+    //     }
+    //     ]
+    //   },
+    // ];
+    // this.items3 = [
+    //   {
+    //     label: 'Online Quiz Generator',
+    //     items: [{
+    //       label: 'Online Quiz Generator',
+    //       routerLink: '/props',
+    //     }
+    //     ]
+    //   },
+    // ];
     this.auth.idTokenClaims$.subscribe(
       (profile) => (
         this.http.get<User>('/api/user/' + profile?.email).subscribe((response) => {
           this.profileJson = response;
           this.proposition = this.profileJson.proposition;
+
+          // console.log("response_undefined : ", response == undefined);
+
+
+          if (response.account_type == true) {
+            this.items = [
+              {
+                label: 'Online Quiz Generator',
+                items: [{
+                  label: 'Proposition list',
+                  routerLink: '/props',
+                },
+                {
+                  label: 'Proposition',
+                  items: [],
+                }, {
+                  label: 'Permission',
+                  routerLink: '/permission'
+                }
+                ]
+              },
+            ];
+          }
+          else {
+            this.items = [
+              {
+                label: 'Online Quiz Generator',
+                items: [{
+                  label: 'Proposition list',
+                  routerLink: '/props',
+                }
+                ]
+              },
+            ];
+          }
 
           this.proposition.forEach((props, index) => {
             if (this.items[0]?.items !== undefined) {
