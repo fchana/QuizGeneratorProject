@@ -20,6 +20,24 @@ public class Quiz {
     
     public int choice_amount;
 
+	public void setChoice(List<Choice> choice) {
+		this.choice = choice;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public int score;
+
+	public List<Choice> getChoice() {
+		return choice;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
 	public String getContent() {
 		return content;
 	}

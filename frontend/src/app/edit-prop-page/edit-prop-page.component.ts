@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
-import { Proposition } from 'app/Model/proposition';
-import { User } from 'app/Model/user';
+import { Proposition } from 'app/shared/Model/proposition';
+import { User } from 'app/shared/Model/user';
 
 @Component({
   selector: 'app-edit-prop-page',

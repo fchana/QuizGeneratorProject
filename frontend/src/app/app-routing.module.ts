@@ -14,6 +14,8 @@ import { CreateChoicePageComponent } from './create-choice-page/create-choice-pa
 import { EditChoicePageComponent } from './edit-choice-page/edit-choice-page.component';
 import { PreviewPropComponent } from './preview-prop/preview-prop.component';
 import { GivePermissionComponent } from './give-permission/give-permission.component';
+import { PropInfoComponent } from './prop-info/prop-info.component';
+import { StartPropComponent } from './start-prop/start-prop.component';
 
 const routes: Routes = [
   {path: '',   redirectTo: '/login', pathMatch: 'full' },
@@ -30,6 +32,9 @@ const routes: Routes = [
   {path: 'props/:pid/quizs/:qid/editchoice/:cid', component: EditChoicePageComponent, canActivate: [AuthGuard]},
   {path: 'props/preview/:pid', component: PreviewPropComponent, canActivate: [AuthGuard]},
   {path: 'permission', component: GivePermissionComponent, canActivate: [AuthGuard]},
+  {path: 'props/:id', component: PropInfoComponent, canActivate: [AuthGuard]},
+  {path: 'props/:id/start', component: StartPropComponent, canActivate: [AuthGuard]},
+
   {path: '**', component: LoginPageComponent }
 ];
 

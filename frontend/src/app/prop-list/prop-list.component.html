@@ -32,13 +32,13 @@
             {{ prop.max_score }}
           </td>
           <td>
-            {{ prop.prop_time }}
+            {{ prop.prop_time | timeConvertor}} hours
           </td>
           <td>
             {{ prop.quiz_amount }}
           </td>
           <td>
-            {{ prop.start_date | date }}
+            {{ prop.start_date | date :'short' }}
           </td>
           <td>
             <button style="width: 25%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-eye"
@@ -78,7 +78,7 @@
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-prop let-rowIndex="rowIndex">
-        <tr class="tableList" [routerLink]="['/props/' + rowIndex +  '/quizs']">
+        <tr class="tableList" [routerLink]="['/props/' + rowIndex]">
           <td>
             {{ prop.prop_name }}
           </td>
@@ -86,18 +86,18 @@
             {{ prop.max_score }}
           </td>
           <td>
-            {{ prop.prop_time }}
+            {{ prop.prop_time | timeConvertor }} hours
           </td>
           <td>
             {{ prop.quiz_amount }}
           </td>
           <td>
-            {{ prop.start_date | date }}
+            {{ prop.start_date | date :'short' }}
           </td>
         </tr>
       </ng-template>
     </p-table>
-    <button class="loginBtn" style="width: 100%; margin-top: 20px;" pButton type="button" type="submit"
-      label="Create proposition" [routerLink]="['/createProp']"></button>
+    <!-- <button class="loginBtn" style="width: 100%; margin-top: 20px;" pButton type="button" type="submit"
+      label="Create proposition" [routerLink]="['/createProp']"></button> -->
   </ng-template>
 </div>
