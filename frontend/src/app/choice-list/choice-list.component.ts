@@ -34,7 +34,11 @@ export class ChoiceListComponent implements OnInit {
     DeleteChoice(index: number){
       this.profileJson?.proposition[this.pid].quiz[this.qid].choice.splice(index, 1);
       if (this.profileJson?.proposition[this.pid].quiz[this.qid].choice_amount != undefined) {
-        this.profileJson.proposition[this.pid].quiz[this.qid].choice_amount -= 1;
+        if(this.profileJson?.proposition[this.pid].quiz[this.qid].choice_amount > 0){
+          this.profileJson.proposition[this.pid].quiz[this.qid].choice_amount -= 1;
+        }
+        else
+          this.profileJson.proposition[this.pid].quiz[this.qid].choice_amount = 0;
       }
       this.http.put('/api/user/'+this.profileJson?.id, this.profileJson).subscribe((response) => {
         this.CallProfile();
@@ -56,4 +60,17 @@ export class ChoiceListComponent implements OnInit {
         );
     }
 
+    AddChoice(){
+      this.profileJson?.proposition[this.pid].quiz[this.qid].choice.push({
+        content: "",
+        correct: false
+      })
+      if (this.profileJson?.proposition[this.pid].quiz[this.qid].choice_amount != undefined) {
+        this.profileJson.proposition[this.pid].quiz[this.qid].choice_amount += 1;
+      }
+      this.http.put('/api/user/'+this.profileJson?.id, this.profileJson).subscribe((response) => {
+        console.log(response);
+      })
+    }
 }
+

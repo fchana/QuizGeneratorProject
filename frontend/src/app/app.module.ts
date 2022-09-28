@@ -31,6 +31,13 @@ import { ChoiceListComponent } from './choice-list/choice-list.component';
 import { CreateChoicePageComponent } from './create-choice-page/create-choice-page.component';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import { EditChoicePageComponent } from './edit-choice-page/edit-choice-page.component';
+import { PreviewPropComponent } from './preview-prop/preview-prop.component';
+import {PaginatorModule} from 'primeng/paginator';
+import {ToggleButtonModule} from 'primeng/togglebutton';
+import { GivePermissionComponent } from './give-permission/give-permission.component';
+import {PickListModule} from 'primeng/picklist';
+import {DropdownModule} from 'primeng/dropdown';
+import { PropInfoComponent } from './prop-info/prop-info.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +56,10 @@ import { EditChoicePageComponent } from './edit-choice-page/edit-choice-page.com
     CreateQuizPageComponent,
     ChoiceListComponent,
     CreateChoicePageComponent,
-    EditChoicePageComponent
+    EditChoicePageComponent,
+    PreviewPropComponent,
+    GivePermissionComponent,
+    PropInfoComponent
     
   ],
   imports: [
@@ -66,6 +76,10 @@ import { EditChoicePageComponent } from './edit-choice-page/edit-choice-page.com
     DialogModule,
     BrowserAnimationsModule,
     SelectButtonModule,
+    PaginatorModule,
+    ToggleButtonModule,
+    PickListModule,
+    DropdownModule,
     AuthModule.forRoot({
       ...env.auth,
     }),

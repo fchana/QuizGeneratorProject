@@ -20,7 +20,7 @@ export class CreateChoicePageComponent implements OnInit {
   proposition!: Proposition[];
 
   quiz: [];
-  id: any;
+  cid: any;
   pid: any;
   qid: any;
   choiceContentInput: String;
@@ -35,7 +35,7 @@ export class CreateChoicePageComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
+    this.cid = this.route.snapshot.paramMap.get('cid');
     this.qid = this.route.snapshot.paramMap.get('qid');
     this.pid = this.route.snapshot.paramMap.get('pid');
     this.auth.idTokenClaims$.subscribe(
@@ -58,8 +58,9 @@ export class CreateChoicePageComponent implements OnInit {
       content: this.choiceContentInput,
       correct: this.choiceCorrectInput
     }
+    console.log(this.cid)
 
-    this.profileJson?.proposition[this.pid].quiz[this.qid].choice.splice(this.id, 1, userUpdate);
+    this.profileJson?.proposition[this.pid].quiz[this.qid].choice.splice(this.cid, 1, userUpdate);
 
     this.http.put('/api/user/'+this.profileJson?.id, this.profileJson).subscribe((response) => {
       console.log(response);

@@ -3,7 +3,7 @@ import { Quiz } from "./quiz";
 export interface Proposition {
     quiz: Array<Quiz>;
 
-    allowed: Array<String>;
+    allowed: Array<Object>;
 
     prop_name: String;
 

@@ -1,5 +1,8 @@
 package entity;
 
+import java.lang.reflect.Array;
+import java.util.List;
+
 import javax.enterprise.context.ApplicationScoped;
 
 import io.quarkus.mongodb.panache.PanacheMongoRepository;
@@ -12,6 +15,10 @@ public class UserRepository implements PanacheMongoRepository<User> {
 
     public User findByEmail(String email)  {
         return find("email", email).firstResult();
+    }
+
+    public List<User> findByAccountType()  {
+        return find("account_type",false).list();
     }
     
 }
