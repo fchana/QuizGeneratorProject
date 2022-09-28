@@ -35,6 +35,9 @@ import { PreviewPropComponent } from './preview-prop/preview-prop.component';
 import {PaginatorModule} from 'primeng/paginator';
 import {ToggleButtonModule} from 'primeng/togglebutton';
 import { GivePermissionComponent } from './give-permission/give-permission.component';
+import {PickListModule} from 'primeng/picklist';
+import {DropdownModule} from 'primeng/dropdown';
+import { PropInfoComponent } from './prop-info/prop-info.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,8 @@ import { GivePermissionComponent } from './give-permission/give-permission.compo
     CreateChoicePageComponent,
     EditChoicePageComponent,
     PreviewPropComponent,
-    GivePermissionComponent
+    GivePermissionComponent,
+    PropInfoComponent
     
   ],
   imports: [
@@ -74,6 +78,8 @@ import { GivePermissionComponent } from './give-permission/give-permission.compo
     SelectButtonModule,
     PaginatorModule,
     ToggleButtonModule,
+    PickListModule,
+    DropdownModule,
     AuthModule.forRoot({
       ...env.auth,
     }),

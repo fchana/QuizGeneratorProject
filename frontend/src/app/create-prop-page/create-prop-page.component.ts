@@ -21,7 +21,7 @@ export class CreatePropPageComponent implements OnInit {
   quizAmountInput: number;
   startDateInput: Date  ;
   startTimeInput: Time;
-  allowed: Array<String>;
+  allowed: Array<String> = [];
   quizs: Array<Quiz> = [];
   constructor(private http: HttpClient, public auth: AuthService) { 
     
