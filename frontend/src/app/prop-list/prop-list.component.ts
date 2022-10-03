@@ -12,6 +12,7 @@ import { User } from 'app/shared/Model/user';
 })
 export class PropListComponent implements OnInit {
 
+  x: number = 0;
   profileJson?: User;
   proposition: Proposition[] = [];
   allUser!: Array<User>;
@@ -31,6 +32,28 @@ export class PropListComponent implements OnInit {
 
   }
 
+  DateAdder(date: Date, time: number): any {
+    const _date = new Date(date);
+    var day = _date.getDay();
+    var hours = _date.getHours();
+    var minutes = _date.getMinutes();
+    var seconds = _date.getSeconds();
+    var month = _date.getMonth();
+    var year = _date.getFullYear();
+    const _time: number = time;
+    var _seconds: number = Math.floor(seconds + _time) % 60;
+    var _minutes: number = Math.floor(minutes + (seconds + _time) / 60) % 60;
+    var _hours: number = Math.floor(hours + ((minutes + (seconds + _time) / 60) / 60)) % 60;
+    var _day: number = Math.floor(day + (hours + ((minutes + (seconds + _time) / 60) / 60)) % 60) % 24;
+
+    var __date = new Date(year, month, _day, _hours, _minutes, _seconds);
+    this.x += 1;
+    console.log( __date)
+
+    return __date;
+
+  }
+
   CallProfile() {
     this.auth.idTokenClaims$.subscribe(
       (profile) => (
@@ -38,6 +61,10 @@ export class PropListComponent implements OnInit {
           this.profileJson = response;
           if (this.profileJson?.account_type == true) {
             this.proposition = this.profileJson.proposition;
+            const hours: number = Math.floor(new Date(this.profileJson.proposition[0].start_date).getHours());
+            const minutes: number = Math.floor(new Date(this.profileJson.proposition[0].start_date).getMinutes());
+            const seconds: number = Math.floor(new Date(this.profileJson.proposition[0].start_date).getSeconds());
+            console.log(hours, minutes, seconds);
           }
           else {
             this.http.get('/api/user/').subscribe((response: any) => {
@@ -53,7 +80,6 @@ export class PropListComponent implements OnInit {
                 })
               });
             })
-            console.log("proposition ", this.proposition);
           }
         })
       ),

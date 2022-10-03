@@ -18,6 +18,9 @@
           <th>
             start date
           </th>
+          <!-- <th>
+            end date
+          </th> -->
           <th>
 
           </th>
@@ -40,6 +43,10 @@
           <td>
             {{ prop.start_date | date :'short' }}
           </td>
+          <!-- <td>
+            {{ DateAdder(prop.start_date, prop.prop_time) | date : 'short'  }}
+          </td> -->
+
           <td>
             <button style="width: 25%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-eye"
               iconPos="left" [routerLink]="['/props/preview/'+rowIndex]"></button>
@@ -75,6 +82,9 @@
           <th>
             start date
           </th>
+          <th>
+            end date
+          </th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-prop let-rowIndex="rowIndex">
@@ -93,6 +103,9 @@
           </td>
           <td>
             {{ prop.start_date | date :'short' }}
+          </td>
+          <td>
+            {{ DateAdder(prop.start_date, prop.prop_time) | date : 'short' }}
           </td>
         </tr>
       </ng-template>

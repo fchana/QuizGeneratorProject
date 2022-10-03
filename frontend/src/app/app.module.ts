@@ -64,7 +64,7 @@ import { StartPropComponent } from './start-prop/start-prop.component';
     PropInfoComponent,
     TimeConvertorPipe,
     StartPropComponent,
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
