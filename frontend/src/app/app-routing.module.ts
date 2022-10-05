@@ -15,7 +15,7 @@ import { EditChoicePageComponent } from './edit-choice-page/edit-choice-page.com
 import { PreviewPropComponent } from './preview-prop/preview-prop.component';
 import { GivePermissionComponent } from './give-permission/give-permission.component';
 import { PropInfoComponent } from './prop-info/prop-info.component';
-import { StartPropComponent } from './start-prop/start-prop.component';
+import { StartPropComponent } from './shared/timeConvertor/start-prop/start-prop.component';
 
 const routes: Routes = [
   {path: '',   redirectTo: '/login', pathMatch: 'full' },
