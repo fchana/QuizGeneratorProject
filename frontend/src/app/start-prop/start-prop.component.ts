@@ -93,14 +93,7 @@ export class StartPropComponent implements OnInit {
                   })
                   console.log("selects : ", _this.selects)
                 }
-                for (var k = 0; k < _this.quizs.length; k++) {
-                  console.log("k : ", _this.quizs[k]);
-                  for (var i = 0; i <  _this.quizs[k].choice_amount; i++) {
-                    console.log(_this.quizs[k].choice[i])
-                    _this.selects[k].select.push(false);
-                  }
-
-                }
+                
               }
 
               async function pushAllUser() {
@@ -113,6 +106,14 @@ export class StartPropComponent implements OnInit {
                 });
                 await pushProp();
                 _this.quizs = _this.shuffle(_this.quizs);
+                for (var k = 0; k < _this.quizs.length; k++) {
+                  console.log("k : ", _this.quizs[k]);
+                  for (var i = 0; i <  _this.quizs[k].choice_amount; i++) {
+                    console.log(_this.quizs[k].choice[i])
+                    _this.selects[k].select.push(false);
+                  }
+
+                }
                 _this.propTime();
                 if (_this.proposition != undefined) {
                   _this.countDownDate2 = _this.DateAdder(new Date(), _this.quizs[0].time_limit).getTime();
