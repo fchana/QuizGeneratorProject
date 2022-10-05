@@ -31,6 +31,20 @@ export class PropListComponent implements OnInit {
 
   }
 
+  DateAdder(date: Date, time: number): Date {
+    var _date = new Date(date);
+    var day = _date.getDate();
+    var hours = _date.getHours();
+    var minutes = _date.getMinutes();
+    var seconds = _date.getSeconds();
+    var month = _date.getMonth();
+    var year = _date.getFullYear();
+    var __date = new Date(year, month, day, hours, minutes, seconds + time);
+
+    return __date;
+
+  }
+
   CallProfile() {
     this.auth.idTokenClaims$.subscribe(
       (profile) => (
@@ -38,6 +52,9 @@ export class PropListComponent implements OnInit {
           this.profileJson = response;
           if (this.profileJson?.account_type == true) {
             this.proposition = this.profileJson.proposition;
+            const hours: number = Math.floor(new Date(this.profileJson.proposition[0].start_date).getHours());
+            const minutes: number = Math.floor(new Date(this.profileJson.proposition[0].start_date).getMinutes());
+            const seconds: number = Math.floor(new Date(this.profileJson.proposition[0].start_date).getSeconds());
           }
           else {
             this.http.get('/api/user/').subscribe((response: any) => {
@@ -53,7 +70,6 @@ export class PropListComponent implements OnInit {
                 })
               });
             })
-            console.log("proposition ", this.proposition);
           }
         })
       ),

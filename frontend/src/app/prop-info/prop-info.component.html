@@ -11,7 +11,8 @@
             <div class="flex-1 h-4rem font-bold text-center p-4 border-round"><h2>Time limit : {{
                 propTime | timeConvertor }} hours</h2></div>
             <div class="flex-1 h-4rem font-bold text-center p-4 border-round"><h2>Start at : {{
-                prop.start_date | date : 'short' }}</h2></div>
+                prop.start_date | date : 'short' }} <!-- - {{ DateAdder(prop.start_date, prop.prop_time) | date : 'medium' }} -->
+            </h2></div>
         </div>
     </div>
     <div class="card">

@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
+import { Choice } from 'app/shared/Model/choice';
 import { Proposition } from 'app/shared/Model/proposition';
 import { Quiz } from 'app/shared/Model/quiz';
 import { Select } from 'app/shared/Model/select';
@@ -33,14 +34,21 @@ export class StartPropComponent implements OnInit {
 
   allUser: Array<User>;
 
+  _prop: Proposition;
+
   check: boolean = true;
 
-  score: number;
+  score: number = 0;
 
   selects: Select[] = [];
 
   selected: number = 0;
 
+  countDown: string = "";
+
+  countDown2: string=  "";
+
+  countDownDate2: number;
 
   onPageChange(event: { first: number; }) {
     this.first = event.first;
@@ -50,12 +58,11 @@ export class StartPropComponent implements OnInit {
     this.first = 0;
   }
 
-  constructor(private http: HttpClient, public auth: AuthService, private route: ActivatedRoute) {
+  constructor(private http: HttpClient, public auth: AuthService, private route: ActivatedRoute, private router: Router) {
     this.id = this.route.snapshot.paramMap.get('id');
   }
 
   ngOnInit(): void {
-
     this.CallProfile();
   }
 
@@ -78,7 +85,22 @@ export class StartPropComponent implements OnInit {
               function pushProp() {
                 _this.quizs = _this.proposition[_this.id].quiz;
                 _this.totalRecords2 = _this.quizs.length;
-                console.log(_this.quizs)
+                _this._prop = _this.proposition[_this.id];
+                for(var i = 0; i < _this.quizs.length; i++) {
+                  _this.selects.push({
+                    index: i,
+                    select: [],
+                  })
+                  console.log("selects : ", _this.selects)
+                }
+                for (var k = 0; k < _this.quizs.length; k++) {
+                  console.log("k : ", _this.quizs[k]);
+                  for (var i = 0; i <  _this.quizs[k].choice_amount; i++) {
+                    console.log(_this.quizs[k].choice[i])
+                    _this.selects[k].select.push(false);
+                  }
+
+                }
               }
 
               async function pushAllUser() {
@@ -91,6 +113,11 @@ export class StartPropComponent implements OnInit {
                 });
                 await pushProp();
                 _this.quizs = _this.shuffle(_this.quizs);
+                _this.propTime();
+                if (_this.proposition != undefined) {
+                  _this.countDownDate2 = _this.DateAdder(new Date(), _this.quizs[0].time_limit).getTime();
+                  _this.quizTime();
+                }
               }
               pushAllUser()
             })
@@ -101,50 +128,114 @@ export class StartPropComponent implements OnInit {
   }
 
   Select(first: number, index: number) {
-    if (this.selects.length <= first) {
-      this.selects.push({
-        index: first,
-        select: [],
-      })
-      for (var i = 0; i < this.quizs[first].choice_amount; i++) {
-        this.selects[first].select.push(false);
-      }
-    }
+    // if (this.selects.length <= first) {
+    //   this.selects.push({
+    //     index: first,
+    //     select: [],
+    //   })
+    //   for (var i = 0; i < this.quizs[first].choice_amount; i++) {
+    //     this.selects[first].select.push(false);
+    //   }
+    // }
 
     if (this.selects[first].select[index] == false) {
       this.selects[first].select[index] = true;
       this.selected += 1;
     }
-    else{
+    else {
       this.selects[first].select[index] = false;
       this.selected -= 1;
     }
 
-    console.log(this.selects)
-    console.log(this.selected);
+    console.log(this.selected, this.selects)
 
   }
 
   Next() {
-    this.selected = 0;
-    this.first += 1;
-
+    if(this.first < this.quizs.length-1){
+      this.selected = 0;
+      this.first += 1;
+      this.countDownDate2 = this.DateAdder(new Date(), this.quizs[0].time_limit).getTime();
+      this.quizTime();
+    }
+    else{
+      this.router.navigateByUrl('/result', { state: { prop: this._prop, quizs: this.quizs, selects: this.selects } });
+    }
   }
 
-  shuffle(array: Array<Quiz>) { 
-    let currentIndex = array.length,  randomIndex;
-  
+  shuffle(array: Array<Quiz>) {
+    let currentIndex = array.length, randomIndex;
+
     while (currentIndex != 0) {
-  
+
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
-        [array[currentIndex], array[randomIndex]] = [
+      [array[currentIndex], array[randomIndex]] = [
         array[randomIndex], array[currentIndex]];
     }
-  
+
     return array;
   }
-  
+
+  propTime() {
+    if (this.proposition != undefined) {
+      var countDownDate = this.DateAdder(this.proposition[this.id].start_date, Number(this._prop.prop_time)).getTime();
+    }
+    var x = setInterval(() => {
+
+      var now = new Date().getTime();
+      var distance = countDownDate - now;
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      this.countDown = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+      if (distance < 0) {
+        clearInterval(x);
+        this.router.navigateByUrl('/result', { state: { prop: this._prop, quizs: this.quizs, selects: this.selects } });
+      }
+    }, 1000);
+  }
+
+  quizTime(){
+    
+    var x = setInterval(() => {
+
+      var now = new Date().getTime();
+      var distance = this.countDownDate2 - now;
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      this.countDown2 = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+      if(distance < 0){
+        clearInterval(x);
+        this.Next();
+      }
+    }, 1000);
+  }
+
+  DateAdder(date: Date, time: number): Date {
+    var _date = new Date(date);
+    var day = _date.getDate();
+    var hours = _date.getHours();
+    var minutes = _date.getMinutes();
+    var seconds = _date.getSeconds();
+    var month = _date.getMonth();
+    var year = _date.getFullYear();
+    var __date = new Date(year, month, day, hours, minutes, seconds + time + 2);
+    console.log(__date);
+    return __date;
+
+  }
+
+
 
 }
 

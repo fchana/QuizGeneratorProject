@@ -1,4 +1,7 @@
 <div class="quiz-container center">
+    <p>Countdown : {{ countDown }}</p>
+    <p>Countdown Quiz: {{ countDown2 }}</p>
+
     <div class="quiz-header">
         <label class="quiz-header-content">{{ quizs[first].content }}</label>
         <label class="quiz-des">Please select {{ quizs[first].choice_type }} choices.</label>
@@ -6,7 +9,7 @@
     <div class="quiz-content" *ngFor="let choice of quizs[first].choice; let i = index">
         <p-toggleButton [style]="{'width': '100%', 'height': '100px'}" (click)="Select(first, i) "
             [disabled]="selected == quizs[first].choice_type && selects[first].select[i] != undefined && !selects[first].select[i]"
-            onLabel="{{ choice.content }}" offLabel="{{ choice.content }}" onIcon="pi pi-check" offIcon="pi pi-times">
+            onLabel="{{ choice.content }}"  offLabel="{{ choice.content }}" >
         </p-toggleButton>
     </div>
 </div>
@@ -17,7 +20,15 @@
     <div class="col-8">
         <!-- <p-paginator [first]="first" [rows]="1" [totalRecords]="totalRecords2" (onPageChange)="onPageChange($event)"
             [showJumpToPageDropdown]="true" [showPageLinks]="false"></p-paginator> -->
-        <p-button [disabled]="!(selected == quizs[first].choice_type)" icon="pi pi-chevron-right" iconPos="right" [style]="{'width':'100%'}" (onClick)="Next()" label="Next"></p-button>
+        <div *ngIf="first < quizs.length-1 else lastQuiz">
+            <p-button [disabled]="!(selected == quizs[first].choice_type)" icon="pi pi-chevron-right" iconPos="right"
+                [style]="{'width':'100%'}" (onClick)="Next()" label="Next"></p-button>
+        </div>
+        <ng-template #lastQuiz>
+            <p-button [disabled]="!(selected == quizs[first].choice_type)" icon="pi pi-chevron-right" iconPos="right"
+                [style]="{'width':'100%'}" label="End Quiz." [routerLink]="['/result']" [state]="{prop: _prop ,quizs: quizs, selects: selects }">
+            </p-button>
+        </ng-template>
     </div>
     <div class="col-2 grid justify-content-end">
         <!-- <p-button icon="pi pi-search"></p-button> -->

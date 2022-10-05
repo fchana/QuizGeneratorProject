@@ -18,6 +18,9 @@
           <th>
             start date
           </th>
+          <!-- <th>
+            end date
+          </th> -->
           <th>
 
           </th>
@@ -38,8 +41,12 @@
             {{ prop.quiz_amount }}
           </td>
           <td>
-            {{ prop.start_date | date :'short' }}
+            {{ prop.start_date | date :'medium' }}
           </td>
+          <!-- <td>
+            {{ DateAdder(prop.start_date, prop.prop_time) | date : 'medium'  }}
+          </td> -->
+
           <td>
             <button style="width: 25%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-eye"
               iconPos="left" [routerLink]="['/props/preview/'+rowIndex]"></button>
@@ -75,6 +82,9 @@
           <th>
             start date
           </th>
+          <th>
+            end date
+          </th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-prop let-rowIndex="rowIndex">
@@ -92,7 +102,10 @@
             {{ prop.quiz_amount }}
           </td>
           <td>
-            {{ prop.start_date | date :'short' }}
+            {{ prop.start_date | date :'medium' }}
+          </td>
+          <td>
+            {{ DateAdder(prop.start_date, prop.prop_time) | date : 'medium' }}
           </td>
         </tr>
       </ng-template>
