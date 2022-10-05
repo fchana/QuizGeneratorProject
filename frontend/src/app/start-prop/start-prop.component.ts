@@ -34,6 +34,8 @@ export class StartPropComponent implements OnInit {
 
   allUser: Array<User>;
 
+  _prop: Proposition;
+
   check: boolean = true;
 
   score: number = 0;
@@ -79,7 +81,8 @@ export class StartPropComponent implements OnInit {
               function pushProp() {
                 _this.quizs = _this.proposition[_this.id].quiz;
                 _this.totalRecords2 = _this.quizs.length;
-                console.log(_this.quizs)
+                _this._prop = _this.proposition[_this.id];
+                console.log(_this._prop)
               }
 
               async function pushAllUser() {
@@ -121,9 +124,6 @@ export class StartPropComponent implements OnInit {
       this.selected -= 1;
     }
 
-    console.log(this.selects)
-    console.log(this.selected);
-
   }
 
   Next() {
@@ -147,22 +147,16 @@ export class StartPropComponent implements OnInit {
   }
   
   CheckAns(){
-    // console.log("checkAns");
     this.quizs.forEach((quiz, i) => {
-      // console.log("Quiz", quiz, i)
       var temp = 0;
       quiz.choice.forEach((choice: Choice, k) => {
-        // console.log("choice", choice)
         if(choice.correct == this.selects[i].select[k]){
-          // console.log("choice.correct : ", choice.correct, " == this.selects[i].select[k] : ", this.selects[i].select[k], " = ", choice.correct == this.selects[i].select[k]);
           temp += 1;
           console.log("temp : ", temp);
         }
       });
       if(temp == quiz.choice_amount){
         this.score += quiz.score;
-        // console.log(this.score);
-        // console.log(temp, quiz.choice_amount, "quiz score: ", quiz.score);     
       }
     });
     console.log("checkAns", this.score);

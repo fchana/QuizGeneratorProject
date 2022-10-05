@@ -59,4 +59,24 @@ export class PropInfoComponent implements OnInit {
       ),
     );
   }
+
+  DateAdder(date: Date, time: String): Date {
+    const _date = new Date(date);
+    var day = _date.getDay();
+    var hours = _date.getHours();
+    var minutes = _date.getMinutes();
+    var seconds = _date.getSeconds();
+    var month = _date.getMonth();
+    var year = _date.getFullYear();
+    const _time: number = Number(time);
+    var _seconds: number = Math.floor(seconds + _time) % 60;
+    var _minutes: number = Math.floor(minutes + (seconds + _time) / 60) % 60;
+    var _hours: number = Math.floor(hours + ((minutes + (seconds + _time) / 60) / 60)) % 60;
+    var _day: number = Math.floor(day + (hours + ((minutes + (seconds + _time) / 60) / 60)) % 60) % 24;
+
+    var __date = new Date(year, month, _day, _hours, _minutes, _seconds);
+    return __date;
+
+  }
+
 }

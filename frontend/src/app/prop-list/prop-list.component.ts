@@ -12,7 +12,6 @@ import { User } from 'app/shared/Model/user';
 })
 export class PropListComponent implements OnInit {
 
-  x: number = 0;
   profileJson?: User;
   proposition: Proposition[] = [];
   allUser!: Array<User>;
@@ -47,7 +46,6 @@ export class PropListComponent implements OnInit {
     var _day: number = Math.floor(day + (hours + ((minutes + (seconds + _time) / 60) / 60)) % 60) % 24;
 
     var __date = new Date(year, month, _day, _hours, _minutes, _seconds);
-    this.x += 1;
     return __date;
 
   }

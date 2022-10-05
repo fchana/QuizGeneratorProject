@@ -6,7 +6,7 @@
     <div class="quiz-content" *ngFor="let choice of quizs[first].choice; let i = index">
         <p-toggleButton [style]="{'width': '100%', 'height': '100px'}" (click)="Select(first, i) "
             [disabled]="selected == quizs[first].choice_type && selects[first].select[i] != undefined && !selects[first].select[i]"
-            onLabel="{{ choice.content }}" offLabel="{{ choice.content }}" onIcon="pi pi-check" offIcon="pi pi-times">
+            onLabel="{{ choice.content }}"  offLabel="{{ choice.content }}" >
         </p-toggleButton>
     </div>
 </div>
@@ -18,10 +18,13 @@
         <!-- <p-paginator [first]="first" [rows]="1" [totalRecords]="totalRecords2" (onPageChange)="onPageChange($event)"
             [showJumpToPageDropdown]="true" [showPageLinks]="false"></p-paginator> -->
         <div *ngIf="first < quizs.length-1 else lastQuiz">
-            <p-button [disabled]="!(selected == quizs[first].choice_type)" icon="pi pi-chevron-right" iconPos="right" [style]="{'width':'100%'}" (onClick)="Next()" label="Next"></p-button>
-        </div>    
+            <p-button [disabled]="!(selected == quizs[first].choice_type)" icon="pi pi-chevron-right" iconPos="right"
+                [style]="{'width':'100%'}" (onClick)="Next()" label="Next"></p-button>
+        </div>
         <ng-template #lastQuiz>
-            <p-button [disabled]="!(selected == quizs[first].choice_type)" icon="pi pi-chevron-right" iconPos="right" [style]="{'width':'100%'}" (onClick)="CheckAns()" label="End Quiz."></p-button>
+            <p-button [disabled]="!(selected == quizs[first].choice_type)" icon="pi pi-chevron-right" iconPos="right"
+                [style]="{'width':'100%'}" (onClick)="CheckAns()" label="End Quiz." [routerLink]="['/result']" [state]="{prop: _prop ,quizs: quizs, selects: selects }">
+            </p-button>
         </ng-template>
     </div>
     <div class="col-2 grid justify-content-end">

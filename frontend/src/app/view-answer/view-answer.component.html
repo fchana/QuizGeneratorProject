@@ -1,0 +1,43 @@
+<div class="container center">
+    <div class="grid">
+        <div class="col mt-5 mb-2">
+            <h1>Proposition name : {{ proposition.prop_name }}</h1>
+        </div>
+    </div>
+    <div class="quiz-container center" *ngFor="let quiz of quizs; let i = index">
+        <div class="quiz-header">
+            <label class="quiz-header-content">{{ quiz.content }}</label>
+            <label class="quiz-des">Please select {{ quiz.choice_type }} choices.</label>
+        </div>
+        <div class="quiz-content" *ngFor="let choice of quiz.choice; let k = index">
+            <div *ngIf="selects[i].select[k] && choice.correct else next">
+                <p-toggleButton [style]="{'width': '100%', 'height': '100px', 'background-color' : 'green'}"
+                    [ngModel]="choice.correct" [disabled]="true" onLabel="{{ choice.content }}"
+                    offLabel="{{ choice.content }}" onIcon="pi pi-check" offIcon="pi pi-times">
+                </p-toggleButton>
+            </div>
+            <ng-template #next>
+                <div *ngIf="selects[i].select[k] === false && choice.correct === true else next2">
+                    <p-toggleButton [style]="{'width': '100%', 'height': '100px'}" [ngModel]="false" [disabled]="true"
+                        onLabel="{{ choice.content }}" offLabel="{{ choice.content }}" onIcon="pi pi-times"
+                        offIcon="pi pi-check">
+                    </p-toggleButton>
+                </div>
+            </ng-template>
+            <ng-template #next2>
+                <div *ngIf="selects[i].select[k] === false && choice.correct === false else nothing">
+                    <p-toggleButton [style]="{'width': '100%', 'height': '100px'}" [ngModel]="choice.correct" [disabled]="true"
+                        onLabel="{{ choice.content }}" offLabel="{{ choice.content }}" onIcon="pi pi-check"
+                        offIcon="pi pi-times">
+                    </p-toggleButton>
+                </div>
+            </ng-template>
+            <ng-template #nothing>
+                <p-toggleButton [style]="{'width': '100%', 'height': '100px', 'background-color' : 'red'}"
+                    [ngModel]="choice.correct" [disabled]="true" onLabel="{{ choice.content }}"
+                    offLabel="{{ choice.content }}" onIcon="pi pi-check" offIcon="pi pi-times">
+                </p-toggleButton>
+            </ng-template>
+        </div>
+    </div>
+</div>

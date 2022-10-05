@@ -40,6 +40,10 @@ import {DropdownModule} from 'primeng/dropdown';
 import { PropInfoComponent } from './prop-info/prop-info.component';
 import { TimeConvertorPipe } from './shared/timeConvertor/time-convertor.pipe';
 import { StartPropComponent } from './start-prop/start-prop.component';
+import { ResultPageComponent } from './result-page/result-page.component';
+import {KnobModule} from 'primeng/knob';
+import { ViewAnswerComponent } from './view-answer/view-answer.component';
+
 
 @NgModule({
   declarations: [
@@ -64,6 +68,8 @@ import { StartPropComponent } from './start-prop/start-prop.component';
     PropInfoComponent,
     TimeConvertorPipe,
     StartPropComponent,
+    ResultPageComponent,
+    ViewAnswerComponent,
     ],
   imports: [
     BrowserModule,
@@ -83,6 +89,7 @@ import { StartPropComponent } from './start-prop/start-prop.component';
     ToggleButtonModule,
     PickListModule,
     DropdownModule,
+    KnobModule,
     AuthModule.forRoot({
       ...env.auth,
     }),
