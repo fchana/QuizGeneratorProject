@@ -25,18 +25,26 @@
                 </div>
             </ng-template>
             <ng-template #next2>
-                <div *ngIf="selects[i].select[k] === false && choice.correct === false else nothing">
-                    <p-toggleButton [style]="{'width': '100%', 'height': '100px'}" [ngModel]="choice.correct" [disabled]="true"
-                        onLabel="{{ choice.content }}" offLabel="{{ choice.content }}" onIcon="pi pi-check"
-                        offIcon="pi pi-times">
+                <div *ngIf="selects[i].select[k] === false && choice.correct === false else next3">
+                    <p-toggleButton [style]="{'width': '100%', 'height': '100px'}" [ngModel]="choice.correct"
+                        [disabled]="true" onLabel="{{ choice.content }}" offLabel="{{ choice.content }}"
+                        onIcon="pi pi-check" offIcon="pi pi-times">
+                    </p-toggleButton>
+                </div>
+            </ng-template>
+            <ng-template #next3>
+                <div *ngIf="selects[i].select[k] === true && choice.correct === false else nothing">
+                    <p-toggleButton [style]="{'width': '100%', 'height': '100px', 'background-color' : 'red'}"
+                        [ngModel]="choice.correct" [disabled]="true" onLabel="{{ choice.content }}"
+                        offLabel="{{ choice.content }}" onIcon="pi pi-check" offIcon="pi pi-times">
                     </p-toggleButton>
                 </div>
             </ng-template>
             <ng-template #nothing>
-                <p-toggleButton [style]="{'width': '100%', 'height': '100px', 'background-color' : 'red'}"
-                    [ngModel]="choice.correct" [disabled]="true" onLabel="{{ choice.content }}"
-                    offLabel="{{ choice.content }}" onIcon="pi pi-check" offIcon="pi pi-times">
-                </p-toggleButton>
+                    <p-toggleButton [style]="{'width': '100%', 'height': '100px', 'background-color' : 'red'}"
+                        [ngModel]="choice.correct" [disabled]="true" onLabel="{{ choice.content }}"
+                        offLabel="{{ choice.content }}" onIcon="pi pi-check" offIcon="pi pi-times">
+                    </p-toggleButton>
             </ng-template>
         </div>
     </div>

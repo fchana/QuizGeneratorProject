@@ -41,8 +41,10 @@ export class ViewAnswerComponent implements OnInit {
     this.quizs.forEach((quiz, i) => {
       var temp = 0;
       quiz.choice.forEach((choice: Choice, k) => {
-        if (choice.correct == this.selects[i].select[k]) {
-          temp += 1;
+        if(this.selects[i].select[k] != undefined){
+          if (choice.correct == this.selects[i].select[k]) {
+            temp += 1;
+          }
         }
       });
       if (temp == quiz.choice_amount) {

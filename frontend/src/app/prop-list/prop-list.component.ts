@@ -32,20 +32,15 @@ export class PropListComponent implements OnInit {
   }
 
   DateAdder(date: Date, time: number): Date {
-    const _date = new Date(date);
-    var day = _date.getDay();
+    var _date = new Date(date);
+    var day = _date.getDate();
     var hours = _date.getHours();
     var minutes = _date.getMinutes();
     var seconds = _date.getSeconds();
     var month = _date.getMonth();
     var year = _date.getFullYear();
-    const _time: number = time;
-    var _seconds: number = Math.floor(seconds + _time) % 60;
-    var _minutes: number = Math.floor(minutes + (seconds + _time) / 60) % 60;
-    var _hours: number = Math.floor(hours + ((minutes + (seconds + _time) / 60) / 60)) % 60;
-    var _day: number = Math.floor(day + (hours + ((minutes + (seconds + _time) / 60) / 60)) % 60) % 24;
+    var __date = new Date(year, month, day, hours, minutes, seconds + time);
 
-    var __date = new Date(year, month, _day, _hours, _minutes, _seconds);
     return __date;
 
   }

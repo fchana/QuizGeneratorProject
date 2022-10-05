@@ -1,4 +1,7 @@
 <div class="quiz-container center">
+    <p>Countdown : {{ countDown }}</p>
+    <p>Countdown Quiz: {{ countDown2 }}</p>
+
     <div class="quiz-header">
         <label class="quiz-header-content">{{ quizs[first].content }}</label>
         <label class="quiz-des">Please select {{ quizs[first].choice_type }} choices.</label>
@@ -23,7 +26,7 @@
         </div>
         <ng-template #lastQuiz>
             <p-button [disabled]="!(selected == quizs[first].choice_type)" icon="pi pi-chevron-right" iconPos="right"
-                [style]="{'width':'100%'}" (onClick)="CheckAns()" label="End Quiz." [routerLink]="['/result']" [state]="{prop: _prop ,quizs: quizs, selects: selects }">
+                [style]="{'width':'100%'}" label="End Quiz." [routerLink]="['/result']" [state]="{prop: _prop ,quizs: quizs, selects: selects }">
             </p-button>
         </ng-template>
     </div>
