@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
+import { Choice } from 'app/shared/Model/choice';
 import { Proposition } from 'app/shared/Model/proposition';
 import { Quiz } from 'app/shared/Model/quiz';
 import { Select } from 'app/shared/Model/select';
@@ -35,7 +36,7 @@ export class StartPropComponent implements OnInit {
 
   check: boolean = true;
 
-  score: number;
+  score: number = 0;
 
   selects: Select[] = [];
 
@@ -145,6 +146,27 @@ export class StartPropComponent implements OnInit {
     return array;
   }
   
+  CheckAns(){
+    // console.log("checkAns");
+    this.quizs.forEach((quiz, i) => {
+      // console.log("Quiz", quiz, i)
+      var temp = 0;
+      quiz.choice.forEach((choice: Choice, k) => {
+        // console.log("choice", choice)
+        if(choice.correct == this.selects[i].select[k]){
+          // console.log("choice.correct : ", choice.correct, " == this.selects[i].select[k] : ", this.selects[i].select[k], " = ", choice.correct == this.selects[i].select[k]);
+          temp += 1;
+          console.log("temp : ", temp);
+        }
+      });
+      if(temp == quiz.choice_amount){
+        this.score += quiz.score;
+        // console.log(this.score);
+        // console.log(temp, quiz.choice_amount, "quiz score: ", quiz.score);     
+      }
+    });
+    console.log("checkAns", this.score);
+  }
 
 }
 

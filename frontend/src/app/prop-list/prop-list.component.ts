@@ -32,7 +32,7 @@ export class PropListComponent implements OnInit {
 
   }
 
-  DateAdder(date: Date, time: number): any {
+  DateAdder(date: Date, time: number): Date {
     const _date = new Date(date);
     var day = _date.getDay();
     var hours = _date.getHours();
@@ -48,8 +48,6 @@ export class PropListComponent implements OnInit {
 
     var __date = new Date(year, month, _day, _hours, _minutes, _seconds);
     this.x += 1;
-    console.log( __date)
-
     return __date;
 
   }
@@ -64,7 +62,6 @@ export class PropListComponent implements OnInit {
             const hours: number = Math.floor(new Date(this.profileJson.proposition[0].start_date).getHours());
             const minutes: number = Math.floor(new Date(this.profileJson.proposition[0].start_date).getMinutes());
             const seconds: number = Math.floor(new Date(this.profileJson.proposition[0].start_date).getSeconds());
-            console.log(hours, minutes, seconds);
           }
           else {
             this.http.get('/api/user/').subscribe((response: any) => {

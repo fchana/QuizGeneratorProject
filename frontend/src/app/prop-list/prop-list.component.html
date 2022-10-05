@@ -41,10 +41,10 @@
             {{ prop.quiz_amount }}
           </td>
           <td>
-            {{ prop.start_date | date :'short' }}
+            {{ prop.start_date | date :'medium' }}
           </td>
           <!-- <td>
-            {{ DateAdder(prop.start_date, prop.prop_time) | date : 'short'  }}
+            {{ DateAdder(prop.start_date, prop.prop_time) | date : 'medium'  }}
           </td> -->
 
           <td>
@@ -102,10 +102,10 @@
             {{ prop.quiz_amount }}
           </td>
           <td>
-            {{ prop.start_date | date :'short' }}
+            {{ prop.start_date | date :'medium' }}
           </td>
           <td>
-            {{ DateAdder(prop.start_date, prop.prop_time) | date : 'short' }}
+            {{ DateAdder(prop.start_date, prop.prop_time) | date : 'medium' }}
           </td>
         </tr>
       </ng-template>

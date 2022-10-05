@@ -17,7 +17,12 @@
     <div class="col-8">
         <!-- <p-paginator [first]="first" [rows]="1" [totalRecords]="totalRecords2" (onPageChange)="onPageChange($event)"
             [showJumpToPageDropdown]="true" [showPageLinks]="false"></p-paginator> -->
-        <p-button [disabled]="!(selected == quizs[first].choice_type)" icon="pi pi-chevron-right" iconPos="right" [style]="{'width':'100%'}" (onClick)="Next()" label="Next"></p-button>
+        <div *ngIf="first < quizs.length-1 else lastQuiz">
+            <p-button [disabled]="!(selected == quizs[first].choice_type)" icon="pi pi-chevron-right" iconPos="right" [style]="{'width':'100%'}" (onClick)="Next()" label="Next"></p-button>
+        </div>    
+        <ng-template #lastQuiz>
+            <p-button [disabled]="!(selected == quizs[first].choice_type)" icon="pi pi-chevron-right" iconPos="right" [style]="{'width':'100%'}" (onClick)="CheckAns()" label="End Quiz."></p-button>
+        </ng-template>
     </div>
     <div class="col-2 grid justify-content-end">
         <!-- <p-button icon="pi pi-search"></p-button> -->
