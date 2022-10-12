@@ -43,6 +43,8 @@ import { StartPropComponent } from './start-prop/start-prop.component';
 import { ResultPageComponent } from './result-page/result-page.component';
 import {KnobModule} from 'primeng/knob';
 import { ViewAnswerComponent } from './view-answer/view-answer.component';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
 
 
 @NgModule({
@@ -90,6 +92,7 @@ import { ViewAnswerComponent } from './view-answer/view-answer.component';
     PickListModule,
     DropdownModule,
     KnobModule,
+    ConfirmDialogModule,
     AuthModule.forRoot({
       ...env.auth,
     }),
