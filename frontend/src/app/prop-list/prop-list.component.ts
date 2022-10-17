@@ -4,11 +4,14 @@ import { AuthService } from '@auth0/auth0-angular';
 import { Proposition } from 'app/shared/Model/proposition';
 import { Quiz } from 'app/shared/Model/quiz';
 import { User } from 'app/shared/Model/user';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-prop-list',
   templateUrl: './prop-list.component.html',
-  styleUrls: ['./prop-list.component.scss']
+  styleUrls: ['./prop-list.component.scss'],
+  providers: [ConfirmationService]
+
 })
 export class PropListComponent implements OnInit {
 
@@ -16,7 +19,7 @@ export class PropListComponent implements OnInit {
   proposition: Proposition[] = [];
   allUser!: Array<User>;
 
-  constructor(private http: HttpClient, public auth: AuthService) { }
+  constructor(private http: HttpClient, public auth: AuthService, private confirmationService: ConfirmationService) { }
 
   ngOnInit(): void {
 
@@ -24,10 +27,15 @@ export class PropListComponent implements OnInit {
   }
 
   DeleteProp(index: number) {
-    this.profileJson?.proposition.splice(index, 1);
-    this.http.put('/api/user/' + this.profileJson?.id, this.profileJson).subscribe((response) => {
-      this.CallProfile();
-    })
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to delete this proposition?',
+      accept: () => {
+        this.profileJson?.proposition.splice(index, 1);
+        this.http.put('/api/user/' + this.profileJson?.id, this.profileJson).subscribe((response) => {
+          this.CallProfile();
+        })
+      }
+    });
 
   }
 
@@ -52,9 +60,6 @@ export class PropListComponent implements OnInit {
           this.profileJson = response;
           if (this.profileJson?.account_type == true) {
             this.proposition = this.profileJson.proposition;
-            const hours: number = Math.floor(new Date(this.profileJson.proposition[0].start_date).getHours());
-            const minutes: number = Math.floor(new Date(this.profileJson.proposition[0].start_date).getMinutes());
-            const seconds: number = Math.floor(new Date(this.profileJson.proposition[0].start_date).getSeconds());
           }
           else {
             this.http.get('/api/user/').subscribe((response: any) => {
@@ -75,4 +80,40 @@ export class PropListComponent implements OnInit {
       ),
     );
   }
+
+  timeIsOver(id: any) {
+    var totalTime = 0;
+    this.proposition[id].quiz.forEach(quiz => {
+      totalTime += quiz.time_limit;
+    });
+    if (Number(this.proposition[id].prop_time) >= totalTime) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  scoreIsOver(id: any) {
+    var totalScore = 0;
+    this.proposition[id].quiz.forEach(quiz => {
+      totalScore += quiz.score;
+    });
+    if (Number(this.proposition[id].max_score) == totalScore) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  dateIsOver(id: any) {
+    if (new Date(this.proposition[id].start_date).getTime() > Date.now()) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
 }

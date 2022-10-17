@@ -29,7 +29,6 @@ export class ResultPageComponent implements OnInit {
       this.value = window.history.state.prop.max_score;
       this.quizs = window.history.state.quizs;
       this.selects = window.history.state.selects;
-      console.log(this.value, this.quizs, this.selects)
     
       this.CheckAns();
   }
@@ -45,7 +44,6 @@ export class ResultPageComponent implements OnInit {
       if (temp == quiz.choice_amount) {
         this.score += quiz.score;
       }
-      console.log("score: ", this.score);
     });
   }
 

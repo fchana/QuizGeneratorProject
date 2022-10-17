@@ -47,6 +47,7 @@ import { ActivePropComponent } from './active-prop/active-prop.component';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {ToastModule} from 'primeng/toast';
 
+
 @NgModule({
   declarations: [
     AppComponent,
