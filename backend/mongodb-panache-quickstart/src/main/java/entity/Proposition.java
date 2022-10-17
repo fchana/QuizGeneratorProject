@@ -26,6 +26,8 @@ public class Proposition {
     public int quiz_amount;
     
     public double max_score;
+
+	public boolean active;
     
     @BsonProperty("start_date")
     public LocalDateTime start_date;

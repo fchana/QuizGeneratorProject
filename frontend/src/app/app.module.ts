@@ -43,7 +43,9 @@ import { StartPropComponent } from './start-prop/start-prop.component';
 import { ResultPageComponent } from './result-page/result-page.component';
 import {KnobModule} from 'primeng/knob';
 import { ViewAnswerComponent } from './view-answer/view-answer.component';
-
+import { ActivePropComponent } from './active-prop/active-prop.component';
+import {InputSwitchModule} from 'primeng/inputswitch';
+import {ToastModule} from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,7 @@ import { ViewAnswerComponent } from './view-answer/view-answer.component';
     StartPropComponent,
     ResultPageComponent,
     ViewAnswerComponent,
+    ActivePropComponent,
     ],
   imports: [
     BrowserModule,
@@ -90,6 +93,8 @@ import { ViewAnswerComponent } from './view-answer/view-answer.component';
     PickListModule,
     DropdownModule,
     KnobModule,
+    InputSwitchModule,
+    ToastModule,
     AuthModule.forRoot({
       ...env.auth,
     }),

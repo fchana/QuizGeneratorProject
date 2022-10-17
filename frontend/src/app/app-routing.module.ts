@@ -18,6 +18,7 @@ import { PropInfoComponent } from './prop-info/prop-info.component';
 import { StartPropComponent } from './start-prop/start-prop.component';
 import { ResultPageComponent } from './result-page/result-page.component';
 import { ViewAnswerComponent } from './view-answer/view-answer.component';
+import { ActivePropComponent } from './active-prop/active-prop.component';
 
 const routes: Routes = [
   {path: '',   redirectTo: '/login', pathMatch: 'full' },
@@ -38,7 +39,7 @@ const routes: Routes = [
   {path: 'props/:id/start', component: StartPropComponent, canActivate: [AuthGuard]},
   {path: 'result', component: ResultPageComponent, canActivate: [AuthGuard]},
   {path: 'viewAns', component: ViewAnswerComponent, canActivate: [AuthGuard]},
-
+  {path: 'activeProps', component: ActivePropComponent, canActivate: [AuthGuard]},
   {path: '**', component: LoginPageComponent }
 ];
 

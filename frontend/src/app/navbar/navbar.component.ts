@@ -35,51 +35,11 @@ export class NavbarComponent implements OnInit {
         },
       ];
     }
-    // this.items = [
-    //   {
-    //     label: 'Online Quiz Generator',
-    //     items: [{
-    //       label: 'Proposition list',
-    //       routerLink: '/props',
-    //     },
-    //     {
-    //       label: 'Proposition',
-    //       items: [],
-    //     }, {
-    //       label: 'Permission',
-    //       routerLink: '/permission'
-    //     }
-    //     ]
-    //   },
-    // ];
-    // this.items2 = [
-    //   {
-    //     label: 'Online Quiz Generator',
-    //     items: [{
-    //       label: 'Proposition list',
-    //       routerLink: '/props',
-    //     }
-    //     ]
-    //   },
-    // ];
-    // this.items3 = [
-    //   {
-    //     label: 'Online Quiz Generator',
-    //     items: [{
-    //       label: 'Online Quiz Generator',
-    //       routerLink: '/props',
-    //     }
-    //     ]
-    //   },
-    // ];
     this.auth.idTokenClaims$.subscribe(
       (profile) => (
         this.http.get<User>('/api/user/' + profile?.email).subscribe((response) => {
           this.profileJson = response;
           this.proposition = this.profileJson.proposition;
-
-          // console.log("response_undefined : ", response == undefined);
-
 
           if (response.account_type == true) {
             this.items = [
@@ -95,6 +55,9 @@ export class NavbarComponent implements OnInit {
                 }, {
                   label: 'Permission',
                   routerLink: '/permission'
+                }, {
+                  label: 'Active props',
+                  routerLink: '/activeProps'
                 }
                 ]
               },
