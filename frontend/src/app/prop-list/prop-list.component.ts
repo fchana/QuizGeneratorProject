@@ -66,10 +66,10 @@ export class PropListComponent implements OnInit {
               this.allUser = response.filter((check: { account_type: boolean; }) => {
                 return check.account_type == true;
               })
-              // console.log("all teacher : ", this.allUser)
               this.allUser.forEach(t => {
                 t.proposition.forEach((p: any) => {
-                  if (p.allowed.includes(this.profileJson?.id)) {
+                  if (p.allowed.includes(this.profileJson?.id) && (new Date(p.start_date).getTime() >= Date.now()) && p.active == true) {
+                    console.log(p)
                     this.proposition.push(p);
                   }
                 })

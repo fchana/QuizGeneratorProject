@@ -56,6 +56,7 @@ export class CreatePropPageComponent implements OnInit {
       quiz: this.quizs, 
       quiz_amount: this.quizAmountInput,
       start_date: this.startDateInput,
+      active: false
     }
 
     this.profileJson?.proposition.push(userUpdate);

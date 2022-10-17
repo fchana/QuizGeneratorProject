@@ -15,4 +15,6 @@ export interface Proposition {
 
     start_date: Date;
 
+    active: boolean;
+
 }

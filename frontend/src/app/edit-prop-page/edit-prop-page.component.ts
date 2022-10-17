@@ -15,6 +15,7 @@ export class EditPropPageComponent implements OnInit {
   profileJson?: User;
   proposition!: Proposition[];
 
+  active: boolean;
   propNameInput: String;
   maxScoreInput: String;
   timeLimitInput: String;
@@ -39,6 +40,7 @@ export class EditPropPageComponent implements OnInit {
           this.timeLimitInput =  this.profileJson.proposition[this.id].prop_time;
           this.quizAmountInput = this.profileJson.proposition[this.id].quiz_amount;
           this.startDateInput = this.profileJson.proposition[this.id].start_date  ;
+          this.active = this.profileJson?.proposition[this.id].active;
       })
       ),
       );
@@ -55,6 +57,7 @@ export class EditPropPageComponent implements OnInit {
       quiz: this.proposition[this.id].quiz,
       quiz_amount: this.quizAmountInput,
       start_date: this.startDateInput,
+      active: this.active
     }
 
     this.profileJson?.proposition.splice(this.id,  1, userUpdate);
