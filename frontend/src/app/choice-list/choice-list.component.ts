@@ -6,13 +6,11 @@ import { Choice } from 'app/shared/Model/choice';
 import { Proposition } from 'app/shared/Model/proposition';
 import { Quiz } from 'app/shared/Model/quiz';
 import { User } from 'app/shared/Model/user';
-import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-choice-list',
   templateUrl: './choice-list.component.html',
-  styleUrls: ['./choice-list.component.scss'],
-  providers: [ConfirmationService]
+  styleUrls: ['./choice-list.component.scss']
 })
 export class ChoiceListComponent implements OnInit {
   profileJson?: User;
@@ -24,62 +22,55 @@ export class ChoiceListComponent implements OnInit {
   user: any;
   pid: any;
 
-  constructor(private http: HttpClient, public auth: AuthService, private route: ActivatedRoute, private confirmationService: ConfirmationService) {
-  }
-
-
+  constructor(private http: HttpClient, public auth: AuthService, private route: ActivatedRoute) {
+   }
 
   ngOnInit(): void {
     this.pid = this.route.snapshot.paramMap.get('pid');
     this.qid = this.route.snapshot.paramMap.get('qid');
     this.CallProfile();
-  }
-
-  DeleteChoice(index: number) {
-    this.confirmationService.confirm({
-      message: 'Are you sure that you want to delete this quiz?',
-      accept: () => {
-        this.profileJson?.proposition[this.pid].quiz[this.qid].choice.splice(index, 1);
-        if (this.profileJson?.proposition[this.pid].quiz[this.qid].choice_amount != undefined) {
-          if (this.profileJson?.proposition[this.pid].quiz[this.qid].choice_amount > 0) {
-            this.profileJson.proposition[this.pid].quiz[this.qid].choice_amount -= 1;
-          }
-          else
-            this.profileJson.proposition[this.pid].quiz[this.qid].choice_amount = 0;
-        }
-        this.http.put('/api/user/' + this.profileJson?.id, this.profileJson).subscribe((response) => {
-          this.CallProfile();
-        })
-
-      }
-    });
-  }
-
-  CallProfile() {
-    this.auth.idTokenClaims$.subscribe(
-      (profile) => (
-        this.http.get<User>('/api/user/' + profile?.email).subscribe((response) => {
-          this.profileJson = response;
-          this.proposition = this.profileJson.proposition;
-          this.quiz = this.proposition[this.pid].quiz;
-          this.choice = this.proposition[this.pid].quiz[this.qid].choice;
-          console.log(this.choice);
-        })
-      ),
-    );
-  }
-
-  AddChoice() {
-    this.profileJson?.proposition[this.pid].quiz[this.qid].choice.push({
-      content: "",
-      correct: false
-    })
-    if (this.profileJson?.proposition[this.pid].quiz[this.qid].choice_amount != undefined) {
-      this.profileJson.proposition[this.pid].quiz[this.qid].choice_amount += 1;
     }
-    this.http.put('/api/user/' + this.profileJson?.id, this.profileJson).subscribe((response) => {
-      console.log(response);
-    })
-  }
+
+    DeleteChoice(index: number){
+      this.profileJson?.proposition[this.pid].quiz[this.qid].choice.splice(index, 1);
+      if (this.profileJson?.proposition[this.pid].quiz[this.qid].choice_amount != undefined) {
+        if(this.profileJson?.proposition[this.pid].quiz[this.qid].choice_amount > 0){
+          this.profileJson.proposition[this.pid].quiz[this.qid].choice_amount -= 1;
+        }
+        else
+          this.profileJson.proposition[this.pid].quiz[this.qid].choice_amount = 0;
+      }
+      this.http.put('/api/user/'+this.profileJson?.id, this.profileJson).subscribe((response) => {
+        this.CallProfile();
+      })
+
+    }
+
+    CallProfile(){
+      this.auth.idTokenClaims$.subscribe(
+        (profile) => (
+          this.http.get<User>('/api/user/' + profile?.email).subscribe((response) => {
+            this.profileJson = response;
+            this.proposition = this.profileJson.proposition;
+            this.quiz = this.proposition[this.pid].quiz;
+            this.choice = this.proposition[this.pid].quiz[this.qid].choice;
+            console.log(this.choice);
+        })
+        ),
+        );
+    }
+
+    AddChoice(){
+      this.profileJson?.proposition[this.pid].quiz[this.qid].choice.push({
+        content: "",
+        correct: false
+      })
+      if (this.profileJson?.proposition[this.pid].quiz[this.qid].choice_amount != undefined) {
+        this.profileJson.proposition[this.pid].quiz[this.qid].choice_amount += 1;
+      }
+      this.http.put('/api/user/'+this.profileJson?.id, this.profileJson).subscribe((response) => {
+        console.log(response);
+      })
+    }
 }
 

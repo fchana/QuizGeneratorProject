@@ -18,19 +18,20 @@
         </ng-template>
         <ng-template pTemplate="body" let-choice let-rowIndex="rowIndex">
             <tr *ngIf="choice.content == ''; else next"
+                [routerLink]="['/props/' + this.pid +  '/quizs/' + this.qid + '/createChoice/' + rowIndex]"
                 class="tableList">
-                <td [routerLink]="['/props/' + this.pid +  '/quizs/' + this.qid + '/createChoice/' + rowIndex]">
+                <td>
                     {{ rowIndex + 1 }}
                 </td>
-                <td [routerLink]="['/props/' + this.pid +  '/quizs/' + this.qid + '/createChoice/' + rowIndex]">
+                <td>
                     {{ choice.content }}
                 </td>
-                <td [routerLink]="['/props/' + this.pid +  '/quizs/' + this.qid + '/createChoice/' + rowIndex]" >
+                <td>
                     {{ choice.correct }}
                 </td>
                 <td>
-                    <button *ngIf="choice.content === undefined; else elseBtn" style="width: 40%; margin-right: 10px;"
-                        pButton type="button" pButton icon="pi pi-pencil" iconPos="left"
+                    <button *ngIf="choice.content === undefined; else elseBtn" style="width: 40%; margin-right: 10px;" pButton
+                        type="button" pButton icon="pi pi-pencil" iconPos="left"
                         [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]"></button>
                     <ng-template #elseBtn>
                         <button style="width: 40%; margin-right: 10px;" disabled="true" pButton type="button" pButton
@@ -38,26 +39,24 @@
                             [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]"></button>
                     </ng-template>
                     <button style="width: 40%;" type="button" pButton icon="pi pi-trash" iconPos="left"
-                    (click)="DeleteChoice(rowIndex)"></button>
-
+                        (click)="DeleteChoice(rowIndex)"></button>
                 </td>
             </tr>
             <ng-template #next>
-                <tr class="tableList">
-                    <td [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]">
+                <tr [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]" class="tableList">
+                    <td>
                         {{ rowIndex + 1 }}
                     </td>
-                    <td [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]">
+                    <td>
                         {{ choice.content }}
                     </td>
-                    <td [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]">
+                    <td>
                         {{ choice.correct }}
                     </td>
                     <td>
                         <button style="width: 40%; margin-right: 10px;" pButton type="button" pButton
                             icon="pi pi-pencil" iconPos="left"
                             [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]"></button>
-
                         <button style="width: 40%;" type="button" pButton icon="pi pi-trash" iconPos="left"
                             (click)="DeleteChoice(rowIndex)"></button>
                     </td>
@@ -67,9 +66,6 @@
     </p-table>
     <button class="loginBtn" style="width: 100%; margin-top: 20px;" pButton type="button" label="Add quiz"
         (click)="AddChoice()"></button>
-        <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
-
-    <!-- <button pButton type="button" (click)="showDialog()" icon="pi pi-info-circle" label="Show"></button> -->
     <!-- <button class="loginBtn" style="width: 100%; margin-top: 20px;" pButton type="button" type="submit"
         label="Create proposition" [routerLink]="['/createProp']"></button> -->
 </div>
