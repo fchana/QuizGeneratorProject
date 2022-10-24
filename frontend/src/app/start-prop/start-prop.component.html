@@ -26,7 +26,7 @@
         </div>
         <ng-template #lastQuiz>
             <p-button [disabled]="!(selected == quizs[first].choice_type)" icon="pi pi-chevron-right" iconPos="right"
-                [style]="{'width':'100%'}" label="End Quiz." [routerLink]="['/result']" [state]="{prop: _prop ,quizs: quizs, selects: selects }">
+                [style]="{'width':'100%'}" label="End Quiz." [routerLink]="['/result']" [state]="{prop: _prop ,quizs: quizs, selects: selects, profileJson: profileJson  }">
             </p-button>
         </ng-template>
     </div>

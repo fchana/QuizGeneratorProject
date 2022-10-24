@@ -1,15 +1,18 @@
 import { Time } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { Proposition } from 'app/shared/Model/proposition';
 import { User } from 'app/shared/Model/user';
+import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-edit-prop-page',
   templateUrl: './edit-prop-page.component.html',
-  styleUrls: ['./edit-prop-page.component.scss']
+  styleUrls: ['./edit-prop-page.component.scss'],
+  providers: [MessageService]
 })
 export class EditPropPageComponent implements OnInit {
   profileJson?: User;
@@ -20,13 +23,13 @@ export class EditPropPageComponent implements OnInit {
   maxScoreInput: String;
   timeLimitInput: String;
   quizAmountInput: number;
-  startDateInput: Date  ;
+  startDateInput: Date;
   startTimeInput: Time;
   allowed: Array<String>;
   quiz: [];
   id: any;
 
-  constructor(private http: HttpClient, public auth: AuthService, private route: ActivatedRoute) { }
+  constructor(private http: HttpClient, public auth: AuthService, private route: ActivatedRoute, private messageService: MessageService, private router: Router) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -37,36 +40,54 @@ export class EditPropPageComponent implements OnInit {
           this.proposition = this.profileJson.proposition;
           this.propNameInput = this.profileJson.proposition[this.id].prop_name;
           this.maxScoreInput = this.profileJson.proposition[this.id].max_score;
-          this.timeLimitInput =  this.profileJson.proposition[this.id].prop_time;
+          this.timeLimitInput = this.profileJson.proposition[this.id].prop_time;
           this.quizAmountInput = this.profileJson.proposition[this.id].quiz_amount;
-          this.startDateInput = this.profileJson.proposition[this.id].start_date  ;
+          this.startDateInput = this.profileJson.proposition[this.id].start_date;
           this.active = this.profileJson?.proposition[this.id].active;
-      })
+          console.log(this.startDateInput)
+        })
       ),
-      );
-      
+    );
+
 
   }
 
-  EditProp(){
+  EditProp() {
+    try {
       const userUpdate = {
-      allowed: this.proposition[this.id].allowed,
-      max_score: this.maxScoreInput,
-      prop_name: this.propNameInput,
-      prop_time: this.timeLimitInput,
-      quiz: this.proposition[this.id].quiz,
-      quiz_amount: this.quizAmountInput,
-      start_date: this.startDateInput,
-      active: this.active
+        allowed: this.proposition[this.id].allowed,
+        max_score: this.maxScoreInput,
+        prop_name: this.propNameInput,
+        prop_time: this.timeLimitInput,
+        quiz: this.proposition[this.id].quiz,
+        quiz_amount: this.quizAmountInput,
+        start_date: new Date(this.startDateInput.getTime() + 25200000),
+        active: this.active
+      }
+      this.profileJson?.proposition.splice(this.id, 1, userUpdate);
     }
-
-    this.profileJson?.proposition.splice(this.id,  1, userUpdate);
-    // this.profileJson?.proposition.push(userUpdate);
-
-    this.http.put('/api/user/'+this.profileJson?.id, this.profileJson).subscribe((response) => {
+    catch (error) {
+      const userUpdate = {
+        allowed: this.proposition[this.id].allowed,
+        max_score: this.maxScoreInput,
+        prop_name: this.propNameInput,
+        prop_time: this.timeLimitInput,
+        quiz: this.proposition[this.id].quiz,
+        quiz_amount: this.quizAmountInput,
+        start_date: new Date(new Date(this.startDateInput).getTime() + 25200000),
+        active: this.active
+      }
+      this.profileJson?.proposition.splice(this.id, 1, userUpdate);
+    }
+    this.http.put('/api/user/' + this.profileJson?.id, this.profileJson).subscribe((response) => {
       console.log(response);
     })
-  
+
+    this.messageService.add({ severity: 'success', summary: 'Proposition edit.', detail: 'Edit success.' });
+    var _this = this;
+    // setInterval(function() {_this.router.navigateByUrl('/props');}, 2000);
+    
+
   }
 
 

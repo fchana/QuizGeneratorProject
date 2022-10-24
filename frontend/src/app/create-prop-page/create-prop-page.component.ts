@@ -5,6 +5,7 @@ import { AuthService } from '@auth0/auth0-angular';
 import { Proposition } from 'app/shared/Model/proposition';
 import { Quiz } from 'app/shared/Model/quiz';
 import { User } from 'app/shared/Model/user';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-prop-page',
@@ -14,7 +15,7 @@ import { User } from 'app/shared/Model/user';
 export class CreatePropPageComponent implements OnInit {
   profileJson?: User;
   proposition!: Proposition[];
-
+  value: any;
   propNameInput: string;
   maxScoreInput: string;
   timeLimitInput: string;
@@ -23,7 +24,7 @@ export class CreatePropPageComponent implements OnInit {
   startTimeInput: Time;
   allowed: Array<String> = [];
   quizs: Array<Quiz> = [];
-  constructor(private http: HttpClient, public auth: AuthService) { 
+  constructor(private http: HttpClient, public auth: AuthService, private router: Router) { 
     
   }
 
@@ -40,6 +41,7 @@ export class CreatePropPageComponent implements OnInit {
   }
 
   CreateProp(){
+    console.log(this.startDateInput.toUTCString());
     for(let i = 0; i< this.quizAmountInput; i++) this.quizs.push({
       choice: [],
       content: "",
@@ -55,16 +57,21 @@ export class CreatePropPageComponent implements OnInit {
       prop_time: this.timeLimitInput,
       quiz: this.quizs, 
       quiz_amount: this.quizAmountInput,
-      start_date: this.startDateInput,
+      start_date: new Date(this.startDateInput.getTime() + 25200000),
       active: false
     }
 
+    console.log(userUpdate);
+
     this.profileJson?.proposition.push(userUpdate);
+
 
     this.http.put('/api/user/'+this.profileJson?.id, this.profileJson).subscribe((response) => {
       console.log(response);
     })
   
+    this.router.navigateByUrl('/props');
+    
   }
 
 }

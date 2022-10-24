@@ -4,13 +4,14 @@ import { AuthService } from '@auth0/auth0-angular';
 import { Proposition } from 'app/shared/Model/proposition';
 import { Quiz } from 'app/shared/Model/quiz';
 import { User } from 'app/shared/Model/user';
-import { ConfirmationService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-prop-list',
   templateUrl: './prop-list.component.html',
   styleUrls: ['./prop-list.component.scss'],
-  providers: [ConfirmationService]
+  providers: [MessageService]
 
 })
 export class PropListComponent implements OnInit {
@@ -19,7 +20,8 @@ export class PropListComponent implements OnInit {
   proposition: Proposition[] = [];
   allUser!: Array<User>;
 
-  constructor(private http: HttpClient, public auth: AuthService, private confirmationService: ConfirmationService) { }
+  constructor(private http: HttpClient, public auth: AuthService, private messageService: MessageService) { }
+
 
   ngOnInit(): void {
 
@@ -68,9 +70,9 @@ export class PropListComponent implements OnInit {
               })
               this.allUser.forEach(t => {
                 t.proposition.forEach((p: any) => {
-                  if (p.allowed.includes(this.profileJson?.id) && (new Date(p.start_date).getTime() >= Date.now()) && p.active == true) {
-                    console.log(p)
+                  if (p.allowed.includes(this.profileJson?.id) && (Date.now() >= new Date(p.start_date).getTime()) && Date.now() <= this.DateAdder(p.start_date, p.prop_time).getTime() && p.active == true) {
                     this.proposition.push(p);
+                    console.log(this.proposition[0]);
                   }
                 })
               });
@@ -80,6 +82,7 @@ export class PropListComponent implements OnInit {
       ),
     );
   }
+}
 
   timeIsOver(id: any) {
     var totalTime = 0;
@@ -117,3 +120,4 @@ export class PropListComponent implements OnInit {
   }
 
 }
+

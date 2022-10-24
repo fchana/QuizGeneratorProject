@@ -18,9 +18,7 @@
           <th>
             start date
           </th>
-          <!-- <th>
-            end date
-          </th> -->
+
           <th>
 
           </th>
@@ -28,34 +26,34 @@
       </ng-template>
       <ng-template pTemplate="body" let-prop let-rowIndex="rowIndex">
         <tr class="tableList">
-          <td [routerLink]="['/props/' + rowIndex +  '/quizs']">
+
+          <td  [routerLink]="['/props/' + rowIndex +  '/quizs']">
             {{ prop.prop_name }}
           </td>
-          <td [ngStyle]="{'color': (scoreIsOver(rowIndex)) ? '#73c7af' : '#F74242'}" [routerLink]="['/props/' + rowIndex +  '/quizs']">
+          <td  [routerLink]="['/props/' + rowIndex +  '/quizs']">
             {{ prop.max_score }}
           </td>
-          <td [ngStyle]="{'color': (timeIsOver(rowIndex)) ? '#73c7af' : '#F74242'}" [routerLink]="['/props/' + rowIndex +  '/quizs']">
+          <td  [routerLink]="['/props/' + rowIndex +  '/quizs']">
             {{ prop.prop_time | timeConvertor}} hours
           </td>
-          <td [routerLink]="['/props/' + rowIndex +  '/quizs']">
+          <td  [routerLink]="['/props/' + rowIndex +  '/quizs']">
             {{ prop.quiz_amount }}
           </td>
-          <td [ngStyle]="{'color': (dateIsOver(rowIndex)) ? '#73c7af' : '#F74242'}" [routerLink]="['/props/' + rowIndex +  '/quizs']">
+          <td  [routerLink]="['/props/' + rowIndex +  '/quizs']">
             {{ prop.start_date | date :'medium' }}
           </td>
-          <!-- <td>
-            {{ DateAdder(prop.start_date, prop.prop_time) | date : 'medium'  }}
-          </td> -->
 
           <td>
             <button style="width: 25%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-eye"
               iconPos="left" [routerLink]="['/props/preview/'+rowIndex]"></button>
             <button style="width: 25%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-pencil"
               iconPos="left" [routerLink]="['/editProp/'+rowIndex]"></button>
-              <button style="width: 25%;" type="button" pButton icon="pi pi-trash" iconPos="left"
-              (click)="DeleteProp(rowIndex)"></button>
-          </td>
-        </tr>
+
+            <button style="width: 25%;" type="button" pButton icon="pi pi-trash" iconPos="left"
+              (click)="DeleteProp(rowIndex)"></button>              
+            </td>
+          </tr>
+
       </ng-template>
     </p-table>
     <button class="loginBtn" style="width: 100%; margin-top: 20px;" pButton type="button" type="submit"

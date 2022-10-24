@@ -58,34 +58,15 @@
                 </div>
             </div>
 
-            <!-- <div class="grid loginGrid" style="margin-top: 60px;">
-                <div class="col-5 center">
-                    <div class="form-group ">
-                        <div class="p-inputgroup">
-                            <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
-                            <input [(ngModel)]="quizAmountInput" type="text" name="quizAmountInput"
-                                pInputText placeholder="Please enter your proposition quiz amount.">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-1">
-
-                </div>
-                <div class="col-6">
-
-                </div>
-            </div> -->
-
             <div class="grid" style="margin-top: 60px;">
                 <div class="col-5 center">
                     <div class="form-group ">
                         <div class="p-inputgroup">
                             <span style="width: 180px" class="p-inputgroup-addon">Start date</span>
-                            <input [(ngModel)]="startDateInput" name="startDateInput" type="text" pInputText
-                                placeholder="Please enter your proposition start date.">
+                                <p-calendar [(ngModel)]="startDateInput" [showTime]="true" [ngModelOptions]="{standalone: true}" [inline]="true"
+                                [hourFormat]="'12'" [style]="{'width':'100%'}"></p-calendar>
                         </div>
-                        <!-- <input type="text" [(ngModel)]="firstName" name="firstName" pInputText
-                            placeholder="Please enter your firstname." class="form-control loginInput"> -->
+
                     </div>
                 </div>
                 <div class="col-1">
@@ -112,3 +93,4 @@
         </form>
     </div>
 </div>
+<p-toast></p-toast>

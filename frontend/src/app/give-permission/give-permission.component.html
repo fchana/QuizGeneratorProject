@@ -9,7 +9,7 @@
 <p-pickList [source]="avaliableStudent" [target]="targetProducts" sourceHeader="Available" targetHeader="Selected"
     [dragdrop]="true" [responsive]="true" [sourceStyle]="{'height':'30rem'}" [targetStyle]="{'height':'30rem'}"
     filterBy="firstname,lastname,username,id" sourceFilterPlaceholder="Search by name" targetFilterPlaceholder="Search by name"
-    (onMoveToTarget)="Update()" (onMoveToSource)="Update()">
+    (onMoveToTarget)="Update()" (onMoveToSource)="Update()" (onMoveAllToTarget)="Update()" (onMoveAllToSource)="Update()">
     <ng-template let-student pTemplate="item">
         <div class="product-item">
             <div class="image-container">

@@ -46,6 +46,8 @@ import { ViewAnswerComponent } from './view-answer/view-answer.component';
 import { ActivePropComponent } from './active-prop/active-prop.component';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {ToastModule} from 'primeng/toast';
+import {CalendarModule} from 'primeng/calendar';
+import {ReactiveFormsModule } from '@angular/forms'
 
 
 @NgModule({
@@ -96,6 +98,8 @@ import {ToastModule} from 'primeng/toast';
     KnobModule,
     InputSwitchModule,
     ToastModule,
+    CalendarModule,
+    ReactiveFormsModule,
     AuthModule.forRoot({
       ...env.auth,
     }),
