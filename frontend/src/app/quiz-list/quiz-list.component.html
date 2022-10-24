@@ -27,23 +27,23 @@
         </ng-template>
         <ng-template pTemplate="body" let-quiz let-rowIndex="rowIndex">
             <tr *ngIf="quiz.content === undefined || quiz.content === ''; else next"
-                 class="tableList">
-                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]">
+                [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]" class="tableList">
+                <td>
                     {{ rowIndex + 1 }}
                 </td>
-                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]">
+                <td>
                     {{ quiz.content }}
                 </td>
-                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]">
+                <td>
                     {{ quiz.choice_type }}
                 </td>
-                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]">
+                <td>
                     {{ quiz.time_limit}}
                 </td>
-                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]">
+                <td>
                     {{ quiz.choice_amount }}
                 </td>
-                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]">
+                <td>
                     {{ quiz.score }}
                 </td>
                 <td>
@@ -56,27 +56,27 @@
                             [routerLink]="['/props/'+this.id+'/editQuiz/'+rowIndex]"></button>
                     </ng-template>
                     <button style="width: 40%;" type="button" pButton icon="pi pi-trash" iconPos="left"
-                    (click)="DeleteQuiz(rowIndex)"></button>
+                        (click)="DeleteQuiz(rowIndex)"></button>
                 </td>
             </tr>
             <ng-template #next>
-                <tr [ngStyle]="{'color': (choiceIsSuc(quiz)) ? '#73c7af' : '#F74242'}"> 
-                    <td [routerLink]="['/props/' + this.id +  '/quizs/' + rowIndex + '/choice/']">
+                <tr [routerLink]="['/props/' + this.id +  '/quizs/' + rowIndex + '/choice/']" class="tableList">
+                    <td>
                         {{ rowIndex + 1 }}
                     </td>
-                    <td [routerLink]="['/props/' + this.id +  '/quizs/' + rowIndex + '/choice/']">
+                    <td>
                         {{ quiz.content }}
                     </td>
-                    <td [routerLink]="['/props/' + this.id +  '/quizs/' + rowIndex + '/choice/']">
+                    <td>
                         {{ quiz.choice_type }}
                     </td>
-                    <td [ngStyle]="{'color': (timeIsOver()) ? '#73c7af' : '#F74242'}" [routerLink]="['/props/' + this.id +  '/quizs/' + rowIndex + '/choice/']">
+                    <td>
                         {{ quiz.time_limit}}
                     </td>
-                    <td [routerLink]="['/props/' + this.id +  '/quizs/' + rowIndex + '/choice/']">
+                    <td>
                         {{ quiz.choice_amount }}
                     </td>
-                    <td [ngStyle]="{'color': (scoreIsOver()) ? '#73c7af' : '#F74242'}" [routerLink]="['/props/' + this.id +  '/quizs/' + rowIndex + '/choice/']">
+                    <td>
                         {{ quiz.score }}
                     </td>    
                     <td>
@@ -89,7 +89,7 @@
                                 [routerLink]="['/props/'+this.id+'/editQuiz/'+rowIndex]"></button>
                         </ng-template>
                         <button style="width: 40%;" type="button" pButton icon="pi pi-trash" iconPos="left"
-                        (click)="DeleteQuiz(rowIndex)"></button>
+                            (click)="DeleteQuiz(rowIndex)"></button>
                     </td>
                 </tr>
             </ng-template>
@@ -99,7 +99,4 @@
         (click)="AddQuiz()"></button>
     <!-- <button class="loginBtn" style="width: 100%; margin-top: 20px;" pButton type="button" type="submit"
         label="Create proposition" [routerLink]="['/createProp']"></button> -->
-
-        <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
-
 </div>
