@@ -49,7 +49,6 @@ export class ResultPageComponent implements OnInit {
       if (temp == quiz.choice_amount) {
         this.score += quiz.score;
       }
-      console.log("score: ", this.score);
     });
   }
 

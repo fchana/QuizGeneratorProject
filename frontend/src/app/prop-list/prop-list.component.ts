@@ -6,11 +6,13 @@ import { Quiz } from 'app/shared/Model/quiz';
 import { User } from 'app/shared/Model/user';
 import { MessageService } from 'primeng/api';
 
+
 @Component({
   selector: 'app-prop-list',
   templateUrl: './prop-list.component.html',
   styleUrls: ['./prop-list.component.scss'],
   providers: [MessageService]
+
 })
 export class PropListComponent implements OnInit {
 
@@ -20,16 +22,22 @@ export class PropListComponent implements OnInit {
 
   constructor(private http: HttpClient, public auth: AuthService, private messageService: MessageService) { }
 
+
   ngOnInit(): void {
 
     this.CallProfile();
   }
 
   DeleteProp(index: number) {
-    this.profileJson?.proposition.splice(index, 1);
-    this.http.put('/api/user/' + this.profileJson?.id, this.profileJson).subscribe((response) => {
-      this.CallProfile();
-    })
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to delete this proposition?',
+      accept: () => {
+        this.profileJson?.proposition.splice(index, 1);
+        this.http.put('/api/user/' + this.profileJson?.id, this.profileJson).subscribe((response) => {
+          this.CallProfile();
+        })
+      }
+    });
 
   }
 
@@ -74,5 +82,42 @@ export class PropListComponent implements OnInit {
       ),
     );
   }
+}
+
+  timeIsOver(id: any) {
+    var totalTime = 0;
+    this.proposition[id].quiz.forEach(quiz => {
+      totalTime += quiz.time_limit;
+    });
+    if (Number(this.proposition[id].prop_time) >= totalTime) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  scoreIsOver(id: any) {
+    var totalScore = 0;
+    this.proposition[id].quiz.forEach(quiz => {
+      totalScore += quiz.score;
+    });
+    if (Number(this.proposition[id].max_score) == totalScore) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  dateIsOver(id: any) {
+    if (new Date(this.proposition[id].start_date).getTime() > Date.now()) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 
 }
+

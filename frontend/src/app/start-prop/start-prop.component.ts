@@ -110,6 +110,7 @@ export class StartPropComponent implements OnInit {
                 for (var k = 0; k < _this.quizs.length; k++) {
                   console.log("k : ", _this.quizs[k]);
                   for (var i = 0; i < _this.quizs[k].choice_amount; i++) {
+
                     console.log(_this.quizs[k].choice[i])
                     _this.selects[k].select.push(false);
                   }
