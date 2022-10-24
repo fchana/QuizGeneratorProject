@@ -67,30 +67,35 @@ export class ActivePropComponent implements OnInit {
     var propTime = 0;
     var contentEr = 0;
     var errorAr: Array<number> = [];
+    var hasEr = 0;
     this.proposition[index].quiz.forEach(quiz => {
       console.log(quiz)
     });
     this.proposition[index].quiz.forEach((quiz, i) => {
       propScore += quiz.score;
       propTime += quiz.time_limit;
-      if(quiz.content == '' || quiz.choice_type == 0 || quiz.time_limit == 0 || quiz.choice_amount == 0){
+      if (quiz.content == '' || quiz.choice_type == 0 || quiz.time_limit == 0 || quiz.choice_amount == 0) {
         contentEr += 1;
-        errorAr.push(i+1);
+        errorAr.push(i + 1);
       }
     });
-    if(contentEr != 0){
-      this.messageService.add({ severity: 'error', summary: 'Proposition Activation Failed', detail: 'Please complete your quiz. ' + contentEr + ' quiz amount error found. ' + errorAr});
+    if (contentEr != 0) {
+      hasEr += 1;
+      this.messageService.add({ severity: 'error', summary: 'Proposition Activation Failed', detail: 'Please complete your quiz. ' + contentEr + ' quiz amount error found. ' + errorAr });
     }
-    if(this.proposition[index].active == false && propScore != Number(this.proposition[index].max_score)){
-      this.messageService.add({ severity: 'error', summary: 'Proposition Activation Failed', detail: 'Please enter a valid proposition score.'});
+    if (this.proposition[index].active == false && propScore != Number(this.proposition[index].max_score)) {
+      hasEr += 1;
+      this.messageService.add({ severity: 'error', summary: 'Proposition Activation Failed', detail: 'Please enter a valid proposition score.' });
     }
-    if(this.proposition[index].active == false && propTime > Number(this.proposition[index].prop_time)){
-      this.messageService.add({ severity: 'error', summary: 'Proposition Activation Failed', detail: 'Please enter a valid propposition time limit.'});
+    if (this.proposition[index].active == false && propTime > Number(this.proposition[index].prop_time)) {
+      hasEr += 1;
+      this.messageService.add({ severity: 'error', summary: 'Proposition Activation Failed', detail: 'Please enter a valid propposition time limit.' });
     }
     if (this.proposition[index].active == false && new Date(this.proposition[index].start_date).getTime() < Date.now()) {
-      this.messageService.add({ severity: 'error', summary: 'Proposition Activation Failed', detail: 'Please enter a valid date.'});
+      hasEr += 1;
+      this.messageService.add({ severity: 'error', summary: 'Proposition Activation Failed', detail: 'Please enter a valid date.' });
     }
-    else {
+    else if(hasEr == 0) {
       this.active[index] = !this.proposition[index].active;
       const userUpdate = {
         allowed: this.proposition[index].allowed,
@@ -108,7 +113,12 @@ export class ActivePropComponent implements OnInit {
       this.http.put('/api/user/' + this.profileJson?.id, this.profileJson).subscribe((response) => {
         console.log(response);
       })
-      this.messageService.add({ severity: 'success', summary: 'Proposition Activate', detail: 'Proposition Activated Success' });
+      if (this.proposition[index].active == true) {
+        this.messageService.add({ severity: 'success', summary: 'Proposition Activate', detail: 'Proposition Activated Success' });
+      }
+      else
+        this.messageService.add({ severity: 'success', summary: 'Proposition Deactivate', detail: 'Proposition Deactivated Success' });
+
     }
   }
 

@@ -34,6 +34,8 @@ export class StartPropComponent implements OnInit {
 
   allUser: Array<User>;
 
+  _allUser: Array<User>;
+
   _prop: Proposition;
 
   check: boolean = true;
@@ -46,7 +48,7 @@ export class StartPropComponent implements OnInit {
 
   countDown: string = "";
 
-  countDown2: string=  "";
+  countDown2: string = "";
 
   countDownDate2: number;
 
@@ -86,33 +88,33 @@ export class StartPropComponent implements OnInit {
                 _this.quizs = _this.proposition[_this.id].quiz;
                 _this.totalRecords2 = _this.quizs.length;
                 _this._prop = _this.proposition[_this.id];
-                for(var i = 0; i < _this.quizs.length; i++) {
+                for (var i = 0; i < _this.quizs.length; i++) {
                   _this.selects.push({
                     index: i,
                     select: [],
                   })
                   console.log("selects : ", _this.selects)
                 }
-                for (var k = 0; k < _this.quizs.length; k++) {
-                  console.log("k : ", _this.quizs[k]);
-                  for (var i = 0; i <  _this.quizs[k].choice_amount; i++) {
-                    console.log(_this.quizs[k].choice[i])
-                    _this.selects[k].select.push(false);
-                  }
-
-                }
               }
 
               async function pushAllUser() {
                 await _this.allUser.forEach((t: { proposition: any[]; }) => {
                   t.proposition.forEach((p: any) => {
-                    if (p.allowed.includes(_this.profileJson?.id)) {
+                    if (p.allowed.includes(_this.profileJson?.id) && (Date.now() >= new Date(p.start_date).getTime()) && p.active == true && new Date(Date.now()) <= new Date(_this.DateAdder(p.start_date, p.prop_time).getTime())) {
                       _this.proposition.push(p);
                     }
                   })
                 });
                 await pushProp();
                 _this.quizs = _this.shuffle(_this.quizs);
+                for (var k = 0; k < _this.quizs.length; k++) {
+                  console.log("k : ", _this.quizs[k]);
+                  for (var i = 0; i < _this.quizs[k].choice_amount; i++) {
+                    console.log(_this.quizs[k].choice[i])
+                    _this.selects[k].select.push(false);
+                  }
+
+                }
                 _this.propTime();
                 if (_this.proposition != undefined) {
                   _this.countDownDate2 = _this.DateAdder(new Date(), _this.quizs[0].time_limit).getTime();
@@ -128,15 +130,6 @@ export class StartPropComponent implements OnInit {
   }
 
   Select(first: number, index: number) {
-    // if (this.selects.length <= first) {
-    //   this.selects.push({
-    //     index: first,
-    //     select: [],
-    //   })
-    //   for (var i = 0; i < this.quizs[first].choice_amount; i++) {
-    //     this.selects[first].select.push(false);
-    //   }
-    // }
 
     if (this.selects[first].select[index] == false) {
       this.selects[first].select[index] = true;
@@ -152,14 +145,17 @@ export class StartPropComponent implements OnInit {
   }
 
   Next() {
-    if(this.first < this.quizs.length-1){
+    if (this.first < this.quizs.length - 1) {
       this.selected = 0;
       this.first += 1;
       this.countDownDate2 = this.DateAdder(new Date(), this.quizs[0].time_limit).getTime();
       this.quizTime();
+      console.log("profileJson", this.profileJson);
+
     }
-    else{
-      this.router.navigateByUrl('/result', { state: { prop: this._prop, quizs: this.quizs, selects: this.selects } });
+    else {
+      console.log("profileJson", this.profileJson);
+      this.router.navigateByUrl('/result', { state: { prop: this._prop, quizs: this.quizs, selects: this.selects, profileJson: this.profileJson } });
     }
   }
 
@@ -195,13 +191,13 @@ export class StartPropComponent implements OnInit {
 
       if (distance < 0) {
         clearInterval(x);
-        this.router.navigateByUrl('/result', { state: { prop: this._prop, quizs: this.quizs, selects: this.selects } });
+        this.router.navigateByUrl('/result', { state: { prop: this._prop, quizs: this.quizs, selects: this.selects, profileJson: this.profileJson} });
       }
     }, 1000);
   }
 
-  quizTime(){
-    
+  quizTime() {
+
     var x = setInterval(() => {
 
       var now = new Date().getTime();
@@ -214,7 +210,7 @@ export class StartPropComponent implements OnInit {
       this.countDown2 = days + "d " + hours + "h "
         + minutes + "m " + seconds + "s ";
 
-      if(distance < 0){
+      if (distance < 0) {
         clearInterval(x);
         this.Next();
       }
@@ -229,8 +225,8 @@ export class StartPropComponent implements OnInit {
     var seconds = _date.getSeconds();
     var month = _date.getMonth();
     var year = _date.getFullYear();
-    var __date = new Date(year, month, day, hours, minutes, seconds + time + 2);
-    console.log(__date);
+    var __date = new Date(year, month, day, hours, minutes, seconds + time);
+
     return __date;
 
   }

@@ -4,6 +4,7 @@ import { Choice } from 'app/shared/Model/choice';
 import { Proposition } from 'app/shared/Model/proposition';
 import { Quiz } from 'app/shared/Model/quiz';
 import { Select } from 'app/shared/Model/select';
+import { User } from 'app/shared/Model/user';
 import { map, Observable } from 'rxjs';
 
 @Component({
@@ -18,6 +19,7 @@ export class ResultPageComponent implements OnInit {
   proposition: Proposition;
   score: number = 0;
   selects: Select[] = [];
+  profileJson?: User;
 
 
   constructor(public activatedRoute: ActivatedRoute) { }
@@ -29,12 +31,14 @@ export class ResultPageComponent implements OnInit {
       this.value = window.history.state.prop.max_score;
       this.quizs = window.history.state.quizs;
       this.selects = window.history.state.selects;
-      console.log(this.value, this.quizs, this.selects)
-    
-      this.CheckAns();
-  }
+      this.profileJson = window.history.state.profileJson;
 
-  CheckAns() {
+      
+      this.CheckAns();
+    }
+    
+    CheckAns() {
+    console.log("profileJson", this.profileJson)
     this.quizs.forEach((quiz, i) => {
       var temp = 0;
       quiz.choice.forEach((choice: Choice, k) => {

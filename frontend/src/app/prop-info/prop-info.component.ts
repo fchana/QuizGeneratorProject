@@ -28,6 +28,20 @@ export class PropInfoComponent implements OnInit {
 
     this.CallProfile();
   }
+  
+  DateAdder(date: Date, time: number): Date {
+    var _date = new Date(date);
+    var day = _date.getDate();
+    var hours = _date.getHours();
+    var minutes = _date.getMinutes();
+    var seconds = _date.getSeconds();
+    var month = _date.getMonth();
+    var year = _date.getFullYear();
+    var __date = new Date(year, month, day, hours, minutes, seconds + time);
+
+    return __date;
+
+  }
 
   CallProfile() {
     this.auth.idTokenClaims$.subscribe(
@@ -45,7 +59,9 @@ export class PropInfoComponent implements OnInit {
               // console.log("all teacher : ", this.allUser)
               this.allUser.forEach(t => {
                 t.proposition.forEach((p: any) => {
-                  if (p.allowed.includes(this.profileJson?.id)) {
+                  if (p.allowed.includes(this.profileJson?.id) && (Date.now() >= new Date(p.start_date).getTime()) && p.active == true && new Date(Date.now()) <= new Date(this.DateAdder(p.start_date, p.prop_time).getTime())) {
+                    // console.log(Date.now() <= this.DateAdder(p.start_date, p.prop_time).getTime() )
+                    // console.log("Start date : ", && new Date(Date.now()) <= new Date(this.DateAdder(p.start_date, p.prop_time).getTime()))
                     this.proposition.push(p);
                   }
                 })
@@ -60,23 +76,5 @@ export class PropInfoComponent implements OnInit {
     );
   }
 
-  DateAdder(date: Date, time: String): Date {
-    const _date = new Date(date);
-    var day = _date.getDay();
-    var hours = _date.getHours();
-    var minutes = _date.getMinutes();
-    var seconds = _date.getSeconds();
-    var month = _date.getMonth();
-    var year = _date.getFullYear();
-    const _time: number = Number(time);
-    var _seconds: number = Math.floor(seconds + _time) % 60;
-    var _minutes: number = Math.floor(minutes + (seconds + _time) / 60) % 60;
-    var _hours: number = Math.floor(hours + ((minutes + (seconds + _time) / 60) / 60)) % 60;
-    var _day: number = Math.floor(day + (hours + ((minutes + (seconds + _time) / 60) / 60)) % 60) % 24;
-
-    var __date = new Date(year, month, _day, _hours, _minutes, _seconds);
-    return __date;
-
-  }
 
 }
