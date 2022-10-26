@@ -64,7 +64,7 @@
                         <div class="p-inputgroup">
                             <span style="width: 180px" class="p-inputgroup-addon">Start date</span>
                                 <p-calendar [(ngModel)]="startDateInput" [showTime]="true" [ngModelOptions]="{standalone: true}" [inline]="true"
-                                [hourFormat]="'12'" [style]="{'width':'100%'}"></p-calendar>
+                                (onSelect)="Selected()" [hourFormat]="'12'" [style]="{'width':'100%'}"></p-calendar>
                         </div>
 
                     </div>
@@ -93,4 +93,3 @@
         </form>
     </div>
 </div>
-<p-toast></p-toast>

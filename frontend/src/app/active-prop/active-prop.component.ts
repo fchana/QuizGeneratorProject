@@ -9,8 +9,7 @@ import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-active-prop',
   templateUrl: './active-prop.component.html',
-  styleUrls: ['./active-prop.component.scss'],
-  providers: [MessageService]
+  styleUrls: ['./active-prop.component.scss']
 })
 export class ActivePropComponent implements OnInit {
   profileJson?: User;

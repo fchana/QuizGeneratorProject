@@ -11,8 +11,7 @@ import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-edit-prop-page',
   templateUrl: './edit-prop-page.component.html',
-  styleUrls: ['./edit-prop-page.component.scss'],
-  providers: [MessageService]
+  styleUrls: ['./edit-prop-page.component.scss']
 })
 export class EditPropPageComponent implements OnInit {
   profileJson?: User;
@@ -42,7 +41,7 @@ export class EditPropPageComponent implements OnInit {
           this.maxScoreInput = this.profileJson.proposition[this.id].max_score;
           this.timeLimitInput = this.profileJson.proposition[this.id].prop_time;
           this.quizAmountInput = this.profileJson.proposition[this.id].quiz_amount;
-          this.startDateInput = this.profileJson.proposition[this.id].start_date;
+          this.startDateInput = new Date(this.profileJson.proposition[this.id].start_date);
           this.active = this.profileJson?.proposition[this.id].active;
           console.log(this.startDateInput)
         })
@@ -50,6 +49,10 @@ export class EditPropPageComponent implements OnInit {
     );
 
 
+  }
+
+  Selected() {
+    console.log(this.startDateInput);
   }
 
   EditProp() {
@@ -77,16 +80,19 @@ export class EditPropPageComponent implements OnInit {
         start_date: new Date(new Date(this.startDateInput).getTime() + 25200000),
         active: this.active
       }
+      // setInterval(function() {_this.router.navigateByUrl('/props');}, 2000);
       this.profileJson?.proposition.splice(this.id, 1, userUpdate);
     }
     this.http.put('/api/user/' + this.profileJson?.id, this.profileJson).subscribe((response) => {
+      // setTimeout(function () { _this.router.navigateByUrl('/props'); }, 2000);
       console.log(response);
+      this.messageService.add({severity: 'success', summary: 'Proposition edit.', detail: 'Edit success.' });
+      // this.messageService.add({key: 'myKey1', severity:'success', summary: 'Summary Text', detail: 'Detail Text'});
+      this.router.navigate(['/props'])
     })
 
-    this.messageService.add({ severity: 'success', summary: 'Proposition edit.', detail: 'Edit success.' });
     var _this = this;
-    // setInterval(function() {_this.router.navigateByUrl('/props');}, 2000);
-    
+
 
   }
 

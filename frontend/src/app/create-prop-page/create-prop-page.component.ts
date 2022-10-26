@@ -35,6 +35,8 @@ export class CreatePropPageComponent implements OnInit {
         this.http.get<User>('/api/user/' + profile?.email).subscribe((response) => {
           this.profileJson = response;
           this.proposition = this.profileJson.proposition;
+          this.startDateInput = new Date(Date.now());
+          // console.log(new Date(Date.now()));
       })
       ),
       );

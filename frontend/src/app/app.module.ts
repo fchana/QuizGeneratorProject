@@ -48,6 +48,7 @@ import {InputSwitchModule} from 'primeng/inputswitch';
 import {ToastModule} from 'primeng/toast';
 import {CalendarModule} from 'primeng/calendar';
 import {ReactiveFormsModule } from '@angular/forms'
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -105,7 +106,7 @@ import {ReactiveFormsModule } from '@angular/forms'
     TableModule
 
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
