@@ -22,6 +22,9 @@
           <th>
 
           </th>
+          <th>
+
+          </th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-prop let-rowIndex="rowIndex">
@@ -43,12 +46,15 @@
           </td>
 
           <td>
-            <button style="width: 25%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-eye"
+            <button style="width: 28%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-eye"
               iconPos="left" [routerLink]="['/props/preview/'+rowIndex]"></button>
-            <button style="width: 25%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-pencil"
+            <button style="width: 28%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-pencil"
               iconPos="left" [routerLink]="['/editProp/'+rowIndex]"></button>
-            <button style="width: 25%;" type="button" pButton icon="pi pi-trash" iconPos="left"
+            <button style="width: 28%;" type="button" pButton icon="pi pi-trash" iconPos="left"
               (click)="DeleteProp(rowIndex)"></button>              
+            </td>
+            <td>
+              <!-- <p-inputSwitch (onChange)="Active(rowIndex)" [(ngModel)]="active[rowIndex]"></p-inputSwitch> -->
             </td>
           </tr>
       </ng-template>
@@ -109,3 +115,4 @@
       label="Create proposition" [routerLink]="['/createProp']"></button> -->
   </ng-template>
 </div>
+<p-toast></p-toast>
