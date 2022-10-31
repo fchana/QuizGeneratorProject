@@ -1,12 +1,13 @@
 import { Time } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { Choice } from 'app/shared/Model/choice';
 import { Proposition } from 'app/shared/Model/proposition';
 import { Quiz } from 'app/shared/Model/quiz';
 import { User } from 'app/shared/Model/user';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class CreateChoicePageComponent implements OnInit {
   choiceContentInput: String;
   choiceCorrectInput: boolean;
   choices: Array<Choice> = [];
-  constructor(private http: HttpClient, public auth: AuthService, private route: ActivatedRoute) { 
+  constructor(private http: HttpClient, public auth: AuthService, private router: Router, private route: ActivatedRoute, private messageService: MessageService) { 
     this.gfg = [
       { label: "Off", value: false },
       { label: "On", value: true }
@@ -64,6 +65,10 @@ export class CreateChoicePageComponent implements OnInit {
 
     this.http.put('/api/user/'+this.profileJson?.id, this.profileJson).subscribe((response) => {
       console.log(response);
+      this.messageService.add({severity: 'success', summary: 'choice create.', detail: 'choice created success.' });
+      this.router.navigateByUrl('/props/'+this.pid+"/quizs/"+this.qid+"/choice");
+
+
     })
     console.log(this.choiceCorrectInput)
   }

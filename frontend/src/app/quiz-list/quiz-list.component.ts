@@ -5,6 +5,7 @@ import { AuthService } from '@auth0/auth0-angular';
 import { Proposition } from 'app/shared/Model/proposition';
 import { Quiz } from 'app/shared/Model/quiz';
 import { User } from 'app/shared/Model/user';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-quiz-list',
@@ -21,7 +22,7 @@ export class QuizListComponent implements OnInit {
   user: any;
   pid: any;
 
-  constructor(private http: HttpClient, public auth: AuthService, private route: ActivatedRoute) {
+  constructor(private http: HttpClient, public auth: AuthService, private messageService: MessageService, private route: ActivatedRoute, private confirmationService: ConfirmationService) {
    }
 
   ngOnInit(): void {
@@ -31,13 +32,20 @@ export class QuizListComponent implements OnInit {
     }
 
     DeleteQuiz(index: number){
-      this.profileJson?.proposition[this.id].quiz.splice(index, 1);
-      if (this.profileJson?.proposition[this.id].quiz_amount != undefined) {
-        this.profileJson.proposition[this.id].quiz_amount -= 1;
-      }
-      this.http.put('/api/user/'+this.profileJson?.id, this.profileJson).subscribe((response) => {
-        this.CallProfile();
-      })
+      this.confirmationService.confirm({
+        message: 'Are you sure to delete this quiz?',
+        accept: () => {
+          this.profileJson?.proposition[this.id].quiz.splice(index, 1);
+          if (this.profileJson?.proposition[this.id].quiz_amount != undefined) {
+            this.profileJson.proposition[this.id].quiz_amount -= 1;
+          }
+          this.http.put('/api/user/'+this.profileJson?.id, this.profileJson).subscribe((response) => {
+            this.CallProfile();
+            this.messageService.add({ severity: 'success', summary: 'quiz delete.', detail: 'quiz deleted success.' });
+
+          })
+        }
+    });
 
     }
 

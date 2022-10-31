@@ -6,6 +6,7 @@ import { Proposition } from 'app/shared/Model/proposition';
 import { Quiz } from 'app/shared/Model/quiz';
 import { User } from 'app/shared/Model/user';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-create-prop-page',
@@ -24,7 +25,7 @@ export class CreatePropPageComponent implements OnInit {
   startTimeInput: Time;
   allowed: Array<String> = [];
   quizs: Array<Quiz> = [];
-  constructor(private http: HttpClient, public auth: AuthService, private router: Router) { 
+  constructor(private http: HttpClient, public auth: AuthService, private router: Router, private messageService: MessageService) { 
     
   }
 
@@ -70,9 +71,10 @@ export class CreatePropPageComponent implements OnInit {
 
     this.http.put('/api/user/'+this.profileJson?.id, this.profileJson).subscribe((response) => {
       console.log(response);
+      this.messageService.add({severity: 'success', summary: 'Proposition create.', detail: 'Proposition created success.' });
+      this.router.navigateByUrl('/props');
     })
   
-    this.router.navigateByUrl('/props');
     
   }
 

@@ -4,7 +4,7 @@ import { AuthService } from '@auth0/auth0-angular';
 import { Proposition } from 'app/shared/Model/proposition';
 import { Quiz } from 'app/shared/Model/quiz';
 import { User } from 'app/shared/Model/user';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-prop-list',
@@ -20,7 +20,7 @@ export class PropListComponent implements OnInit {
   active: Array<boolean> = [];
 
 
-  constructor(private http: HttpClient, public auth: AuthService, private messageService: MessageService) { }
+  constructor(private http: HttpClient, public auth: AuthService, private messageService: MessageService, private confirmationService: ConfirmationService) { }
 
   ngOnInit(): void {
 
@@ -28,10 +28,17 @@ export class PropListComponent implements OnInit {
   }
 
   DeleteProp(index: number) {
-    this.profileJson?.proposition.splice(index, 1);
-    this.http.put('/api/user/' + this.profileJson?.id, this.profileJson).subscribe((response) => {
-      this.CallProfile();
-    })
+    this.confirmationService.confirm({
+      message: 'Are you sure to delete this proposition?',
+      accept: () => {
+        this.profileJson?.proposition.splice(index, 1);
+        this.http.put('/api/user/' + this.profileJson?.id, this.profileJson).subscribe((response) => {
+          this.CallProfile();
+          this.messageService.add({ severity: 'success', summary: 'Proposition delete.', detail: 'Proposition deleted success.' });
+
+        })
+      }
+    });
 
   }
 
@@ -113,7 +120,7 @@ export class PropListComponent implements OnInit {
       hasEr += 1;
       this.messageService.add({ severity: 'error', summary: 'Proposition Activation Failed', detail: 'Please enter a valid date.' });
     }
-    else if(hasEr == 0) {
+    else if (hasEr == 0) {
       this.active[index] = !this.proposition[index].active;
       const userUpdate = {
         allowed: this.proposition[index].allowed,

@@ -10,7 +10,7 @@ import { MessageService } from 'primeng/api';
 
 
 export class AppComponent {
-  constructor(private messageService: MessageService){
+  constructor(){
   
   }
   title = 'frontend';

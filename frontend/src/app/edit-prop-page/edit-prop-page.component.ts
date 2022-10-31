@@ -11,7 +11,8 @@ import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-edit-prop-page',
   templateUrl: './edit-prop-page.component.html',
-  styleUrls: ['./edit-prop-page.component.scss']
+  styleUrls: ['./edit-prop-page.component.scss'],
+  providers: []
 })
 export class EditPropPageComponent implements OnInit {
   profileJson?: User;
