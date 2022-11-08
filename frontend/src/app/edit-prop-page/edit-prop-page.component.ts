@@ -53,8 +53,11 @@ export class EditPropPageComponent implements OnInit {
   }
 
   Selected() {
-    console.log(this.startDateInput);
-  }
+    console.log(this.startDateInput.getTime())
+    console.log(new Date (parseInt(((Math.floor(this.startDateInput.getTime()/100000)).toString())+"00000")));
+
+    console.log(new Date(this.startDateInput.getTime()));
+   }
 
   EditProp() {
     try {
@@ -65,7 +68,7 @@ export class EditPropPageComponent implements OnInit {
         prop_time: this.timeLimitInput,
         quiz: this.proposition[this.id].quiz,
         quiz_amount: this.quizAmountInput,
-        start_date: new Date(this.startDateInput.getTime() + 25200000),
+        start_date: new Date((parseInt(((Math.floor(this.startDateInput.getTime()/100000)).toString())+"00000")) + 25200000),
         active: this.active
       }
       this.profileJson?.proposition.splice(this.id, 1, userUpdate);
@@ -78,7 +81,7 @@ export class EditPropPageComponent implements OnInit {
         prop_time: this.timeLimitInput,
         quiz: this.proposition[this.id].quiz,
         quiz_amount: this.quizAmountInput,
-        start_date: new Date(new Date(this.startDateInput).getTime() + 25200000),
+        start_date: new Date(new Date((parseInt(((Math.floor(this.startDateInput.getTime()/100000)).toString())+"00000")) + 25200000)),
         active: this.active
       }
       // setInterval(function() {_this.router.navigateByUrl('/props');}, 2000);

@@ -21,12 +21,12 @@ export class CreatePropPageComponent implements OnInit {
   maxScoreInput: string;
   timeLimitInput: string;
   quizAmountInput: number;
-  startDateInput: Date  ;
+  startDateInput: Date;
   startTimeInput: Time;
   allowed: Array<String> = [];
   quizs: Array<Quiz> = [];
-  constructor(private http: HttpClient, public auth: AuthService, private router: Router, private messageService: MessageService) { 
-    
+  constructor(private http: HttpClient, public auth: AuthService, private router: Router, private messageService: MessageService) {
+
   }
 
 
@@ -38,14 +38,14 @@ export class CreatePropPageComponent implements OnInit {
           this.proposition = this.profileJson.proposition;
           this.startDateInput = new Date(Date.now());
           // console.log(new Date(Date.now()));
-      })
+        })
       ),
-      );
+    );
   }
 
-  CreateProp(){
+  CreateProp() {
     console.log(this.startDateInput.toUTCString());
-    for(let i = 0; i< this.quizAmountInput; i++) this.quizs.push({
+    for (let i = 0; i < this.quizAmountInput; i++) this.quizs.push({
       choice: [],
       content: "",
       choice_type: 0,
@@ -58,9 +58,9 @@ export class CreatePropPageComponent implements OnInit {
       max_score: this.maxScoreInput,
       prop_name: this.propNameInput,
       prop_time: this.timeLimitInput,
-      quiz: this.quizs, 
+      quiz: this.quizs,
       quiz_amount: this.quizAmountInput,
-      start_date: new Date(this.startDateInput.getTime() + 25200000),
+      start_date: new Date((parseInt(((Math.floor(this.startDateInput.getTime()/100000)).toString())+"00000")) + 25200000),
       active: false
     }
 
@@ -69,13 +69,13 @@ export class CreatePropPageComponent implements OnInit {
     this.profileJson?.proposition.push(userUpdate);
 
 
-    this.http.put('/api/user/'+this.profileJson?.id, this.profileJson).subscribe((response) => {
+    this.http.put('/api/user/' + this.profileJson?.id, this.profileJson).subscribe((response) => {
       console.log(response);
-      this.messageService.add({severity: 'success', summary: 'Proposition create.', detail: 'Proposition created success.' });
+      this.messageService.add({ severity: 'success', summary: 'Proposition create.', detail: 'Proposition created success.' });
       this.router.navigateByUrl('/props');
     })
-  
-    
+
+
   }
 
 }

@@ -43,7 +43,7 @@
           <td [routerLink]="['/props/' + rowIndex +  '/quizs']">
             {{ prop.start_date | date :'medium' }}
           </td>
-          <td>
+          <td style="padding-right:80px">
             <button style="width: 28%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-eye"
               iconPos="left" [routerLink]="['/props/preview/'+rowIndex]"></button>
             <button style="width: 28%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-pencil"
@@ -112,6 +112,6 @@
   </ng-template>
 </div>
 <p-confirmDialog [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}" header="Confirmation"
-icon="pi pi-exclamation-triangle"></p-confirmDialog>
+  icon="pi pi-exclamation-triangle"></p-confirmDialog>
 
 <p-toast></p-toast>

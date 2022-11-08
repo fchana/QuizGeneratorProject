@@ -74,7 +74,7 @@ export class PropListComponent implements OnInit {
               })
               this.allUser.forEach(t => {
                 t.proposition.forEach((p: any) => {
-                  if (p.allowed.includes(this.profileJson?.id) && (Date.now() >= new Date(p.start_date).getTime()) && Date.now() <= this.DateAdder(p.start_date, p.prop_time).getTime() && p.active == true) {
+                  if (p.allowed.includes(this.profileJson?.id) && Date.now() <= this.DateAdder(p.start_date, p.prop_time).getTime() && p.active == true) {
                     this.proposition.push(p);
                     console.log(this.proposition[0]);
                   }
