@@ -45,12 +45,12 @@ export class CreatePropPageComponent implements OnInit {
 
   Selected() {
 
-    console.log(new Date(new Date(this.startDateInput.getTime()).setSeconds(0,0)))
-    
+    console.log(new Date(new Date(this.startDateInput.getTime()).setSeconds(0, 0)))
+
     // console.log(new Date (parseInt(((this.startDateInput.getTime()/10000).toString())+"0000")));
 
     // console.log(new Date(this.startDateInput.getTime()));
-   }
+  }
 
   CreateProp() {
     console.log(this.startDateInput.toUTCString());
@@ -69,9 +69,9 @@ export class CreatePropPageComponent implements OnInit {
       prop_time: this.timeLimitInput,
       quiz: this.quizs,
       quiz_amount: this.quizAmountInput,
-      start_date: new Date(Date.now()),
-      // start_date: new Date(new Date(this.startDateInput.getTime()).setSeconds(0,0) + 25200000),
-     active: false
+      // start_date: new Date(Date.now()),
+      start_date: new Date(new Date(this.startDateInput.getTime()).setSeconds(0, 0) + 25200000),
+      active: false
     }
 
     console.log(userUpdate);
