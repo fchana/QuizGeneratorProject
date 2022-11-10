@@ -18,20 +18,20 @@
         </ng-template>
         <ng-template pTemplate="body" let-choice let-rowIndex="rowIndex">
             <tr *ngIf="choice.content == ''; else next"
-                [routerLink]="['/props/' + this.pid +  '/quizs/' + this.qid + '/createChoice/' + rowIndex]"
+                
                 class="tableList">
-                <td>
+                <td [routerLink]="['/props/' + this.pid +  '/quizs/' + this.qid + '/createChoice/' + rowIndex]">
                     {{ rowIndex + 1 }}
                 </td>
-                <td>
+                <td [routerLink]="['/props/' + this.pid +  '/quizs/' + this.qid + '/createChoice/' + rowIndex]">
                     {{ choice.content }}
                 </td>
-                <td>
+                <td [routerLink]="['/props/' + this.pid +  '/quizs/' + this.qid + '/createChoice/' + rowIndex]">
                     {{ choice.correct }}
                 </td>
                 <td>
-                    <button *ngIf="choice.content === undefined; else elseBtn" style="width: 40%; margin-right: 10px;" pButton
-                        type="button" pButton icon="pi pi-pencil" iconPos="left"
+                    <button *ngIf="choice.content === undefined; else elseBtn" style="width: 40%; margin-right: 10px;"
+                        pButton type="button" pButton icon="pi pi-pencil" iconPos="left"
                         [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]"></button>
                     <ng-template #elseBtn>
                         <button style="width: 40%; margin-right: 10px;" disabled="true" pButton type="button" pButton
@@ -43,14 +43,14 @@
                 </td>
             </tr>
             <ng-template #next>
-                <tr [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]" class="tableList">
-                    <td>
+                <tr  class="tableList">
+                    <td [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]">
                         {{ rowIndex + 1 }}
                     </td>
-                    <td>
+                    <td [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]">
                         {{ choice.content }}
                     </td>
-                    <td>
+                    <td [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]">
                         {{ choice.correct }}
                     </td>
                     <td>
@@ -66,6 +66,5 @@
     </p-table>
     <button class="loginBtn" style="width: 100%; margin-top: 20px;" pButton type="button" label="Add quiz"
         (click)="AddChoice()"></button>
-    <!-- <button class="loginBtn" style="width: 100%; margin-top: 20px;" pButton type="button" type="submit"
-        label="Create proposition" [routerLink]="['/createProp']"></button> -->
+    <p-confirmDialog [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}" header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
 </div>

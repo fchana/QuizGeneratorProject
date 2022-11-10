@@ -6,9 +6,14 @@
                 <div class="col-5 center">
                     <div class="form-group ">
                         <div class="p-inputgroup">
-                            <span style="width: 180px" class="p-inputgroup-addon">Proposition name</span>
-                            <input [(ngModel)]="propNameInput" name="propNameInput" type="text" pInputText
-                                placeholder="Please enter your proposition name.">
+                            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                            <span class="p-float-label">
+                                <input placeholder="Please enter your proposition name." [(ngModel)]="propNameInput"
+                                    name="propNameInput" type="text" pInputText>
+                                <label for="inputtext">Proposition name</label>
+                            </span>
+                            <!-- <input [(ngModel)]="propNameInput" name="propNameInput" type="text" pInputText
+                                placeholder="Please enter your proposition name."> -->
                         </div>
                     </div>
                 </div>
@@ -24,9 +29,12 @@
                 <div class="col-5 center">
                     <div class="form-group ">
                         <div class="p-inputgroup">
-                            <span style="width: 180px" class="p-inputgroup-addon">Proposition max score</span>
-                            <input [(ngModel)]="maxScoreInput" name="maxScoreInput" type="text" pInputText
-                                placeholder="Please enter your proposition max score.">
+                            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                            <span class="p-float-label">
+                                <p-inputNumber [(ngModel)]="maxScoreInput" name="maxScoreInput" [minFractionDigits]="1"
+                                    suffix=" points" placeholder="0 points"></p-inputNumber>
+                                <label for="inputtext">Please enter your proposition max score.</label>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -42,9 +50,12 @@
                 <div class="col-5 center">
                     <div class="form-group ">
                         <div class="p-inputgroup">
-                            <span style="width: 180px" class="p-inputgroup-addon">Time limit</span>
-                            <input [(ngModel)]="timeLimitInput" type="text" name="timeLimitInput" pInputText
-                                placeholder="Please enter your proposition time limit.">
+                            <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+                            <span class="p-float-label">
+                                <p-inputNumber [(ngModel)]="timeLimitInput" name="timeLimitInput" [minFractionDigits]="1"
+                                    suffix=" seconds" placeholder="0 seconds"></p-inputNumber>
+                                <label for="inputtext">Please enter your proposition time limit.</label>
+                            </span>
                         </div>
                         <!-- <label class="loginLabel">Password:</label>
                         <input type="password" [(ngModel)]="password" name="password" pInputText placeholder="Please enter your password." class="form-control loginInput"> -->
@@ -63,7 +74,8 @@
                     <div class="form-group ">
                         <div class="p-inputgroup">
                             <span style="width: 180px" class="p-inputgroup-addon">Start date</span>
-                                <p-calendar [(ngModel)]="startDateInput" [showTime]="true" [ngModelOptions]="{standalone: true}" [inline]="true"
+                            <p-calendar [(ngModel)]="startDateInput" [showTime]="true"
+                                [ngModelOptions]="{standalone: true}" [inline]="true" (onSelect)="Selected()"
                                 [hourFormat]="'12'" [style]="{'width':'100%'}"></p-calendar>
                         </div>
 
@@ -93,4 +105,3 @@
         </form>
     </div>
 </div>
-<p-toast></p-toast>

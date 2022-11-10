@@ -19,6 +19,7 @@ export class PropInfoComponent implements OnInit {
   id: any;
   prop: Proposition;
   propTime: number;
+  disable: boolean = true;
 
   constructor(private http: HttpClient, public auth: AuthService, private route: ActivatedRoute) {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -59,9 +60,13 @@ export class PropInfoComponent implements OnInit {
               // console.log("all teacher : ", this.allUser)
               this.allUser.forEach(t => {
                 t.proposition.forEach((p: any) => {
-                  if (p.allowed.includes(this.profileJson?.id) && (Date.now() >= new Date(p.start_date).getTime()) && p.active == true && new Date(Date.now()) <= new Date(this.DateAdder(p.start_date, p.prop_time).getTime())) {
+                  if (p.allowed.includes(this.profileJson?.id) && p.active == true && new Date(Date.now()) <= new Date(this.DateAdder(p.start_date, p.prop_time).getTime())) {
                     // console.log(Date.now() <= this.DateAdder(p.start_date, p.prop_time).getTime() )
                     // console.log("Start date : ", && new Date(Date.now()) <= new Date(this.DateAdder(p.start_date, p.prop_time).getTime()))
+                    console.log("Date now : ", new Date(Date.now()), "\nStart date : " , new Date(p.start_date), Date.now() >= new Date(p.start_date).getTime())
+                    if((Date.now() >= new Date(p.start_date).getTime())){
+                      this.disable = false;
+                    }
                     this.proposition.push(p);
                   }
                 })

@@ -45,15 +45,6 @@ export class ViewAnswerComponent implements OnInit {
   }
 
   CheckAns() {
-    // this.auth.idTokenClaims$.subscribe(
-    //   (profile) => (
-    //     this.http.get<User>('/api/user/' + profile?.email).subscribe((response) => {
-    //       this.profileJson = response;
-    //     })
-    //   ),
-    // );
-    console.log("profileJson : ", this.profileJson)
-
     this.http.get('/api/user/').subscribe(async (response: any) => {
       this.allUser = response;
       this.allUser.forEach((t: { proposition: any[]; }, index) => {
@@ -86,23 +77,17 @@ export class ViewAnswerComponent implements OnInit {
             start_date: this.allUser[this.userIndex].proposition[this.propIndex].start_date,
             active: this.allUser[this.userIndex].proposition[this.propIndex].active
           }
-          // console.log("userUpdate", userUpdate)
 
           this.allUser[this.userIndex]?.proposition.splice(this.propIndex, 1, userUpdate);
-          console.log(this.profileJson)
           this.http.put('/api/user/' + this.allUser[this.userIndex]?.id, this.allUser[this.userIndex]).subscribe((response) => {
             console.log(response);
           })
-
-          // console.log(this.allUser[this.userIndex].proposition[this.propIndex])
 
         }
 
       });
 
     })
-
-    // console.log(this.allUser);
 
     this.quizs.forEach((quiz, i) => {
       var temp = 0;
@@ -116,23 +101,8 @@ export class ViewAnswerComponent implements OnInit {
       if (temp == quiz.choice_amount) {
         this.score += quiz.score;
       }
-      // console.log("score: ", this.score);
     });
-    // this.allUser.find((value, index) => {
-    //   console.log("Visited index ", index, " with value ", value);
-    // });
   }
-
-  // async CallProfile() {
-  //   this.auth.idTokenClaims$.subscribe(
-  //     (profile) => (
-  //       this.http.get<User>('/api/user/' + profile?.email).subscribe((response) => {
-  //         this.profileJson = response;
-  //       })
-  //     ),
-  //   );
-  //   await this.CheckAns();
-  // }
 
 }
 

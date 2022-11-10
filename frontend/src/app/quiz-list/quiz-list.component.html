@@ -27,23 +27,23 @@
         </ng-template>
         <ng-template pTemplate="body" let-quiz let-rowIndex="rowIndex">
             <tr *ngIf="quiz.content === undefined || quiz.content === ''; else next"
-                [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]" class="tableList">
-                <td>
+                class="tableList">
+                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]" >
                     {{ rowIndex + 1 }}
                 </td>
-                <td>
+                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]" >
                     {{ quiz.content }}
                 </td>
-                <td>
+                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]" >
                     {{ quiz.choice_type }}
                 </td>
-                <td>
+                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]" >
                     {{ quiz.time_limit}}
                 </td>
-                <td>
+                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]" >
                     {{ quiz.choice_amount }}
                 </td>
-                <td>
+                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]" >
                     {{ quiz.score }}
                 </td>
                 <td>
@@ -60,25 +60,25 @@
                 </td>
             </tr>
             <ng-template #next>
-                <tr [routerLink]="['/props/' + this.id +  '/quizs/' + rowIndex + '/choice/']" class="tableList">
-                    <td>
+                <tr class="tableList">
+                    <td [routerLink]="['/props/' + this.id +  '/quizs/' + rowIndex + '/choice/']">
                         {{ rowIndex + 1 }}
                     </td>
-                    <td>
+                    <td [routerLink]="['/props/' + this.id +  '/quizs/' + rowIndex + '/choice/']">
                         {{ quiz.content }}
                     </td>
-                    <td>
+                    <td [routerLink]="['/props/' + this.id +  '/quizs/' + rowIndex + '/choice/']">
                         {{ quiz.choice_type }}
                     </td>
-                    <td>
+                    <td [routerLink]="['/props/' + this.id +  '/quizs/' + rowIndex + '/choice/']">
                         {{ quiz.time_limit}}
                     </td>
-                    <td>
+                    <td [routerLink]="['/props/' + this.id +  '/quizs/' + rowIndex + '/choice/']">
                         {{ quiz.choice_amount }}
                     </td>
-                    <td>
+                    <td [routerLink]="['/props/' + this.id +  '/quizs/' + rowIndex + '/choice/']">
                         {{ quiz.score }}
-                    </td>    
+                    </td>
                     <td>
                         <button *ngIf="quiz.content === undefined || quiz.content !== ''; else elseBtn"
                             style="width: 40%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-pencil"
@@ -97,6 +97,9 @@
     </p-table>
     <button class="loginBtn" style="width: 100%; margin-top: 20px;" pButton type="button" label="Add quiz"
         (click)="AddQuiz()"></button>
+    <p-confirmDialog [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}" header="Confirmation"
+        icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
     <!-- <button class="loginBtn" style="width: 100%; margin-top: 20px;" pButton type="button" type="submit"
         label="Create proposition" [routerLink]="['/createProp']"></button> -->
 </div>

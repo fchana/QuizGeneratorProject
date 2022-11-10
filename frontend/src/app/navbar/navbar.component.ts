@@ -55,9 +55,6 @@ export class NavbarComponent implements OnInit {
                 }, {
                   label: 'Permission',
                   routerLink: '/permission'
-                }, {
-                  label: 'Active props',
-                  routerLink: '/activeProps'
                 }
                 ]
               },

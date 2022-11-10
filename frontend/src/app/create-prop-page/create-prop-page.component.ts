@@ -6,6 +6,7 @@ import { Proposition } from 'app/shared/Model/proposition';
 import { Quiz } from 'app/shared/Model/quiz';
 import { User } from 'app/shared/Model/user';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-create-prop-page',
@@ -20,12 +21,12 @@ export class CreatePropPageComponent implements OnInit {
   maxScoreInput: string;
   timeLimitInput: string;
   quizAmountInput: number;
-  startDateInput: Date  ;
+  startDateInput: Date;
   startTimeInput: Time;
   allowed: Array<String> = [];
   quizs: Array<Quiz> = [];
-  constructor(private http: HttpClient, public auth: AuthService, private router: Router) { 
-    
+  constructor(private http: HttpClient, public auth: AuthService, private router: Router, private messageService: MessageService) {
+
   }
 
 
@@ -35,14 +36,25 @@ export class CreatePropPageComponent implements OnInit {
         this.http.get<User>('/api/user/' + profile?.email).subscribe((response) => {
           this.profileJson = response;
           this.proposition = this.profileJson.proposition;
-      })
+          this.startDateInput = new Date(Date.now());
+          // console.log(new Date(Date.now()));
+        })
       ),
-      );
+    );
   }
 
-  CreateProp(){
+  Selected() {
+
+    console.log(new Date(new Date(this.startDateInput.getTime()).setSeconds(0, 0)))
+
+    // console.log(new Date (parseInt(((this.startDateInput.getTime()/10000).toString())+"0000")));
+
+    // console.log(new Date(this.startDateInput.getTime()));
+  }
+
+  CreateProp() {
     console.log(this.startDateInput.toUTCString());
-    for(let i = 0; i< this.quizAmountInput; i++) this.quizs.push({
+    for (let i = 0; i < this.quizAmountInput; i++) this.quizs.push({
       choice: [],
       content: "",
       choice_type: 0,
@@ -55,9 +67,10 @@ export class CreatePropPageComponent implements OnInit {
       max_score: this.maxScoreInput,
       prop_name: this.propNameInput,
       prop_time: this.timeLimitInput,
-      quiz: this.quizs, 
+      quiz: this.quizs,
       quiz_amount: this.quizAmountInput,
-      start_date: new Date(this.startDateInput.getTime() + 25200000),
+      // start_date: new Date(Date.now()),
+      start_date: new Date(new Date(this.startDateInput.getTime()).setSeconds(0, 0) + 25200000),
       active: false
     }
 
@@ -66,12 +79,13 @@ export class CreatePropPageComponent implements OnInit {
     this.profileJson?.proposition.push(userUpdate);
 
 
-    this.http.put('/api/user/'+this.profileJson?.id, this.profileJson).subscribe((response) => {
+    this.http.put('/api/user/' + this.profileJson?.id, this.profileJson).subscribe((response) => {
       console.log(response);
+      this.messageService.add({ severity: 'success', summary: 'Proposition create.', detail: 'Proposition created success.' });
+      this.router.navigateByUrl('/props');
     })
-  
-    this.router.navigateByUrl('/props');
-    
+
+
   }
 
 }

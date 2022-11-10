@@ -6,6 +6,7 @@ import { Choice } from 'app/shared/Model/choice';
 import { Proposition } from 'app/shared/Model/proposition';
 import { Quiz } from 'app/shared/Model/quiz';
 import { User } from 'app/shared/Model/user';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-choice-list',
@@ -22,7 +23,7 @@ export class ChoiceListComponent implements OnInit {
   user: any;
   pid: any;
 
-  constructor(private http: HttpClient, public auth: AuthService, private route: ActivatedRoute) {
+  constructor(private http: HttpClient, public auth: AuthService, private route: ActivatedRoute, private confirmationService: ConfirmationService, private messageService: MessageService,) {
    }
 
   ngOnInit(): void {
@@ -32,17 +33,24 @@ export class ChoiceListComponent implements OnInit {
     }
 
     DeleteChoice(index: number){
-      this.profileJson?.proposition[this.pid].quiz[this.qid].choice.splice(index, 1);
-      if (this.profileJson?.proposition[this.pid].quiz[this.qid].choice_amount != undefined) {
-        if(this.profileJson?.proposition[this.pid].quiz[this.qid].choice_amount > 0){
-          this.profileJson.proposition[this.pid].quiz[this.qid].choice_amount -= 1;
+      this.confirmationService.confirm({
+        message: 'Are you sure to delete this choice?',
+        accept: () => {
+            this.profileJson?.proposition[this.pid].quiz[this.qid].choice.splice(index, 1);
+            if (this.profileJson?.proposition[this.pid].quiz[this.qid].choice_amount != undefined) {
+              if(this.profileJson?.proposition[this.pid].quiz[this.qid].choice_amount > 0){
+                this.profileJson.proposition[this.pid].quiz[this.qid].choice_amount -= 1;
+              }
+              else
+                this.profileJson.proposition[this.pid].quiz[this.qid].choice_amount = 0;
+            }
+            this.http.put('/api/user/'+this.profileJson?.id, this.profileJson).subscribe((response) => {
+              this.CallProfile();
+              this.messageService.add({ severity: 'success', summary: 'choice delete.', detail: 'choice deleted success.' });
+
+            })
         }
-        else
-          this.profileJson.proposition[this.pid].quiz[this.qid].choice_amount = 0;
-      }
-      this.http.put('/api/user/'+this.profileJson?.id, this.profileJson).subscribe((response) => {
-        this.CallProfile();
-      })
+    });
 
     }
 
