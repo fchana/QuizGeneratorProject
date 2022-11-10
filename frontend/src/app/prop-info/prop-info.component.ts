@@ -63,6 +63,7 @@ export class PropInfoComponent implements OnInit {
                   if (p.allowed.includes(this.profileJson?.id) && p.active == true && new Date(Date.now()) <= new Date(this.DateAdder(p.start_date, p.prop_time).getTime())) {
                     // console.log(Date.now() <= this.DateAdder(p.start_date, p.prop_time).getTime() )
                     // console.log("Start date : ", && new Date(Date.now()) <= new Date(this.DateAdder(p.start_date, p.prop_time).getTime()))
+                    console.log("Date now : ", new Date(Date.now()), "\nStart date : " , new Date(p.start_date), Date.now() >= new Date(p.start_date).getTime())
                     if((Date.now() >= new Date(p.start_date).getTime())){
                       this.disable = false;
                     }

@@ -53,10 +53,14 @@ export class EditPropPageComponent implements OnInit {
   }
 
   Selected() {
+    // console.log(new Date(1668615500000))
     console.log(this.startDateInput.getTime())
-    console.log(new Date (parseInt(((Math.floor(this.startDateInput.getTime()/100000)).toString())+"00000")));
 
-    console.log(new Date(this.startDateInput.getTime()));
+    console.log(this.startDateInput.getTime()/10000)
+    
+    console.log(new Date (parseInt(((this.startDateInput.getTime()/10000).toString())+"0000")));
+
+    // console.log(new Date(this.startDateInput.getTime()));
    }
 
   EditProp() {
@@ -68,7 +72,7 @@ export class EditPropPageComponent implements OnInit {
         prop_time: this.timeLimitInput,
         quiz: this.proposition[this.id].quiz,
         quiz_amount: this.quizAmountInput,
-        start_date: new Date((parseInt(((Math.floor(this.startDateInput.getTime()/100000)).toString())+"00000")) + 25200000),
+        start_date: new Date((parseInt(((this.startDateInput.getTime()/10000).toString())+"0000")) + 25200000),
         active: this.active
       }
       this.profileJson?.proposition.splice(this.id, 1, userUpdate);
@@ -81,7 +85,7 @@ export class EditPropPageComponent implements OnInit {
         prop_time: this.timeLimitInput,
         quiz: this.proposition[this.id].quiz,
         quiz_amount: this.quizAmountInput,
-        start_date: new Date(new Date((parseInt(((Math.floor(this.startDateInput.getTime()/100000)).toString())+"00000")) + 25200000)),
+        start_date: new Date(new Date((parseInt(((this.startDateInput.getTime()/10000).toString())+"0000")) + 25200000)),
         active: this.active
       }
       // setInterval(function() {_this.router.navigateByUrl('/props');}, 2000);
@@ -91,7 +95,6 @@ export class EditPropPageComponent implements OnInit {
       // setTimeout(function () { _this.router.navigateByUrl('/props'); }, 2000);
       console.log(response);
       this.messageService.add({severity: 'success', summary: 'Proposition edit.', detail: 'Edit success.' });
-      // this.messageService.add({key: 'myKey1', severity:'success', summary: 'Summary Text', detail: 'Detail Text'});
       this.router.navigate(['/props'])
     })
 

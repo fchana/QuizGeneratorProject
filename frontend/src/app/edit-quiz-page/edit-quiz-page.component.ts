@@ -1,10 +1,11 @@
 import { Time } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { Proposition } from 'app/shared/Model/proposition';
 import { User } from 'app/shared/Model/user';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-edit-quiz-page',
@@ -24,7 +25,7 @@ export class EditQuizPageComponent implements OnInit {
   id: any;
   pid: any;
 
-  constructor(private http: HttpClient, public auth: AuthService, private route: ActivatedRoute) { }
+  constructor(private http: HttpClient, public auth: AuthService, private route: ActivatedRoute, private messageService: MessageService, private router: Router) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -59,6 +60,9 @@ export class EditQuizPageComponent implements OnInit {
 
     this.http.put('/api/user/'+this.profileJson?.id, this.profileJson).subscribe((response) => {
       console.log(response);
+      this.messageService.add({severity: 'success', summary: 'Quiz edit.', detail: 'Edit success.' });
+      this.router.navigate(['/props/'+this.pid+"/quizs"])
+    
     })
   
   }
