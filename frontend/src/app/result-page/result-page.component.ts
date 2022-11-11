@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Choice } from 'app/shared/Model/choice';
@@ -20,24 +21,28 @@ export class ResultPageComponent implements OnInit {
   score: number = 0;
   selects: Select[] = [];
   profileJson?: User;
+  status: number = 1;
 
 
-  constructor(public activatedRoute: ActivatedRoute) { }
+  constructor(public activatedRoute: ActivatedRoute, private http: HttpClient) {
+    console.log("Result Page : ")
+  }
 
   async ngOnInit(): Promise<void> {
-      this.state$ = this.activatedRoute.paramMap
-        .pipe(map(() => window.history.state))
-      this.proposition = window.history.state.prop;
-      this.value = window.history.state.prop.max_score;
-      this.quizs = window.history.state.quizs;
-      this.selects = window.history.state.selects;
-      this.profileJson = window.history.state.profileJson;
+    this.state$ = this.activatedRoute.paramMap
+      .pipe(map(() => window.history.state))
+    this.proposition = window.history.state.prop;
+    this.value = window.history.state.prop.max_score;
+    this.quizs = window.history.state.quizs;
+    this.selects = window.history.state.selects;
+    this.profileJson = window.history.state.profileJson;
 
-      
-      this.CheckAns();
-    }
-    
-    CheckAns() {
+
+
+    this.CheckAns();
+  }
+
+  CheckAns() {
     console.log("profileJson", this.profileJson)
     this.quizs.forEach((quiz, i) => {
       var temp = 0;
@@ -50,7 +55,25 @@ export class ResultPageComponent implements OnInit {
         this.score += quiz.score;
       }
       console.log("score: ", this.score);
+      const score = {
+        score: this.score,
+        proposition: this.proposition,
+        selects: this.selects
+      }
+
+
+      if (this.status == 1) {
+        this.status = 0;
+        this.profileJson?.score.push(score);
+
+        this.http.put('/api/user/' + this.profileJson?.id, this.profileJson).subscribe((response) => {
+          console.log("updated", response);
+        })
+      }
+      // console.log(this.choiceCorrectInput)
     });
+
+
   }
 
 }
