@@ -51,7 +51,6 @@ export class ViewAnswerComponent implements OnInit {
 
         this.propIndex = (t.proposition.findIndex((p: any) => {
           if (p.prop_name == this.proposition.prop_name) {
-            console.log(p)
             this.userIndex = index;
             return p.prop_name = this.proposition.prop_name;
           }
