@@ -30,7 +30,6 @@ export class RegisterPageComponent implements OnInit {
       firstname: this.firstNameInput,
       lastname: this.lastNameInput,
       account_type: false,
-      score: [{}],
       proposition: [{}],
     }
 

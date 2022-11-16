@@ -1,0 +1,31 @@
+<div class="propCont propCent">
+    <p-table [value]="scores">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>
+            proposition name
+          </th>
+          <th>
+            score
+          </th>
+          <th>
+            max score
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-prop let-rowIndex="rowIndex">
+        <tr class="tableList" [routerLink]="['/stdScore/' + prop.id]">
+          <td>
+            {{ prop.proposition.prop_name }}
+          </td>
+          <td>
+            {{ prop.score }}
+          </td>
+          <td>
+            {{ prop.proposition.max_score }}
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+

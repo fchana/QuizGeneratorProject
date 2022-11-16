@@ -51,6 +51,8 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { AllStudentComponent } from './all-student/all-student.component';
+import { StdScoreComponent } from './std-score/std-score.component';
 
 
 
@@ -80,6 +82,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     ResultPageComponent,
     ViewAnswerComponent,
     ActivePropComponent,
+    AllStudentComponent,
+    StdScoreComponent,
   ],
   imports: [
     BrowserModule,

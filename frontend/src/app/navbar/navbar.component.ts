@@ -55,6 +55,10 @@ export class NavbarComponent implements OnInit {
                 }, {
                   label: 'Permission',
                   routerLink: '/permission'
+                },
+                {
+                  label: 'All student',
+                  routerLink: '/allStudent'
                 }
                 ]
               },
