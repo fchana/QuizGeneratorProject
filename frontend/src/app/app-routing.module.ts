@@ -19,6 +19,8 @@ import { StartPropComponent } from './start-prop/start-prop.component';
 import { ResultPageComponent } from './result-page/result-page.component';
 import { ViewAnswerComponent } from './view-answer/view-answer.component';
 import { ActivePropComponent } from './active-prop/active-prop.component';
+import { AllStudentComponent } from './all-student/all-student.component';
+import { StdScoreComponent } from './std-score/std-score.component';
 
 const routes: Routes = [
   {path: '',   redirectTo: '/login', pathMatch: 'full' },
@@ -40,6 +42,9 @@ const routes: Routes = [
   {path: 'result', component: ResultPageComponent, canActivate: [AuthGuard]},
   {path: 'viewAns', component: ViewAnswerComponent, canActivate: [AuthGuard]},
   {path: 'activeProps', component: ActivePropComponent, canActivate: [AuthGuard]},
+  {path: 'allStudent', component: AllStudentComponent, canActivate: [AuthGuard]},
+  {path: 'stdScore', component: StdScoreComponent, canActivate: [AuthGuard]},
+
   {path: '**', component: LoginPageComponent }
 ];
 

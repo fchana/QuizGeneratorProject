@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Choice } from 'app/shared/Model/choice';
 import { Proposition } from 'app/shared/Model/proposition';
 import { Quiz } from 'app/shared/Model/quiz';
+import { Score } from 'app/shared/Model/score';
 import { Select } from 'app/shared/Model/select';
 import { User } from 'app/shared/Model/user';
 import { map, Observable } from 'rxjs';
@@ -20,7 +21,7 @@ export class ResultPageComponent implements OnInit {
   proposition: Proposition;
   score: number = 0;
   selects: Select[] = [];
-  profileJson?: User;
+  profileJson: User;
   status: number = 1;
 
 
@@ -61,12 +62,26 @@ export class ResultPageComponent implements OnInit {
         selects: this.selects
       }
 
+      let Ascore: Array<Score> = [];
+      Ascore.push(score);
+
 
       if (this.status == 1) {
         this.status = 0;
-        this.profileJson?.score.push(score);
+        const userInfo = {
+          id: this.profileJson.id,
+          email: this.profileJson.email,
+          username: this.profileJson.username,
+          password: this.profileJson.password,
+          firstname: this.profileJson.firstname,
+          lastname: this.profileJson.lastname,
+          account_type: this.profileJson.account_type,
+          proposition: this.profileJson.proposition,
+          score: Ascore
+        }
+        // this.profileJson?.score.push(score);
 
-        this.http.put('/api/user/' + this.profileJson?.id, this.profileJson).subscribe((response) => {
+        this.http.put('/api/user/' + this.profileJson?.id, userInfo).subscribe((response) => {
           console.log("updated", response);
         })
       }
