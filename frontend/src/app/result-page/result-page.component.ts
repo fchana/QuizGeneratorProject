@@ -43,31 +43,45 @@ export class ResultPageComponent implements OnInit {
     this.CheckAns();
   }
 
-  CheckAns() {
+  async CheckAns() {
     console.log("profileJson", this.profileJson)
-    this.quizs.forEach((quiz, i) => {
+    await this.quizs.forEach((quiz, i) => {
+      console.log("new quiz --------------------------")
       var temp = 0;
       quiz.choice.forEach((choice: Choice, k) => {
         if (choice.correct == this.selects[i].select[k]) {
+          // console.log("correct : ", choice.correct," selects : ",  this.selects[i].select[k])
           temp += 1;
         }
       });
       if (temp == quiz.choice_amount) {
+        console.log("equals")
         this.score += quiz.score;
       }
-      console.log("score: ", this.score);
+    });
+
+    await this.SaveScore();
+
+  }
+
+  SaveScore() {
+    if (this.status == 1) {
+      this.status = 0;
       const score = {
         score: this.score,
         proposition: this.proposition,
         selects: this.selects
       }
+      if (this.profileJson?.score != undefined) {
+        this.profileJson?.score.push(score);
+        this.http.put('/api/user/' + this.profileJson?.id, this.profileJson).subscribe((response) => {
+          console.log("updated", response);
+        })
+      }
+      else {
+        let Ascore: Array<Score> = [];
+        Ascore.push(score);
 
-      let Ascore: Array<Score> = [];
-      Ascore.push(score);
-
-
-      if (this.status == 1) {
-        this.status = 0;
         const userInfo = {
           id: this.profileJson.id,
           email: this.profileJson.email,
@@ -85,10 +99,7 @@ export class ResultPageComponent implements OnInit {
           console.log("updated", response);
         })
       }
-      // console.log(this.choiceCorrectInput)
-    });
-
-
+    }
   }
 
 }
