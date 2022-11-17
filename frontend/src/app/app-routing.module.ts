@@ -21,6 +21,7 @@ import { ViewAnswerComponent } from './view-answer/view-answer.component';
 import { ActivePropComponent } from './active-prop/active-prop.component';
 import { AllStudentComponent } from './all-student/all-student.component';
 import { StdScoreComponent } from './std-score/std-score.component';
+import { TViewAnsComponent } from './t-view-ans/t-view-ans.component';
 
 const routes: Routes = [
   {path: '',   redirectTo: '/login', pathMatch: 'full' },
@@ -44,6 +45,7 @@ const routes: Routes = [
   {path: 'activeProps', component: ActivePropComponent, canActivate: [AuthGuard]},
   {path: 'allStudent', component: AllStudentComponent, canActivate: [AuthGuard]},
   {path: 'stdScore', component: StdScoreComponent, canActivate: [AuthGuard]},
+  {path: 'stdResult', component: TViewAnsComponent, canActivate: [AuthGuard]},
 
   {path: '**', component: LoginPageComponent }
 ];

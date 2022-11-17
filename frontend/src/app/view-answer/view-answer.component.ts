@@ -60,8 +60,11 @@ export class ViewAnswerComponent implements OnInit {
 
         if (this.propIndex != -1) {
           console.log(this.allUser[this.userIndex].proposition[this.propIndex].allowed)
+          console.log("index : ", this.allUser[this.userIndex].proposition[this.propIndex].allowed.findIndex((p: any) => {
+            return p == this.profileJson.id
+          }))
           this.allUser[this.userIndex].proposition[this.propIndex].allowed.splice(this.allUser[this.userIndex].proposition[this.propIndex].allowed.findIndex((p: any) => {
-            return p.allowed == this.profileJson.id;
+            return p == this.profileJson.id;
           }), 1)
 
           console.log(this.allUser[this.userIndex].proposition[this.propIndex].allowed)

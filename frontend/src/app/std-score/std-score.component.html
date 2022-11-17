@@ -14,7 +14,7 @@
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-prop let-rowIndex="rowIndex">
-        <tr class="tableList" [routerLink]="['/stdScore/' + prop.id]">
+        <tr class="tableList" [routerLink]="['/stdResult/']" [state]="{email: email, index: rowIndex}">
           <td>
             {{ prop.proposition.prop_name }}
           </td>
