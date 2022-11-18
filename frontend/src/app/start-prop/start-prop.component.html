@@ -1,6 +1,20 @@
 <div class="quiz-container center">
-    <p>Countdown : {{ countDown }}</p>
-    <p>Countdown Quiz: {{ countDown2 }}</p>
+    <div class="grid">
+        <div class="col-2">
+            <p>Countdown : {{ countDown }}</p>
+            <p-knob [size]="200"  [(ngModel)]="ct" [min]="0" [readonly]="true" [max]="maxProp()" [valueColor]="ctColor()"></p-knob>
+        </div>
+        <div class="col-2">
+            <p>Countdown Quiz: {{ countDown2 }}</p>
+            <p-knob [size]="200"  [(ngModel)]="ct2" [min]="0" [readonly]="true" [max]="quizs[first].time_limit"
+                [valueColor]="ctColor2()"></p-knob>
+        </div>
+        <div class="col">
+
+        </div>
+    </div>
+    <!-- <p>Countdown : {{ countDown }}</p>
+    <p>Countdown Quiz: {{ countDown2 }}</p> -->
 
     <div class="quiz-header">
         <label class="quiz-header-content">{{ quizs[first].content }}</label>
@@ -9,7 +23,7 @@
     <div class="quiz-content" *ngFor="let choice of quizs[first].choice; let i = index">
         <p-toggleButton [style]="{'width': '100%', 'height': '100px'}" (click)="Select(first, i) "
             [disabled]="selected == quizs[first].choice_type && selects[first].select[i] != undefined && !selects[first].select[i]"
-            onLabel="{{ choice.content }}"  offLabel="{{ choice.content }}" >
+            onLabel="{{ choice.content }}" offLabel="{{ choice.content }}">
         </p-toggleButton>
     </div>
 </div>
@@ -26,7 +40,8 @@
         </div>
         <ng-template #lastQuiz>
             <p-button [disabled]="!(selected == quizs[first].choice_type)" icon="pi pi-chevron-right" iconPos="right"
-                [style]="{'width':'100%'}" label="End Quiz." [routerLink]="['/result']" [state]="{prop: _prop ,quizs: quizs, selects: selects, profileJson: profileJson  }">
+                [style]="{'width':'100%'}" label="End Quiz." [routerLink]="['/result']"
+                [state]="{prop: _prop ,quizs: quizs, selects: selects, profileJson: profileJson  }">
             </p-button>
         </ng-template>
     </div>

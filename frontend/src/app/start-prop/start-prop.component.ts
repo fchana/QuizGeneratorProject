@@ -52,6 +52,10 @@ export class StartPropComponent implements OnInit {
 
   countDownDate2: number;
 
+  ct2: number;
+
+  ct: number;
+
   onPageChange(event: { first: number; }) {
     this.first = event.first;
   }
@@ -148,7 +152,7 @@ export class StartPropComponent implements OnInit {
     if (this.first < this.quizs.length - 1) {
       this.selected = 0;
       this.first += 1;
-      this.countDownDate2 = this.DateAdder(new Date(), this.quizs[0].time_limit).getTime();
+      this.countDownDate2 = this.DateAdder(new Date(), this.quizs[this.first].time_limit).getTime();
       this.quizTime();
       console.log("profileJson", this.profileJson);
 
@@ -173,6 +177,14 @@ export class StartPropComponent implements OnInit {
     return array;
   }
 
+  maxProp() {
+    if (this.proposition != undefined) {
+      return parseInt(String(this.proposition[this.id].prop_time))
+    }
+    else
+      return 0
+  }
+
   propTime() {
     if (this.proposition != undefined) {
       var countDownDate = this.DateAdder(this.proposition[this.id].start_date, Number(this._prop.prop_time)).getTime();
@@ -184,16 +196,40 @@ export class StartPropComponent implements OnInit {
       var days = Math.floor(distance / (1000 * 60 * 60 * 24));
       var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000) + 2;
+
+      this.ct = Math.floor((countDownDate - now) / 1000) + 2;
 
       this.countDown = days + "d " + hours + "h "
         + minutes + "m " + seconds + "s ";
 
-      if (distance < 0) {
+      if (distance <= 0) {
         clearInterval(x);
-        this.router.navigateByUrl('/result', { state: { prop: this._prop, quizs: this.quizs, selects: this.selects, profileJson: this.profileJson} });
+        this.router.navigateByUrl('/result', { state: { prop: this._prop, quizs: this.quizs, selects: this.selects, profileJson: this.profileJson } });
       }
     }, 1000);
+  }
+
+  ctColor2() {
+    if ((this.ct2 / this.quizs[this.first].time_limit) * 100 < 30)
+      return "#f63b82"
+    else if ((this.ct2 / this.quizs[this.first].time_limit) * 100 < 60)
+      return "#f6af3b";
+    else
+      return "#3b82f6";
+  }
+
+  ctColor() {
+    if (this.proposition != undefined) {
+      if ((this.ct / Number(this.proposition[this.id].prop_time)) * 100 < 30)
+        return "#f63b82"
+      else if ((this.ct / Number(this.proposition[this.id].prop_time)) * 100 < 60)
+        return "#f6af3b";
+      else
+        return "#3b82f6";
+    }
+    else
+      return "#3b82f6";
   }
 
   quizTime() {
@@ -201,16 +237,19 @@ export class StartPropComponent implements OnInit {
     var x = setInterval(() => {
 
       var now = new Date().getTime();
-      var distance = this.countDownDate2 - now;
+      var distance = (this.countDownDate2 - now);
       var days = Math.floor(distance / (1000 * 60 * 60 * 24));
       var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000) + 2;
+
+      this.ct2 = Math.floor((this.countDownDate2 - now) / 1000) + 2;
+
 
       this.countDown2 = days + "d " + hours + "h "
         + minutes + "m " + seconds + "s ";
 
-      if (distance < 0) {
+      if (distance <= 0) {
         clearInterval(x);
         this.Next();
       }
