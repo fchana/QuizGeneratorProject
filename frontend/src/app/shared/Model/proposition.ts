@@ -17,4 +17,5 @@ export interface Proposition {
 
     active: boolean;
 
+    enable_score: boolean;
 }

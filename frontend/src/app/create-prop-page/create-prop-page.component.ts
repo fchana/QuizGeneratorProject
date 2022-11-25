@@ -25,8 +25,14 @@ export class CreatePropPageComponent implements OnInit {
   startTimeInput: Time;
   allowed: Array<String> = [];
   quizs: Array<Quiz> = [];
+  enableScoreInput: boolean;
+  gfg: { label: string; value: boolean; }[];
   constructor(private http: HttpClient, public auth: AuthService, private router: Router, private messageService: MessageService) {
-
+    this.gfg = [
+      { label: "Off", value: false },
+      { label: "On", value: true }
+    ];
+    this.enableScoreInput = false;
   }
 
 
@@ -71,7 +77,8 @@ export class CreatePropPageComponent implements OnInit {
       quiz_amount: this.quizAmountInput,
       // start_date: new Date(Date.now()),
       start_date: new Date(new Date(this.startDateInput.getTime()).setSeconds(0, 0) + 25200000),
-      active: false
+      active: false,
+      enable_score: this.enableScoreInput
     }
 
     console.log(userUpdate);

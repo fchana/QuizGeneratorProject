@@ -5,9 +5,9 @@
             <h1>your score is : {{ score }} / {{ value }}</h1>
         </div>
     </div>
-    <div class="grid">
+    <div class="grid" *ngIf="proposition.enable_score">
         <div class="col-12">
-            <p-button label="View your answer" [routerLink]="['/viewAns']" [state]="{prop: proposition ,quizs: quizs, selects: selects, profileJson: profileJson }"></p-button>
+            <p-button label="View your answer"  [routerLink]="['/viewAns']" [state]="{prop: proposition ,quizs: quizs, selects: selects, profileJson: profileJson }"></p-button>
         </div>
     </div>
 </div>
