@@ -24,6 +24,9 @@
           <th>
             Status
           </th>
+          <th>
+            Allow to view scores
+          </th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-prop let-rowIndex="rowIndex">
@@ -53,6 +56,9 @@
           </td>
           <td>
             <p-inputSwitch (onChange)="Active(rowIndex)" [(ngModel)]="active[rowIndex]"></p-inputSwitch>
+          </td>
+          <td [routerLink]="['/props/' + rowIndex +  '/quizs']">
+            {{ prop.enable_score }}
           </td>
         </tr>
       </ng-template>
