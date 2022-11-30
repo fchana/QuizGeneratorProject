@@ -22,13 +22,15 @@ import { ActivePropComponent } from './active-prop/active-prop.component';
 import { AllStudentComponent } from './all-student/all-student.component';
 import { StdScoreComponent } from './std-score/std-score.component';
 import { TViewAnsComponent } from './t-view-ans/t-view-ans.component';
+import { AuthGuardService } from './auth-guard.service';
+import { Auth2Service } from './auth2.service';
 
 const routes: Routes = [
   {path: '',   redirectTo: '/login', pathMatch: 'full' },
   {path: 'login', component: LoginPageComponent},
   {path: 'editProp/:id', component: EditPropPageComponent, canActivate: [AuthGuard]},
   {path: 'register', component: RegisterPageComponent},
-  {path: 'props', component: PropListComponent, canActivate: [AuthGuard]},
+  {path: 'props', component: PropListComponent, canActivate: [AuthGuardService]},
   {path: 'createProp', component: CreatePropPageComponent, canActivate: [AuthGuard]},
   {path: 'props/:id/quizs', component: QuizListComponent, canActivate: [AuthGuard]},
   {path: 'props/:pid/editQuiz/:id', component: EditQuizPageComponent, canActivate: [AuthGuard]},
@@ -52,6 +54,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [Auth2Service]
 })
 export class AppRoutingModule { }
