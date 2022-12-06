@@ -30,7 +30,7 @@ const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
   {path: 'editProp/:id', component: EditPropPageComponent, canActivate: [AuthGuard]},
   {path: 'register', component: RegisterPageComponent},
-  {path: 'props', component: PropListComponent, canActivate: [AuthGuardService]},
+  {path: 'props', component: PropListComponent, canActivate: [AuthGuard]},
   {path: 'createProp', component: CreatePropPageComponent, canActivate: [AuthGuard]},
   {path: 'props/:id/quizs', component: QuizListComponent, canActivate: [AuthGuard]},
   {path: 'props/:pid/editQuiz/:id', component: EditQuizPageComponent, canActivate: [AuthGuard]},

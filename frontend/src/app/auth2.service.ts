@@ -14,9 +14,10 @@ export class Auth2Service {
 
   constructor(public auth: AuthService, private http: HttpClient) { }
 
-  login(boolean: boolean): Observable<boolean> {
-    this.isLoggedIn = boolean;
-    return of(true);  
+  // ฟังก์ชั่นจำลองการล็อกอิน คืนค่าเป็น Observable
+  login(): Observable<boolean> {
+    this.isLoggedIn = true;
+    return of(true)
   }
 
   signin(boolean: boolean): void {

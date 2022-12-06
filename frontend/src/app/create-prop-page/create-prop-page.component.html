@@ -8,7 +8,7 @@
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
                         <span class="p-float-label">
-                            <input [(ngModel)]="propNameInput" name="propNameInput" type="text" pInputText placeholder="Proposition name.">
+                            <input [(ngModel)]="propNameInput" required name="propNameInput" type="text" pInputText placeholder="Proposition name.">
                             <label for="inputtext">Please enter your proposition name.</label>
                         </span>
                     </div>
@@ -131,7 +131,7 @@
                     <button class="loginBtn" style="margin: 20px;" pButton type="button" label="Cancel"
                         [routerLink]="['/props']"></button>
                     <button class="loginBtn" style="margin: 20px;" pButton type="button" label="Create"
-                        (click)="CreateProp()"></button>
+                        ></button>
                 </div>
             </div>
             <div class="col-6">

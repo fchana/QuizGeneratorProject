@@ -21,7 +21,7 @@ export class AuthGuardService {
     public auth: AuthService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
-    console.log("canActive Run : ",  this.auth2Service.getIsLoggedIn())
+    console.log("canActive Run : ", this.auth2Service.getIsLoggedIn())
     let url: string = state.url;
     return this.checkLogin(url);
   }
@@ -32,6 +32,15 @@ export class AuthGuardService {
   }
 
   checkLogin(url: string): boolean {
+    this.auth.getAccessTokenSilently().subscribe(
+      (val) => {
+        if (val){
+          console.log("logged in.")
+          this.auth2Service.login();
+          this.auth2Service.getIsLoggedIn();
+        }
+      }
+    )
     if (this.auth2Service.getIsLoggedIn()) {
       return true;
     }

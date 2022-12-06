@@ -10,7 +10,7 @@ import { Auth2Service } from 'app/auth2.service';
 })
 export class LogoutButtonComponent implements OnInit {
   constructor(
-    public auth2: Auth2Service,
+    // public auth2: Auth2Service,
     public auth: AuthService,
     @Inject(DOCUMENT) private doc: Document,
   ) {}
@@ -18,7 +18,7 @@ export class LogoutButtonComponent implements OnInit {
   ngOnInit(): void {}
 
   logout(): void {
-    this.auth2.login(false);
+    // this.auth2.login();
     this.auth.logout({ returnTo: this.doc.location.origin });
   }
 }

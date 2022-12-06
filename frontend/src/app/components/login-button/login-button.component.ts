@@ -8,12 +8,14 @@ import { Auth2Service } from 'app/auth2.service';
   styles: [],
 })
 export class LoginButtonComponent implements OnInit {
-  constructor(public auth: AuthService, public auth2: Auth2Service) {}
+  constructor(public auth: AuthService
+    // , public auth2: Auth2Service
+    ) {}
 
   ngOnInit(): void {}
 
   loginWithRedirect(): void {
-    this.auth2.login(true);
+    // this.auth2.login();
     this.auth.loginWithRedirect({
       appState: { target: '/props' }
     });
