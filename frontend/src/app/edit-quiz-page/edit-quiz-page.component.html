@@ -6,9 +6,16 @@
                 <div class="col-5 center">
                     <div class="form-group ">
                         <div class="p-inputgroup">
-                            <span style="width: 180px" class="p-inputgroup-addon">Quiz content</span>
-                            <input [(ngModel)]="quizContentInput" name="quizContentInput" type="text" pInputText
-                                placeholder="Please enter your quiz content.">
+                            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                            <span class="p-float-label">
+                                <input
+                                    [style.borderColor]="this.quizContentform.touched && this.quizContentform.invalid ? '#e24c4c' : '#d8dce1'"
+                                    [formControl]="quizContentform" [(ngModel)]="quizContentInput"
+                                    name="quizContentInput" type="text" pInputText placeholder="quiz content">
+                                <label
+                                    [style.color]="this.quizContentform.touched && this.quizContentform.invalid ? '#e24c4c' : '#6c757d'">Please
+                                    Please enter your quiz content.</label>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -24,9 +31,16 @@
                 <div class="col-5 center">
                     <div class="form-group ">
                         <div class="p-inputgroup">
-                            <span style="width: 180px" class="p-inputgroup-addon">Choice type</span>
-                            <input [(ngModel)]="choiceTypeInput" name="choiceTypeInput" type="text" pInputText
-                                placeholder="Please enter your choice type.">
+                            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                            <span class="p-float-label">
+                                <p-inputNumber
+                                    [style.borderColor]="this.choiceTypeForm.touched && this.choiceTypeForm.invalid ? '#e24c4c' : '#d8dce1'"
+                                    [formControl]="choiceTypeForm" [(ngModel)]="choiceTypeInput" name="choiceTypeInput"
+                                    [minFractionDigits]="1" suffix=" answers" placeholder="0 answer"></p-inputNumber>
+                                <label
+                                    [style.color]="this.choiceTypeForm.touched && this.choiceTypeForm.invalid ? '#e24c4c' : '#6c757d'">Please
+                                    Please enter your chocie type.</label>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -42,12 +56,17 @@
                 <div class="col-5 center">
                     <div class="form-group ">
                         <div class="p-inputgroup">
-                            <span style="width: 180px" class="p-inputgroup-addon">Time limit</span>
-                            <input [(ngModel)]="timeLimitInput" type="text" name="timeLimitInput" pInputText
-                                placeholder="Please enter your quiz time limit.">
+                            <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+                            <span class="p-float-label">
+                                <p-inputNumber
+                                    [style.borderColor]="this.quizLimitForm.touched && this.quizLimitForm.invalid ? '#e24c4c' : '#d8dce1'"
+                                    [formControl]="quizLimitForm" [(ngModel)]="timeLimitInput" name="timeLimitInput"
+                                    [minFractionDigits]="1" suffix=" second" placeholder="0 second"></p-inputNumber>
+                                <label
+                                    [style.color]="this.quizLimitForm.touched && this.quizLimitForm.invalid ? '#e24c4c' : '#6c757d'">Please
+                                    Please enter your quiz time limit.</label>
+                            </span>
                         </div>
-                        <!-- <label class="loginLabel">Password:</label>
-                        <input type="password" [(ngModel)]="password" name="password" pInputText placeholder="Please enter your password." class="form-control loginInput"> -->
                     </div>
                 </div>
                 <div class="col-1">
@@ -58,33 +77,20 @@
                 </div>
             </div>
 
-            <!-- <div class="grid loginGrid" style="margin-top: 60px;">
-                <div class="col-5 center">
-                    <div class="form-group ">
-                        <div class="p-inputgroup">
-                            <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
-                            <input [(ngModel)]="choiceAmountInput" type="text" name="choiceAmountInput"
-                                pInputText placeholder="Please enter your quiz choice amount.">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-1">
-
-                </div>
-                <div class="col-6">
-
-                </div>
-            </div> -->
-
             <div class="grid loginGrid" style="margin-top: 60px;">
                 <div class="col-5 center">
                     <div class="form-group ">
                         <div class="p-inputgroup">
-                            <span style="width: 180px" class="p-inputgroup-addon">Quiz score</span>
-                            <input [(ngModel)]="scoreInput" type="text" name="scoreInput"
-                                pInputText placeholder="Please enter your quiz score.">
-                            <!-- <label class="loginLabel">Confirm password:</label>
-                        <input type="text" [(ngModel)]="confirmPassword" name="confirmPassword" pInputText placeholder="Please enter your password again." class="form-control loginInput"> -->
+                            <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+                            <span class="p-float-label">
+                                <p-inputNumber
+                                    [style.borderColor]="this.quizScoreForm.touched && this.quizScoreForm.invalid ? '#e24c4c' : '#d8dce1'"
+                                    [formControl]="quizScoreForm" [(ngModel)]="scoreInput" name="scoreInput"
+                                    [minFractionDigits]="1" suffix=" points" placeholder="0 point"></p-inputNumber>
+                                <label
+                                    [style.color]="this.quizScoreForm.touched && this.quizScoreForm.invalid ? '#e24c4c' : '#6c757d'">Please
+                                    Please enter your quiz score.</label>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -102,7 +108,7 @@
                         <button class="loginBtn" style="margin: 20px;" pButton type="button" label="Cancel"
                             [routerLink]="['/props/' + this.pid + '/quizs']"></button>
                         <button class="loginBtn" style="margin: 20px;" pButton type="button" label="Edit"
-                            (click)="EditQuiz()"></button>
+                            [disabled]="invalid()" (click)="EditQuiz()"></button>
                     </div>
                 </div>
                 <div class="col-6">

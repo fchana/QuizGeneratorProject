@@ -1,0 +1,11 @@
+#Wed Dec 07 21:47:00 ICT 2022
+ct=quarkus
+a=startApplication
+c=2
+s=0
+d=1670424420041
+v=1.7.0
+vl=type\: 0\=maven/1\=gradle
+cmp=quarkus
+cl=run
+l=mode\: run/debug

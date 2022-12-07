@@ -7,9 +7,13 @@
                         <div class="p-inputgroup">
                             <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
                             <span class="p-float-label">
-                                <input placeholder="Please enter your proposition name." [(ngModel)]="propNameInput"
-                                    [formControl]="propNameForm" name="propNameInput" type="text" pInputText>
-                                <label for="inputtext">Proposition name</label>
+                                <input
+                                [style.borderColor]="this.propNameForm.touched && this.propNameForm.invalid ? '#e24c4c' : '#d8dce1'"
+                                [formControl]="propNameForm" [(ngModel)]="propNameInput" required name="propNameInput"
+                                type="text" pInputText placeholder="Proposition name.">
+                            <label for="inputtext"
+                                [style.color]="this.propNameForm.touched && this.propNameForm.invalid ? '#e24c4c' : '#6c757d'">Please
+                                enter your proposition name.</label>
                             </span>
                         </div>
                     </div>
@@ -27,10 +31,13 @@
                         <div class="p-inputgroup">
                             <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
                             <span class="p-float-label">
-                                <p-inputNumber [formControl]="maxScoreForm" [(ngModel)]="maxScoreInput"
-                                    name="maxScoreInput" [minFractionDigits]="1" suffix=" points"
-                                    placeholder="0 points"></p-inputNumber>
-                                <label for="inputtext">Please enter your proposition max score.</label>
+                                <p-inputNumber
+                                [style.borderColor]="this.maxScoreForm.touched && this.maxScoreForm.invalid ? '#e24c4c' : '#d8dce1'"
+                                [formControl]="maxScoreForm" [(ngModel)]="maxScoreInput" name="maxScoreInput"
+                                [minFractionDigits]="1" suffix=" points" placeholder="0 points"></p-inputNumber>
+                            <label for="inputtext"
+                                [style.color]="this.maxScoreForm.touched && this.maxScoreForm.invalid ? '#e24c4c' : '#6c757d'">Please
+                                enter your proposition max score.</label>
                             </span>
                         </div>
                     </div>
@@ -49,10 +56,14 @@
                         <div class="p-inputgroup">
                             <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
                             <span class="p-float-label">
-                                <p-inputNumber [formControl]="timeLimitForm" [(ngModel)]="timeLimitInput"
-                                    name="timeLimitInput" [minFractionDigits]="1" suffix=" seconds"
-                                    placeholder="0 seconds"></p-inputNumber>
-                                <label for="inputtext">Please enter your proposition time limit.</label>
+                                <p-inputNumber 
+                                [style.borderColor]="this.timeLimitForm.touched && this.timeLimitForm.invalid ? '#e24c4c' : '#d8dce1'"
+                                [formControl]="timeLimitForm" 
+                                [(ngModel)]="timeLimitInput" name="timeLimitInput" [minFractionDigits]="1"
+                                    suffix=" seconds" placeholder="0 seconds"></p-inputNumber>
+                                <label
+                                    [style.color]="this.timeLimitForm.touched && this.timeLimitForm.invalid ? '#e24c4c' : '#6c757d'">Please
+                                    enter your proposition time limit.</label>
                             </span>
                         </div>
                     </div>

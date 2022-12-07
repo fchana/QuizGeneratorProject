@@ -8,8 +8,13 @@
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
                         <span class="p-float-label">
-                            <input [(ngModel)]="propNameInput" required name="propNameInput" type="text" pInputText placeholder="Proposition name.">
-                            <label for="inputtext">Please enter your proposition name.</label>
+                            <input
+                                [style.borderColor]="this.propNameForm.touched && this.propNameForm.invalid ? '#e24c4c' : '#d8dce1'"
+                                [formControl]="propNameForm" [(ngModel)]="propNameInput" required name="propNameInput"
+                                type="text" pInputText placeholder="Proposition name.">
+                            <label for="inputtext"
+                                [style.color]="this.propNameForm.touched && this.propNameForm.invalid ? '#e24c4c' : '#6c757d'">Please
+                                enter your proposition name.</label>
                         </span>
                     </div>
                 </div>
@@ -28,9 +33,13 @@
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
                         <span class="p-float-label">
-                            <p-inputNumber [(ngModel)]="maxScoreInput" name="maxScoreInput" [minFractionDigits]="1"
-                                suffix=" points" placeholder="0 points"></p-inputNumber>
-                            <label for="inputtext">Please enter your proposition max score.</label>
+                            <p-inputNumber
+                                [style.borderColor]="this.maxScoreForm.touched && this.maxScoreForm.invalid ? '#e24c4c' : '#d8dce1'"
+                                [formControl]="maxScoreForm" [(ngModel)]="maxScoreInput" name="maxScoreInput"
+                                [minFractionDigits]="1" suffix=" points" placeholder="0 points"></p-inputNumber>
+                            <label for="inputtext"
+                                [style.color]="this.maxScoreForm.touched && this.maxScoreForm.invalid ? '#e24c4c' : '#6c757d'">Please
+                                enter your proposition max score.</label>
                         </span>
                     </div>
                 </div>
@@ -49,9 +58,15 @@
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
                         <span class="p-float-label">
-                            <p-inputNumber [(ngModel)]="timeLimitInput" name="timeLimitInput" [minFractionDigits]="1"
+                            <p-inputNumber 
+                            [style.borderColor]="this.timeLimitForm.touched && this.timeLimitForm.invalid ? '#e24c4c' : '#d8dce1'"
+                            [formControl]="timeLimitForm" 
+                            [(ngModel)]="timeLimitInput" name="timeLimitInput" [minFractionDigits]="1"
                                 suffix=" seconds" placeholder="0 seconds"></p-inputNumber>
-                            <label for="inputtext">Please enter your proposition time limit.</label>
+                            <label
+                                [style.color]="this.timeLimitForm.touched && this.timeLimitForm.invalid ? '#e24c4c' : '#6c757d'">Please
+                                enter your proposition time limit.</label>
+
                         </span>
                     </div>
                 </div>
@@ -70,9 +85,13 @@
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
                         <span class="p-float-label">
-                            <p-inputNumber [(ngModel)]="quizAmountInput" name="quizAmountInput" [minFractionDigits]="1"
-                            suffix=" quizs" placeholder="0 quizs"></p-inputNumber>
-                            <label for="inputtext">Please enter your proposition quiz amount.</label>
+                            <p-inputNumber
+                            [style.borderColor]="this.quizAmountForm.touched && this.quizAmountForm.invalid ? '#e24c4c' : '#d8dce1'"
+                            [formControl]="quizAmountForm" 
+                            [(ngModel)]="quizAmountInput" name="quizAmountInput" [minFractionDigits]="1"
+                                suffix=" quizs" placeholder="0 quizs"></p-inputNumber>
+                            <label
+                            [style.color]="this.quizAmountForm.touched && this.quizAmountForm.invalid ? '#e24c4c' : '#6c757d'">Please enter your proposition quiz amount.</label>
                         </span>
                         <!-- <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
                         <p-inputNumber [(ngModel)]="quizAmountInput" name="quizAmountInput" [minFractionDigits]="1"
@@ -97,8 +116,9 @@
                         <!-- <input [(ngModel)]="startDateInput" name="startDateInput" type="text" pInputText
                                 placeholder="Please enter your proposition start date."> -->
 
-                        <p-calendar [(ngModel)]="startDateInput" (onSelect)="Selected()" [showTime]="true" [ngModelOptions]="{standalone: true}"
-                            [inline]="true" [hourFormat]="'12'"  [style]="{'width':'100%'}"></p-calendar>
+                        <p-calendar [(ngModel)]="startDateInput" (onSelect)="Selected()" [showTime]="true"
+                            [ngModelOptions]="{standalone: true}" [inline]="true" [hourFormat]="'12'"
+                            [style]="{'width':'100%'}"></p-calendar>
                     </div>
                     <!-- <input type="text" [(ngModel)]="firstName" name="firstName" pInputText
                             placeholder="Please enter your firstname." class="form-control loginInput"> -->
@@ -121,7 +141,7 @@
 
             </div>
             <div class="col-6">
-                
+
             </div>
         </div>
 
@@ -130,8 +150,7 @@
                 <div class="form-group centerBtn">
                     <button class="loginBtn" style="margin: 20px;" pButton type="button" label="Cancel"
                         [routerLink]="['/props']"></button>
-                    <button class="loginBtn" style="margin: 20px;" pButton type="button" label="Create"
-                        ></button>
+                    <button class="loginBtn" [disabled]="invalid()" style="margin: 20px;" pButton type="button" label="Create"></button>
                 </div>
             </div>
             <div class="col-6">
