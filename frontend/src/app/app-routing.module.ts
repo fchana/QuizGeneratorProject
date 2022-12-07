@@ -22,6 +22,8 @@ import { ActivePropComponent } from './active-prop/active-prop.component';
 import { AllStudentComponent } from './all-student/all-student.component';
 import { StdScoreComponent } from './std-score/std-score.component';
 import { TViewAnsComponent } from './t-view-ans/t-view-ans.component';
+import { AuthGuardService } from './auth-guard.service';
+import { Auth2Service } from './auth2.service';
 
 const routes: Routes = [
   {path: '',   redirectTo: '/login', pathMatch: 'full' },
@@ -52,6 +54,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [Auth2Service]
 })
 export class AppRoutingModule { }

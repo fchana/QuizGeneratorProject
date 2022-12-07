@@ -1,19 +1,20 @@
 <div class="grid">
     <div class="container">
         <form #loginForm="ngForm">
-            <!-- {{loginForm.value | json}} -->
             <div class="grid">
                 <div class="col-5 center">
-                    <div class="form-group ">
+                    <div class="form-group">
                         <div class="p-inputgroup">
                             <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
                             <span class="p-float-label">
-                                <input placeholder="Please enter your proposition name." [(ngModel)]="propNameInput"
-                                    name="propNameInput" type="text" pInputText>
-                                <label for="inputtext">Proposition name</label>
+                                <input
+                                [style.borderColor]="this.propNameForm.touched && this.propNameForm.invalid ? '#e24c4c' : '#d8dce1'"
+                                [formControl]="propNameForm" [(ngModel)]="propNameInput" required name="propNameInput"
+                                type="text" pInputText placeholder="Proposition name.">
+                            <label for="inputtext"
+                                [style.color]="this.propNameForm.touched && this.propNameForm.invalid ? '#e24c4c' : '#6c757d'">Please
+                                enter your proposition name.</label>
                             </span>
-                            <!-- <input [(ngModel)]="propNameInput" name="propNameInput" type="text" pInputText
-                                placeholder="Please enter your proposition name."> -->
                         </div>
                     </div>
                 </div>
@@ -21,8 +22,7 @@
 
                 </div>
                 <div class="col-6 center">
-                    <!-- <h1 style="margin-top: 50px;">- Online proposition generateror</h1>
-                    <h1>- Register page</h1> -->
+
                 </div>
             </div>
             <div class="grid">
@@ -31,9 +31,13 @@
                         <div class="p-inputgroup">
                             <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
                             <span class="p-float-label">
-                                <p-inputNumber [(ngModel)]="maxScoreInput" name="maxScoreInput" [minFractionDigits]="1"
-                                    suffix=" points" placeholder="0 points"></p-inputNumber>
-                                <label for="inputtext">Please enter your proposition max score.</label>
+                                <p-inputNumber
+                                [style.borderColor]="this.maxScoreForm.touched && this.maxScoreForm.invalid ? '#e24c4c' : '#d8dce1'"
+                                [formControl]="maxScoreForm" [(ngModel)]="maxScoreInput" name="maxScoreInput"
+                                [minFractionDigits]="1" suffix=" points" placeholder="0 points"></p-inputNumber>
+                            <label for="inputtext"
+                                [style.color]="this.maxScoreForm.touched && this.maxScoreForm.invalid ? '#e24c4c' : '#6c757d'">Please
+                                enter your proposition max score.</label>
                             </span>
                         </div>
                     </div>
@@ -52,13 +56,16 @@
                         <div class="p-inputgroup">
                             <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
                             <span class="p-float-label">
-                                <p-inputNumber [(ngModel)]="timeLimitInput" name="timeLimitInput" [minFractionDigits]="1"
+                                <p-inputNumber 
+                                [style.borderColor]="this.timeLimitForm.touched && this.timeLimitForm.invalid ? '#e24c4c' : '#d8dce1'"
+                                [formControl]="timeLimitForm" 
+                                [(ngModel)]="timeLimitInput" name="timeLimitInput" [minFractionDigits]="1"
                                     suffix=" seconds" placeholder="0 seconds"></p-inputNumber>
-                                <label for="inputtext">Please enter your proposition time limit.</label>
+                                <label
+                                    [style.color]="this.timeLimitForm.touched && this.timeLimitForm.invalid ? '#e24c4c' : '#6c757d'">Please
+                                    enter your proposition time limit.</label>
                             </span>
                         </div>
-                        <!-- <label class="loginLabel">Password:</label>
-                        <input type="password" [(ngModel)]="password" name="password" pInputText placeholder="Please enter your password." class="form-control loginInput"> -->
                     </div>
                 </div>
                 <div class="col-1">
@@ -92,13 +99,14 @@
             <div class="gird">
                 <div class="col-5">
                     <h3>Allow students to view their grades.</h3>
-                    <p-selectButton [options]="gfg" [(ngModel)]="enableScoreInput" name="enableScoreInput"></p-selectButton>
+                    <p-selectButton [options]="gfg" [(ngModel)]="enableScoreInput" name="enableScoreInput">
+                    </p-selectButton>
                 </div>
                 <div class="col-1">
-    
+
                 </div>
                 <div class="col-6">
-                    
+
                 </div>
             </div>
 
@@ -108,7 +116,7 @@
                         <button class="loginBtn" style="margin: 20px;" pButton type="button" label="Cancel"
                             [routerLink]="['/props']"></button>
                         <button class="loginBtn" style="margin: 20px;" pButton type="button" label="Edit"
-                            (click)="EditProp()"></button>
+                            [disabled]="invalid()" (click)="EditProp()"></button>
                     </div>
                 </div>
                 <div class="col-6">

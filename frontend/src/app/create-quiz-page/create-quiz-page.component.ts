@@ -1,6 +1,7 @@
 import { Time } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { Choice } from 'app/shared/Model/choice';
@@ -15,6 +16,13 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./create-quiz-page.component.scss']
 })
 export class CreateQuizPageComponent implements OnInit {
+
+  quizContentform = new FormControl(null, [Validators.required])
+  choiceTypeForm = new FormControl(null, [Validators.required])
+  quizLimitForm = new FormControl(null, [Validators.required])
+  choiceAmountForm = new FormControl(null, [Validators.required])
+  quizScoreForm = new FormControl(null, [Validators.required])
+
   profileJson!: User;
   proposition!: Proposition[];
 
@@ -45,6 +53,10 @@ export class CreateQuizPageComponent implements OnInit {
       })
       ),
       );
+  }
+
+  invalid(){
+    return (this.quizContentform.hasError('required')||this.quizLimitForm.hasError('required')||this.quizScoreForm.hasError('required')||this.choiceTypeForm.hasError('required')||this.choiceAmountForm.hasError('required'))
   }
 
   CreateQuiz(){

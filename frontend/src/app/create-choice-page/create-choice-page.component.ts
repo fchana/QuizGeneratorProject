@@ -1,6 +1,7 @@
 import { Time } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { Choice } from 'app/shared/Model/choice';
@@ -16,6 +17,9 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./create-choice-page.component.scss']
 })
 export class CreateChoicePageComponent implements OnInit {
+
+  choiceContentform = new FormControl(null, [Validators.required])
+
   gfg: any[];
   profileJson!: User;
   proposition!: Proposition[];
@@ -47,6 +51,13 @@ export class CreateChoicePageComponent implements OnInit {
       })
       ),
       );
+  }
+
+  invalid(){
+    if(this.choiceCorrectInput === undefined || this.choiceContentform.hasError("required") === true)
+      return true
+    else
+      return false
   }
 
   CreateChoice(){

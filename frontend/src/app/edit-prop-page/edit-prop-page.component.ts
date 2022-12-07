@@ -6,7 +6,7 @@ import { AuthService } from '@auth0/auth0-angular';
 import { Proposition } from 'app/shared/Model/proposition';
 import { User } from 'app/shared/Model/user';
 import { MessageService } from 'primeng/api';
-
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-prop-page',
@@ -15,6 +15,11 @@ import { MessageService } from 'primeng/api';
   providers: []
 })
 export class EditPropPageComponent implements OnInit {
+
+  propNameForm = new FormControl(null, [Validators.required])
+  maxScoreForm = new FormControl(null, [Validators.required])
+  timeLimitForm = new FormControl(null, [Validators.required])
+
   profileJson?: User;
   proposition!: Proposition[];
 
@@ -58,6 +63,10 @@ export class EditPropPageComponent implements OnInit {
     );
 
 
+  }
+
+  invalid(){
+    return (this.propNameForm.hasError('required')||this.maxScoreForm.hasError('required')||this.timeLimitForm.hasError('required'))
   }
 
   Selected() {

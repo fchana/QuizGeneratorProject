@@ -7,6 +7,7 @@
   import { User } from 'app/shared/Model/user';
   import { ActivatedRoute, Router } from '@angular/router';
   import { MessageService } from 'primeng/api';
+import { FormControl, Validators } from '@angular/forms';
 
   @Component({
     selector: 'app-create-prop-page',
@@ -14,6 +15,12 @@
     styleUrls: ['./create-prop-page.component.scss']
   })
   export class CreatePropPageComponent implements OnInit {
+
+    propNameForm = new FormControl(null, [Validators.required])
+    maxScoreForm = new FormControl(null, [Validators.required])
+    timeLimitForm = new FormControl(null, [Validators.required])
+    quizAmountForm = new FormControl(null, [Validators.required])
+
     profileJson?: User;
     proposition!: Proposition[];
     value: any;
@@ -47,6 +54,10 @@
           })
         ),
       );
+    }
+
+    invalid(){
+      return (this.propNameForm.hasError('required')||this.maxScoreForm.hasError('required')||this.timeLimitForm.hasError('required')||this.quizAmountForm.hasError('required'))
     }
 
     Selected() {

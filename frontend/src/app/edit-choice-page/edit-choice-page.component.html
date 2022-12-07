@@ -6,9 +6,17 @@
                 <div class="col-5 center">
                     <div class="form-group ">
                         <div class="p-inputgroup">
-                            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                            <input [(ngModel)]="choiceContentInput" name="choiceContentInput" type="text" pInputText
-                                placeholder="Please enter your choice content.">
+                            <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+                            <span class="p-float-label">
+                                <input
+                                    [style.borderColor]="this.choiceContentform.touched && this.choiceContentform.invalid ? '#e24c4c' : '#d8dce1'"
+                                    [formControl]="choiceContentform" [(ngModel)]="choiceContentInput"
+                                    name="choiceContentInput" type="text" pInputText
+                                    placeholder="Please enter your choice content.">
+                                <label
+                                    [style.color]="this.choiceContentform.touched && this.choiceContentform.invalid ? '#e24c4c' : '#6c757d'">Please
+                                    Please enter your choice content.</label>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -26,7 +34,7 @@
                         <button class="loginBtn" style="margin: 20px;" pButton type="button" label="Cancel"
                             [routerLink]="['/props/' + this.pid + '/quizs/' + this.qid + '/choice' ]"></button>
                         <button class="loginBtn" style="margin: 20px;" pButton type="button" label="Edit"
-                            (click)="CreateChoice()"></button>
+                            [disabled]="invalid()" (click)="CreateChoice()"></button>
                     </div>
                 </div>
                 <div class="col-6">

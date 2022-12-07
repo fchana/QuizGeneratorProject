@@ -1,23 +1,27 @@
 <div class="grid">
     <div class="container">
         <form #loginForm="ngForm">
-            <!-- {{loginForm.value | json}} -->
             <div class="grid">
                 <div class="col-5 center">
                     <div class="form-group ">
                         <div class="p-inputgroup">
                             <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                            <input [(ngModel)]="emailInput" name="emailInput" type="text" pInputText
-                                placeholder="Email">
+                            <span class="p-float-label">
+                                <input
+                                    [style.borderColor]="this.emailForm.touched && this.emailForm.invalid ? '#e24c4c' : '#d8dce1'"
+                                    [(ngModel)]="emailInput" name="emailInput" type="text" pInputText
+                                    [formControl]="emailForm"
+                                    placeholder="Please enter your email.">
+                                <label for="inputtext"
+                                    [style.color]="this.emailForm.touched && this.emailForm.invalid ? '#e24c4c' : '#6c757d'">Email</label>
+                            </span>
                         </div>
                     </div>
                 </div>
-                <div class="col-1">
-
+                <div class="col-2">
                 </div>
-                <div class="col-6 center">
-                    <!-- <h1 style="margin-top: 50px;">- Online proposition generateror</h1>
-                    <h1>- Register page</h1> -->
+                <div class="col-5 center">
+
                 </div>
             </div>
             <div class="grid">
@@ -25,15 +29,22 @@
                     <div class="form-group ">
                         <div class="p-inputgroup">
                             <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                            <input [(ngModel)]="usernameInput" name="usernameInput" type="text" pInputText
-                                placeholder="username">
+                            <span class="p-float-label">
+                                <input
+                                    [style.borderColor]="this.usernameForm.touched && this.usernameForm.invalid ? '#e24c4c' : '#d8dce1'"
+                                    [(ngModel)]="usernameInput" name="usernameInput" type="text" pInputText
+                                    [formControl]="usernameForm"
+                                    placeholder="Please enter your username.">
+                                <label for="inputtext"
+                                    [style.color]="this.usernameForm.touched && this.usernameForm.invalid ? '#e24c4c' : '#6c757d'">Username</label>
+                            </span>
                         </div>
                     </div>
                 </div>
-                <div class="col-1">
+                <div class="col-2 center">
 
                 </div>
-                <div class="col-6 center">
+                <div class="col-5 center">
                     <h1 style="margin-top: 50px;">- Online proposition generateror</h1>
                     <h1>- Register page</h1>
                 </div>
@@ -43,78 +54,92 @@
                     <div class="form-group ">
                         <div class="p-inputgroup">
                             <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
-                            <input [(ngModel)]="passwordInput" type="password" name="passwordInput" pInputText
-                                placeholder="Password">
+                            <span class="p-float-label">
+                                <input
+                                    [style.borderColor]="this.passwordForm.touched && this.passwordForm.invalid ? '#e24c4c' : '#d8dce1'"
+                                    [(ngModel)]="passwordInput" type="password" name="passwordInput" pInputText
+                                    [formControl]="passwordForm"
+                                    placeholder="Please enter your password.">
+                                <label for="inputtext"
+                                    [style.color]="this.passwordForm.touched && this.passwordForm.invalid ? '#e24c4c' : '#6c757d'">Password</label>
+                            </span>
                         </div>
-                        <!-- <label class="loginLabel">Password:</label>
-                        <input type="password" [(ngModel)]="password" name="password" pInputText placeholder="Please enter your password." class="form-control loginInput"> -->
                     </div>
                 </div>
-                <div class="col-1">
-
+                <div class="col-2 center">
                 </div>
-                <div class="col-6">
+                <div class="col-5">
 
                 </div>
             </div>
 
-            <div class="grid loginGrid" style="margin-top: 60px;">
+            <div class="grid loginGrid" style="margin-top: 50px;">
                 <div class="col-5 center">
                     <div class="form-group ">
                         <div class="p-inputgroup">
                             <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
-                            <input [(ngModel)]="confirmPasswordInput" type="password" name="confirmPasswordInput"
-                                pInputText placeholder="Confirm password">
-                            <!-- <label class="loginLabel">Confirm password:</label>
-                        <input type="text" [(ngModel)]="confirmPassword" name="confirmPassword" pInputText placeholder="Please enter your password again." class="form-control loginInput"> -->
+                            <span class="p-float-label">
+                                <input
+                                    [style.borderColor]="(this.confirmPass() && this.confirmPasswordForm.touched) ? '#e24c4c' : '#d8dce1'"
+                                    [(ngModel)]="confirmPasswordInput" type="password" name="confirmPasswordInput"
+                                    [formControl]="confirmPasswordForm" 
+                                    pInputText
+                                    placeholder="Please enter your password again.">
+                                <label for="inputtext"
+                                    [style.color]="(this.confirmPass() && this.confirmPasswordForm.touched) ? '#e24c4c' : '#6c757d'">Confirm
+                                    password</label>
+                            </span>
                         </div>
                     </div>
                 </div>
-                <div class="col-1">
-
+                <div class="col-2 center">
                 </div>
-                <div class="col-6">
+                <div class="col-5">
 
                 </div>
             </div>
 
-            <div class="grid" style="margin-top: 60px;">
+            <div class="grid" style="margin-top: 50px;">
                 <div class="col-5 center">
                     <div class="form-group ">
                         <div class="p-inputgroup">
                             <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
-                            <input [(ngModel)]="firstNameInput" name="firstNameInput" type="text" pInputText
-                                placeholder="Firstname">
+                            <span class="p-float-label">
+                                <input
+                                    [style.borderColor]="this.firstnameForm.touched && this.firstnameForm.invalid ? '#e24c4c' : '#d8dce1'"
+                                    [(ngModel)]="firstNameInput" name="firstNameInput" type="text" pInputText
+                                    [formControl]="firstnameForm" placeholder="Please enter your firstname.">
+                                <label for="inputtext"
+                                    [style.color]="this.firstnameForm.touched && this.firstnameForm.invalid ? '#e24c4c' : '#6c757d'">Firstname</label>
+                            </span>
                         </div>
-                        <!-- <input type="text" [(ngModel)]="firstName" name="firstName" pInputText
-                            placeholder="Please enter your firstname." class="form-control loginInput"> -->
                     </div>
                 </div>
-                <div class="col-1">
-
+                <div class="col-2 center">
                 </div>
-                <div class="col-6">
+                <div class="col-5">
 
                 </div>
             </div>
 
-            <div class="grid" style="margin-top: 60px;">
+            <div class="grid" style="margin-top: 50px;">
                 <div class="col-5 center">
                     <div class="form-group ">
                         <div class="p-inputgroup">
                             <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
-                            <input [(ngModel)]="lastNameInput" name="lastNameInput" type="text" pInputText
-                                placeholder="Lastname">
+                            <span class="p-float-label">
+                                <input 
+                                [style.borderColor]="this.lastnameForm.touched && this.lastnameForm.invalid ? '#e24c4c' : '#d8dce1'"
+                                [(ngModel)]="lastNameInput" name="lastNameInput" type="text" pInputText
+                                    [formControl]="lastnameForm" placeholder="Please enter your lastname.">
+                                <label for="inputtext" [style.color]="this.lastnameForm.touched && this.lastnameForm.invalid ? '#e24c4c' : '#6c757d'">Lastname</label>
+                            </span>
                         </div>
-                        <!-- <input type="text" [(ngModel)]="lastName" name="lastName" pInputText
-                            placeholder="Please enter your lastname." class="form-control loginInput"> -->
                     </div>
                 </div>
-                <div class="col-1">
-
+                <div class="col-2 center">
                 </div>
-                <div class="col-6">
-
+                <div class="col-5">
                 </div>
             </div>
 
@@ -124,7 +149,7 @@
                         <button class="loginBtn" style="margin: 20px;" pButton type="button" type="submit" label="Login"
                             [routerLink]="['/login']"></button>
                         <button class="loginBtn" style="margin: 20px;" pButton type="button" label="Register"
-                            (click)="Register()"></button>
+                            [disabled]="invalid()" (click)="Register()"></button>
                     </div>
                 </div>
                 <div class="col-6">
