@@ -12,27 +12,60 @@ import java.util.List;
 //@MongoEntity(collection = "proposition")
 public class Proposition {
 	public List<Quiz> quiz;
-	
-    public ObjectId id;
-    
-//    public String id;
-    
-    public List<ObjectId> allowed;
-    
-    public String prop_name;
-    
-    public int prop_time;
-    
-    public int quiz_amount;
-    
-    public double max_score;
+
+	public ObjectId id;
+
+	// public String id;
+
+	public List<ObjectId> allowed;
+
+	public String prop_name;
+
+	public int prop_time;
+
+	public int quiz_amount;
+
+	public double max_score;
 
 	public boolean active;
-    
-    @BsonProperty("start_date")
-    public LocalDateTime start_date;
 
-	
+	public boolean enable_score;
+
+	@BsonProperty("start_date")
+	public LocalDateTime start_date;
+
+	public List<Quiz> getQuiz() {
+		return quiz;
+	}
+
+	public void setQuiz(List<Quiz> quiz) {
+		this.quiz = quiz;
+	}
+
+	public List<ObjectId> getAllowed() {
+		return allowed;
+	}
+
+	public void setAllowed(List<ObjectId> allowed) {
+		this.allowed = allowed;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public boolean isEnable_score() {
+		return enable_score;
+	}
+
+	public void setEnable_score(boolean enable_score) {
+		this.enable_score = enable_score;
+	}
+
 	public String getProp_name() {
 		return prop_name;
 	}
@@ -40,7 +73,6 @@ public class Proposition {
 	public void setProp_name(String prop_name) {
 		this.prop_name = prop_name;
 	}
-
 
 	public int getProp_time() {
 		return prop_time;
@@ -82,8 +114,4 @@ public class Proposition {
 		this.start_date = start_date;
 	}
 
-
-
-    
-    
-    }
+}

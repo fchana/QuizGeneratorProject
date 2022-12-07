@@ -8,7 +8,7 @@
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
                         <span class="p-float-label">
-                            <input [(ngModel)]="propNameInput" name="propNameInput" type="text" pInputText placeholder="Proposition name.">
+                            <input [(ngModel)]="propNameInput" required name="propNameInput" type="text" pInputText placeholder="Proposition name.">
                             <label for="inputtext">Please enter your proposition name.</label>
                         </span>
                     </div>
@@ -112,13 +112,26 @@
             </div>
         </div>
 
+        <div class="gird">
+            <div class="col-5">
+                <h3>Allow students to view their grades.</h3>
+                <p-selectButton [options]="gfg" [(ngModel)]="enableScoreInput" name="enableScoreInput"></p-selectButton>
+            </div>
+            <div class="col-1">
+
+            </div>
+            <div class="col-6">
+                
+            </div>
+        </div>
+
         <div class="grid">
             <div class="col-6">
                 <div class="form-group centerBtn">
                     <button class="loginBtn" style="margin: 20px;" pButton type="button" label="Cancel"
                         [routerLink]="['/props']"></button>
                     <button class="loginBtn" style="margin: 20px;" pButton type="button" label="Create"
-                        (click)="CreateProp()"></button>
+                        ></button>
                 </div>
             </div>
             <div class="col-6">

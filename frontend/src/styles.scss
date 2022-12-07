@@ -194,3 +194,19 @@
     right: 2%; 
     z-index: 20;
 }
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: ghostwhite;
+    color: black;
+    text-align: center;
+ }
+
+ .p-error {
+    color: red;
+    // margin-top: 500px;
+    font-size: 20px;
+ }

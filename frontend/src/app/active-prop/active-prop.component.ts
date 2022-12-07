@@ -104,7 +104,8 @@ export class ActivePropComponent implements OnInit {
         quiz: this.proposition[index].quiz,
         quiz_amount: this.proposition[index].quiz_amount,
         start_date: this.proposition[index].start_date,
-        active: this.active[index]
+        active: this.active[index],
+        enable_score: this.proposition[index].enable_score
       }
 
       this.profileJson?.proposition.splice(index, 1, userUpdate);

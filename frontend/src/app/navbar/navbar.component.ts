@@ -14,6 +14,7 @@ import { User } from 'app/shared/Model/user';
 export class NavbarComponent implements OnInit {
   profileJson!: User;
   proposition!: Proposition[];
+  isLoggedIn!: boolean;
 
   constructor(private http: HttpClient, public auth: AuthService) { }
 
