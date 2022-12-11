@@ -54,7 +54,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { AllStudentComponent } from './all-student/all-student.component';
 import { StdScoreComponent } from './std-score/std-score.component';
 import { TViewAnsComponent } from './t-view-ans/t-view-ans.component';
-
+import {ToolbarModule} from 'primeng/toolbar';
 
 
 @NgModule({
@@ -115,7 +115,8 @@ import { TViewAnsComponent } from './t-view-ans/t-view-ans.component';
     AuthModule.forRoot({
       ...env.auth,
     }),
-    TableModule
+    TableModule,
+    ToolbarModule
 
   ],
   providers: [MessageService,

@@ -1,5 +1,11 @@
 <div class="propCont propCent">
-    <p-table [value]="quiz">
+    <p-toolbar styleClass="mb-4 gap-2">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="Add Quiz" (click)="AddQuiz()" icon="pi pi-plus"
+                class="p-button-success mr-2"></button>
+        </ng-template>
+    </p-toolbar>
+    <p-table [value]="quiz" selectionMode="single">
         <ng-template pTemplate="header">
             <tr>
                 <th>
@@ -26,37 +32,38 @@
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-quiz let-rowIndex="rowIndex">
-            <tr *ngIf="quiz.content === undefined || quiz.content === ''; else next"
-                class="tableList">
-                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]" >
+            <tr *ngIf="quiz.content === undefined || quiz.content === ''; else next" class="tableList">
+                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]">
                     {{ rowIndex + 1 }}
                 </td>
-                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]" >
+                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]">
                     {{ quiz.content }}
                 </td>
-                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]" >
+                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]">
                     {{ quiz.choice_type }}
                 </td>
-                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]" >
+                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]">
                     {{ quiz.time_limit}}
                 </td>
-                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]" >
+                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]">
                     {{ quiz.choice_amount }}
                 </td>
-                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]" >
+                <td [routerLink]="['/props/' + this.id +  '/createQuiz/' + rowIndex]">
                     {{ quiz.score }}
                 </td>
                 <td>
                     <button *ngIf="quiz.content === undefined || quiz.content !== ''; else elseBtn"
                         style="width: 40%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-pencil"
-                        iconPos="left" [routerLink]="['/props/'+this.id+'/editQuiz/'+rowIndex]"></button>
+                        iconPos="left" [routerLink]="['/props/'+this.id+'/editQuiz/'+rowIndex]"
+                        class="p-button-success"></button>
                     <ng-template #elseBtn>
                         <button style="width: 40%; margin-right: 10px;" disabled="true" pButton type="button" pButton
-                            icon="pi pi-pencil" iconPos="left"
+                            icon="pi pi-pencil" iconPos="left" class="p-button-success"
                             [routerLink]="['/props/'+this.id+'/editQuiz/'+rowIndex]"></button>
                     </ng-template>
                     <button style="width: 40%;" type="button" pButton icon="pi pi-trash" iconPos="left"
-                        (click)="DeleteQuiz(rowIndex)"></button>
+                        (click)="DeleteQuiz(rowIndex)"
+                        class="p-button-danger"></button>
                 </td>
             </tr>
             <ng-template #next>
@@ -82,21 +89,22 @@
                     <td>
                         <button *ngIf="quiz.content === undefined || quiz.content !== ''; else elseBtn"
                             style="width: 40%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-pencil"
-                            iconPos="left" [routerLink]="['/props/'+this.id+'/editQuiz/'+rowIndex]"></button>
+                            iconPos="left" [routerLink]="['/props/'+this.id+'/editQuiz/'+rowIndex]"
+                            class="p-button-success"></button>
                         <ng-template #elseBtn>
                             <button style="width: 40%; margin-right: 10px;" disabled="true" pButton type="button"
-                                pButton icon="pi pi-pencil" iconPos="left"
+                                pButton icon="pi pi-pencil" iconPos="left" class="p-button-success"
                                 [routerLink]="['/props/'+this.id+'/editQuiz/'+rowIndex]"></button>
                         </ng-template>
                         <button style="width: 40%;" type="button" pButton icon="pi pi-trash" iconPos="left"
-                            (click)="DeleteQuiz(rowIndex)"></button>
+                            (click)="DeleteQuiz(rowIndex)" class="p-button-danger"></button>
                     </td>
                 </tr>
             </ng-template>
         </ng-template>
     </p-table>
-    <button class="loginBtn" style="width: 100%; margin-top: 20px;" pButton type="button" label="Add quiz"
-        (click)="AddQuiz()"></button>
+    <!-- <button class="loginBtn" style="width: 100%; margin-top: 20px;" pButton type="button" label="Add quiz"
+        (click)="AddQuiz()"></button> -->
     <p-confirmDialog [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}" header="Confirmation"
         icon="pi pi-exclamation-triangle"></p-confirmDialog>
 

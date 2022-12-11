@@ -1,15 +1,22 @@
 <div class="quiz-container center">
+    <p-toolbar styleClass="mb-4 gap-2">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="Back to proposition page" [routerLink]="['/props/']"
+                class="p-button-success mr-2"></button>
+        </ng-template>
+    </p-toolbar>
     <div class="quiz-header">
         <label class="quiz-header-content">{{ quizs[first].content }}</label>
     </div>
     <div class="quiz-content" *ngFor="let choice of quizs[first].choice; let i = index">
-        <p-toggleButton [style]="{'width': '100%', 'height': '100px'}" (click)="Select(first, i)" onLabel="{{ choice.content }}" offLabel="{{ choice.content }}"
-         onIcon="pi pi-check" offIcon="pi pi-times"></p-toggleButton>
+        <p-toggleButton [style]="{'width': '100%', 'height': '100px'}" (click)="Select(first, i)"
+            onLabel="{{ choice.content }}" offLabel="{{ choice.content }}" onIcon="pi pi-check" offIcon="pi pi-times">
+        </p-toggleButton>
     </div>
 </div>
 <div class="grid align-items-center">
     <div class="col-1">
-        <p-button icon="pi pi-refresh" (onClick)="refresh()"></p-button>
+
     </div>
     <div class="col-10">
         <p-paginator [first]="first" [rows]="1" [totalRecords]="totalRecords2" (onPageChange)="onPageChange($event)"

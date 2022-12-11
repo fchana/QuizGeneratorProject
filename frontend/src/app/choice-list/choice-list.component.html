@@ -1,5 +1,11 @@
 <div class="propCont propCent">
-    <p-table [value]="choice">
+    <p-toolbar styleClass="mb-4 gap-2">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="Add Choice" (click)="AddChoice()" icon="pi pi-plus"
+                class="p-button-success mr-2"></button>
+        </ng-template>
+    </p-toolbar>
+    <p-table [value]="choice" selectionMode="single">
         <ng-template pTemplate="header">
             <tr>
                 <th>
@@ -17,9 +23,7 @@
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-choice let-rowIndex="rowIndex">
-            <tr *ngIf="choice.content == ''; else next"
-                
-                class="tableList">
+            <tr *ngIf="choice.content == ''; else next" class="tableList">
                 <td [routerLink]="['/props/' + this.pid +  '/quizs/' + this.qid + '/createChoice/' + rowIndex]">
                     {{ rowIndex + 1 }}
                 </td>
@@ -31,19 +35,19 @@
                 </td>
                 <td>
                     <button *ngIf="choice.content === undefined; else elseBtn" style="width: 40%; margin-right: 10px;"
-                        pButton type="button" pButton icon="pi pi-pencil" iconPos="left"
+                        pButton type="button" pButton icon="pi pi-pencil" iconPos="left" class="p-button-success"
                         [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]"></button>
                     <ng-template #elseBtn>
                         <button style="width: 40%; margin-right: 10px;" disabled="true" pButton type="button" pButton
-                            icon="pi pi-pencil" iconPos="left"
+                            icon="pi pi-pencil" iconPos="left" class="p-button-success"
                             [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]"></button>
                     </ng-template>
                     <button style="width: 40%;" type="button" pButton icon="pi pi-trash" iconPos="left"
-                        (click)="DeleteChoice(rowIndex)"></button>
+                        class="p-button-danger" (click)="DeleteChoice(rowIndex)"></button>
                 </td>
             </tr>
             <ng-template #next>
-                <tr  class="tableList">
+                <tr class="tableList">
                     <td [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]">
                         {{ rowIndex + 1 }}
                     </td>
@@ -55,16 +59,17 @@
                     </td>
                     <td>
                         <button style="width: 40%; margin-right: 10px;" pButton type="button" pButton
-                            icon="pi pi-pencil" iconPos="left"
+                            icon="pi pi-pencil" iconPos="left" class="p-button-success"
                             [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]"></button>
                         <button style="width: 40%;" type="button" pButton icon="pi pi-trash" iconPos="left"
-                            (click)="DeleteChoice(rowIndex)"></button>
+                            (click)="DeleteChoice(rowIndex)" class="p-button-danger"></button>
                     </td>
                 </tr>
             </ng-template>
         </ng-template>
     </p-table>
-    <button class="loginBtn" style="width: 100%; margin-top: 20px;" pButton type="button" label="Add quiz"
-        (click)="AddChoice()"></button>
-    <p-confirmDialog [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}" header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    <!-- <button class="loginBtn" style="width: 100%; margin-top: 20px;" pButton type="button" label="Add quiz"
+        (click)="AddChoice()"></button> -->
+    <p-confirmDialog [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}" header="Confirmation"
+        icon="pi pi-exclamation-triangle"></p-confirmDialog>
 </div>
