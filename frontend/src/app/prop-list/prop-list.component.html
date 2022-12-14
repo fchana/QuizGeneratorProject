@@ -1,5 +1,6 @@
 <div class="propCont propCent">
   <div *ngIf="profileJson?.account_type == true; else student">
+    <p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
     <p-toolbar styleClass="mb-4 gap-2">
       <ng-template pTemplate="left">
         <button pButton pRipple label="Create proposition" [routerLink]="['/createProp']" icon="pi pi-plus"
@@ -10,7 +11,7 @@
     </p-toolbar>
     <p-table [value]="proposition" selectionMode="single">
       <ng-template pTemplate="header">
-        <tr>
+        <tr style="font-family:verdana">
           <th>
             proposition name
           </th>
@@ -55,10 +56,11 @@
             {{ prop.start_date | date :'medium' }}
           </td>
           <td style="padding-right:80px">
-            <button style="width: 28%; margin-right: 10px;"  pButton type="button" pButton icon="pi pi-eye"
+            <button style="width: 28%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-eye"
               iconPos="left" [routerLink]="['/props/preview/'+rowIndex]"></button>
-            <button style="width: 28%; margin-right: 10px;" class="p-button-success" pButton type="button" pButton icon="pi pi-pencil"
-              iconPos="left" [routerLink]="['/editProp/'+rowIndex]"></button>
+            <button style="width: 28%; margin-right: 10px;" class="p-button-success" pButton type="button" pButton
+              icon="pi pi-pencil" iconPos="left" [routerLink]="['/editProp/'+rowIndex]"
+              [disabled]="active[rowIndex]"></button>
             <button style="width: 28%;" type="button" pButton class="p-button-danger" icon="pi pi-trash" iconPos="left"
               (click)="DeleteProp(rowIndex)"></button>
           </td>
@@ -72,12 +74,9 @@
         </tr>
       </ng-template>
     </p-table>
-    <!-- <button class="loginBtn" style="width: 100%; margin-top: 20px;" pButton type="button" type="submit"
-      label="Create proposition" [routerLink]="['/createProp']"></button> -->
 
   </div>
 
-  <!--------------------------------- Student proplist ----------------------------------->
   <ng-template #student>
     <p-table [value]="proposition">
       <ng-template pTemplate="header">
@@ -126,6 +125,9 @@
       </ng-template>
     </p-table>
   </ng-template>
+  <div class="footer">
+    <h1>Quiz generateror</h1>
+  </div>
 </div>
 <p-confirmDialog [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}" header="Confirmation"
   icon="pi pi-exclamation-triangle"></p-confirmDialog>

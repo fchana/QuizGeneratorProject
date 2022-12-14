@@ -2,16 +2,7 @@
     <div class="grid">
         <div class="col-2">
             <p>Countdown : {{ countDown }}</p>
-            <p-knob [size]="200" [(ngModel)]="ct" [min]="0" [readonly]="true" [max]="maxProp()"
-                [valueColor]="ctColor()"></p-knob>
-        </div>
-        <div class="col-2">
             <p>Countdown Quiz: {{ countDown2 }}</p>
-            <p-knob [size]="200" [(ngModel)]="ct2"  [min]="0" [readonly]="true" [max]="quizs[first].time_limit"
-                [valueColor]="ctColor2()"></p-knob>
-        </div>
-        <div class="col">
-
         </div>
     </div>
     <!-- <p>Countdown : {{ countDown }}</p>

@@ -6,7 +6,7 @@ import { Choice } from 'app/shared/Model/choice';
 import { Proposition } from 'app/shared/Model/proposition';
 import { Quiz } from 'app/shared/Model/quiz';
 import { User } from 'app/shared/Model/user';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmationService, MenuItem, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-choice-list',
@@ -22,6 +22,10 @@ export class ChoiceListComponent implements OnInit {
   condition: false;
   user: any;
   pid: any;
+  items: MenuItem[];
+
+  home: MenuItem;
+  quizs: MenuItem;
 
   constructor(private http: HttpClient, public auth: AuthService, private route: ActivatedRoute, private confirmationService: ConfirmationService, private messageService: MessageService,) {
    }
@@ -30,6 +34,13 @@ export class ChoiceListComponent implements OnInit {
     this.pid = this.route.snapshot.paramMap.get('pid');
     this.qid = this.route.snapshot.paramMap.get('qid');
     this.CallProfile();
+    this.items = [
+      {label: 'Quiz', routerLink: '/props/' + this.pid + '/quizs'},
+      {label: 'Choice'}
+    ];
+
+    this.home = { icon: 'pi pi-home', routerLink: '/props' };
+    // this.quizs = {routerLink: '/props' + this.pid + 'quizs'}
     }
 
     DeleteChoice(index: number){

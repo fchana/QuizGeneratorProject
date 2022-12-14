@@ -41,3 +41,40 @@
 2022-12-11 21:32:35,516 [Worker-7: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
 2022-12-11 21:32:42,465 [Worker-1: Launching New_configuration (2)] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
 2022-12-11 21:32:42,467 [Worker-1: Launching New_configuration (2)] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=52779 -B compile quarkus:dev
+2022-12-12 08:37:03,173 [Worker-3: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-12-12 08:40:03,196 [Worker-19: Launching New_configuration (2)] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: org.acme:mongodb-panache-quickstart:1.0.0-SNAPSHOT @ D:\QuizGeneratorProject\backend\mongodb-panache-quickstart\pom.xml.
+2022-12-12 08:40:09,328 [Worker-19: Launching New_configuration (2)] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-12-12 08:40:09,331 [Worker-19: Launching New_configuration (2)] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2022-12-12 08:40:09,442 [Worker-19: Launching New_configuration (2)] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-12-12 08:40:09,442 [Worker-19: Launching New_configuration (2)] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\QuizGeneratorProject\backend\mongodb-panache-quickstart\src\test\resources
+2022-12-12 08:40:10,492 [Worker-19: Launching New_configuration (2)] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
+2022-12-12 08:40:10,493 [Worker-19: Launching New_configuration (2)] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=62566 -B compile quarkus:dev
+2022-12-12 08:40:11,088 [Worker-30: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: org.acme:mongodb-panache-quickstart:1.0.0-SNAPSHOT @ D:\QuizGeneratorProject\backend\mongodb-panache-quickstart\pom.xml.
+2022-12-12 08:40:13,368 [Worker-31: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-12-12 08:40:13,369 [Worker-31: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-12-12 08:40:13,372 [Worker-31: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-12-12 08:40:13,373 [Worker-31: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\QuizGeneratorProject\backend\mongodb-panache-quickstart\src\test\resources
+2022-12-12 08:40:13,385 [Worker-19: Launching New_configuration (2)] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
+2022-12-12 08:40:13,385 [Worker-19: Launching New_configuration (2)] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=62573 -B compile quarkus:dev
+2022-12-12 08:40:19,682 [Worker-19: Launching New_configuration (2)] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
+2022-12-12 08:40:19,683 [Worker-19: Launching New_configuration (2)] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=62575 -B compile quarkus:dev
+2022-12-12 08:40:32,100 [Worker-36: Launching New_configuration (2)] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
+2022-12-12 08:40:32,101 [Worker-36: Launching New_configuration (2)] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=62591 -B compile quarkus:dev
+2022-12-12 08:40:57,557 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-12-12 08:41:09,218 [Worker-21: Launching New_configuration (2)] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
+2022-12-12 08:41:09,220 [Worker-21: Launching New_configuration (2)] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=62612 -B compile quarkus:dev
+2022-12-12 08:43:57,668 [Worker-14: Launching New_configuration (2)] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
+2022-12-12 08:43:57,669 [Worker-14: Launching New_configuration (2)] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=62765 -B compile quarkus:dev
+2022-12-12 20:06:01,895 [Worker-8: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-12-12 20:12:44,946 [Worker-30: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: org.acme:mongodb-panache-quickstart:1.0.0-SNAPSHOT @ D:\QuizGeneratorProject\backend\mongodb-panache-quickstart\pom.xml.
+2022-12-12 20:13:05,744 [Worker-30: Launching New_configuration] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-12-12 20:13:05,748 [Worker-30: Launching New_configuration] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2022-12-12 20:13:05,766 [Worker-30: Launching New_configuration] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-12-12 20:13:05,766 [Worker-30: Launching New_configuration] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\QuizGeneratorProject\backend\mongodb-panache-quickstart\src\test\resources
+2022-12-12 20:13:07,087 [Worker-30: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
+2022-12-12 20:13:07,091 [Worker-30: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=62313 -B compile quarkus:dev
+2022-12-12 20:13:09,508 [Worker-33: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
+2022-12-12 20:13:09,508 [Worker-33: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=62316 -B compile quarkus:dev
+2022-12-13 08:05:32,364 [Worker-8: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2022-12-13 08:05:39,373 [Worker-5: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
+2022-12-13 08:05:39,375 [Worker-5: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=60879 -B compile quarkus:dev
