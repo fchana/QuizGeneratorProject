@@ -6,7 +6,7 @@
                 class="p-button-success mr-2"></button>
         </ng-template>
     </p-toolbar>
-    <p-table [value]="choice" selectionMode="single" editMode="row">
+    <p-table [value]="choice" selectionMode="single">
         <ng-template pTemplate="header">
             <tr>
                 <th>
@@ -21,34 +21,21 @@
                 <th>
 
                 </th>
-                <th>
-
-                </th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-choice let-rowIndex="rowIndex" let-editing="editing">
-            <tr *ngIf="choice.content == ''; else next" class="tableList" [pEditableRow]="choice">
+        <ng-template pTemplate="body" let-choice let-rowIndex="rowIndex">
+            <tr *ngIf="choice.content == ''; else next" class="tableList">
                 <td [routerLink]="['/props/' + this.pid +  '/quizs/' + this.qid + '/createChoice/' + rowIndex]">
                     {{ rowIndex + 1 }}
                 </td>
-                <!-- <td [routerLink]="['/props/' + this.pid +  '/quizs/' + this.qid + '/createChoice/' + rowIndex]">
+                <td [routerLink]="['/props/' + this.pid +  '/quizs/' + this.qid + '/createChoice/' + rowIndex]">
                     {{ choice.content }}
-                </td> -->
-                <td [pEditableColumn]="choice.content" pEditableColumnField="content">
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="choice.content">
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            {{choice.content}}
-                        </ng-template>
-                    </p-cellEditor>
                 </td>
                 <td [routerLink]="['/props/' + this.pid +  '/quizs/' + this.qid + '/createChoice/' + rowIndex]">
                     {{ choice.correct }}
                 </td>
                 <td>
-                    <!-- <button *ngIf="choice.content === undefined; else elseBtn" style="width: 40%; margin-right: 10px;"
+                    <button *ngIf="choice.content === undefined; else elseBtn" style="width: 40%; margin-right: 10px;"
                         pButton type="button" pButton icon="pi pi-pencil" iconPos="left" class="p-button-success"
                         [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]"></button>
                     <ng-template #elseBtn>
@@ -57,50 +44,26 @@
                             [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]"></button>
                     </ng-template>
                     <button style="width: 40%;" type="button" pButton icon="pi pi-trash" iconPos="left"
-                        class="p-button-danger" (click)="DeleteChoice(rowIndex)"></button> -->
-                </td>
-                <td>
-                    <div class="flex align-items-center justify-content-center gap-2">
-                        <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil"  class="p-button-rounded p-button-text"></button>
-                        <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check"  class="p-button-rounded p-button-text p-button-success mr-2"></button>
-                        <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times"  class="p-button-rounded p-button-text p-button-danger"></button>
-                    </div>
+                        class="p-button-danger" (click)="DeleteChoice(rowIndex)"></button>
                 </td>
             </tr>
-            <ng-template #next let-editing="editing">
-                <tr class="tableList" [pEditableRow]="choice">
+            <ng-template #next>
+                <tr class="tableList">
                     <td [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]">
                         {{ rowIndex + 1 }}
                     </td>
-                    <!-- <td [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]">
+                    <td [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]">
                         {{ choice.content }}
-                    </td> -->
-                    <td [pEditableColumn]="choice.content" pEditableColumnField="content">
-                        <p-cellEditor>
-                            <ng-template pTemplate="input">
-                                <input pInputText type="text" [(ngModel)]="choice.content">
-                            </ng-template>
-                            <ng-template pTemplate="output">
-                                {{choice.content}}
-                            </ng-template>
-                        </p-cellEditor>
-                    </td>                    
+                    </td>
                     <td [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]">
                         {{ choice.correct }}
                     </td>
                     <td>
-                        <!-- <button style="width: 40%; margin-right: 10px;" pButton type="button" pButton
+                        <button style="width: 40%; margin-right: 10px;" pButton type="button" pButton
                             icon="pi pi-pencil" iconPos="left" class="p-button-success"
                             [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]"></button>
                         <button style="width: 40%;" type="button" pButton icon="pi pi-trash" iconPos="left"
-                            (click)="DeleteChoice(rowIndex)" class="p-button-danger"></button> -->
-                    </td>
-                    <td>
-                        <div class="flex align-items-center justify-content-center gap-2">
-                            <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil"  class="p-button-rounded p-button-text"></button>
-                            <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check"  class="p-button-rounded p-button-text p-button-success mr-2"></button>
-                            <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times"  class="p-button-rounded p-button-text p-button-danger"></button>
-                        </div>
+                            (click)="DeleteChoice(rowIndex)" class="p-button-danger"></button>
                     </td>
                 </tr>
             </ng-template>
