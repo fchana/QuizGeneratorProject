@@ -119,7 +119,7 @@ import {DividerModule} from 'primeng/divider';
     TableModule,
     ToolbarModule,
     BreadcrumbModule,
-    DividerModule
+    DividerModule,
 
   ],
   providers: [MessageService,

@@ -78,3 +78,6 @@
 2022-12-13 08:05:32,364 [Worker-8: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
 2022-12-13 08:05:39,373 [Worker-5: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
 2022-12-13 08:05:39,375 [Worker-5: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=60879 -B compile quarkus:dev
+2022-12-14 08:34:37,332 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2022-12-14 08:34:58,328 [Worker-4: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
+2022-12-14 08:34:58,330 [Worker-4: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=61218 -B compile quarkus:dev
