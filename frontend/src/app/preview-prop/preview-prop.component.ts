@@ -5,6 +5,7 @@ import { AuthService } from '@auth0/auth0-angular';
 import { Proposition } from 'app/shared/Model/proposition';
 import { Quiz } from 'app/shared/Model/quiz';
 import { User } from 'app/shared/Model/user';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-preview-prop',
@@ -29,6 +30,10 @@ export class PreviewPropComponent implements OnInit {
   checked: boolean;
 
   isSelect: Array<any>[];
+  items: MenuItem[];
+
+  home: MenuItem;
+
 
   onPageChange(event: { first: number; }) {
       this.first = event.first;
@@ -43,6 +48,11 @@ export class PreviewPropComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.items = [
+
+    ];
+
+    this.home = {icon: 'pi pi-home', routerLink: '/props', label: ' Home'};
 
     this.CallProfile();
     }

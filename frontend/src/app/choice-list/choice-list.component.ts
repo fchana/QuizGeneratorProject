@@ -39,7 +39,7 @@ export class ChoiceListComponent implements OnInit {
       {label: 'Choice'}
     ];
 
-    this.home = { icon: 'pi pi-home', routerLink: '/props' };
+    this.home = { icon: 'pi pi-home', routerLink: '/props', label: ' Home' };
     // this.quizs = {routerLink: '/props' + this.pid + 'quizs'}
     }
 

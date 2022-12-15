@@ -28,7 +28,7 @@
 
     ];
 
-    this.home = {icon: 'pi pi-home', routerLink: '/props'};
+    this.home = {icon: 'pi pi-home', routerLink: '/props', label: ' Home'};
 
       this.CallProfile();
     }

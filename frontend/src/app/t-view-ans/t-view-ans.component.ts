@@ -8,6 +8,7 @@ import { User } from 'app/shared/Model/user';
 import { map, Observable } from 'rxjs';
 import { AuthService } from '@auth0/auth0-angular';
 import { Score } from 'app/shared/Model/score';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-t-view-ans',
@@ -29,6 +30,9 @@ export class TViewAnsComponent implements OnInit {
   sourceProducts: any;
   email: any;
   index: number;
+  items: MenuItem[];
+
+  home: MenuItem;
 
   constructor(public activatedRoute: ActivatedRoute, private http: HttpClient, public auth: AuthService) { }
 
@@ -38,7 +42,11 @@ export class TViewAnsComponent implements OnInit {
     this.email = window.history.state.email;
     this.index = window.history.state.index;
     this.CallProfile();
-
+    this.home = { icon: 'pi pi-home', routerLink: '/props', label: ' Home' };
+    this.items = [
+      {label: 'Student list', routerLink: '/allStudent'},
+      {label: 'Result'}
+    ];
   }
 
   CallProfile() {

@@ -1,33 +1,37 @@
-<div class="grid">
-        <div class="col-8 col-offset-2 mt-5 mb-4">
-            <p-dropdown [options]="proposition" [style]="{'width':'100%'}" [(ngModel)]="selectedProp"
-                placeholder="Select proposition" (onChange)="onChangeDropDown()" optionLabel="prop_name" [showClear]="true"></p-dropdown>
-        </div>
+<div class="container">
+
+    <div class="col-8 col-offset-2 mt-5 mb-4">
+        <p-breadcrumb [model]="items" [home]="home" class="mb-5"></p-breadcrumb>
+        <p-dropdown [options]="proposition" [style]="{'width':'100%'}" [(ngModel)]="selectedProp"
+            placeholder="Select proposition" (onChange)="onChangeDropDown()" optionLabel="prop_name" [showClear]="true">
+        </p-dropdown>
     </div>
 
 
-<p-pickList [source]="avaliableStudent" [target]="targetProducts" sourceHeader="Available" targetHeader="Selected"
-    [dragdrop]="true" [responsive]="true" [sourceStyle]="{'height':'30rem'}" [targetStyle]="{'height':'30rem'}"
-    filterBy="firstname,lastname,username,id" sourceFilterPlaceholder="Search by name" targetFilterPlaceholder="Search by name"
-    (onMoveToTarget)="Update()" (onMoveToSource)="Update()" (onMoveAllToTarget)="Update()" (onMoveAllToSource)="Update()">
-    <ng-template let-student pTemplate="item">
-        <div class="product-item">
-            <div class="image-container">
-                <img src="data:image/png;base64,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"
-                    class="product-image" />
+    <p-pickList [source]="avaliableStudent" [target]="targetProducts" sourceHeader="Available" targetHeader="Selected"
+        [dragdrop]="true" [responsive]="true" [sourceStyle]="{'height':'30rem'}" [targetStyle]="{'height':'30rem'}"
+        filterBy="firstname,lastname,username,id" sourceFilterPlaceholder="Search by name"
+        targetFilterPlaceholder="Search by name" (onMoveToTarget)="Update()" (onMoveToSource)="Update()"
+        (onMoveAllToTarget)="Update()" (onMoveAllToSource)="Update()">
+        <ng-template let-student pTemplate="item">
+            <div class="product-item">
+                <div class="image-container">
+                    <img src="data:image/png;base64,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"
+                        class="product-image" />
+                </div>
+                <div class="product-list-detail">
+                    <h5 class="mb-2">{{student.firstname + " " + student.lastname}}</h5>
+                    <i class="pi pi-tag product-category-icon"></i>
+                    <span class="product-category">{{student.id}}</span>
+                </div>
+                <div class="product-list-action">
+                    <h6 class="mb-2">${{student.username}}</h6>
+                    <span [class]="'product-badge status-' + student.username.toLowerCase()">{{student.username}}</span>
+                </div>
             </div>
-            <div class="product-list-detail">
-                <h5 class="mb-2">{{student.firstname + " " + student.lastname}}</h5>
-                <i class="pi pi-tag product-category-icon"></i>
-                <span class="product-category">{{student.id}}</span>
-            </div>
-            <div class="product-list-action">
-                <h6 class="mb-2">${{student.username}}</h6>
-                <span [class]="'product-badge status-' + student.username.toLowerCase()">{{student.username}}</span>
-            </div>
-        </div>
-    </ng-template>
-</p-pickList>
-<div class="footer">
-    <h1>Quiz generateror</h1>
+        </ng-template>
+    </p-pickList>
+    <div class="footer">
+        <h1>Quiz generateror</h1>
+    </div>
 </div>

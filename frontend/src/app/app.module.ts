@@ -57,6 +57,7 @@ import { TViewAnsComponent } from './t-view-ans/t-view-ans.component';
 import {ToolbarModule} from 'primeng/toolbar';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
 import {DividerModule} from 'primeng/divider';
+import {ScrollTopModule} from 'primeng/scrolltop';
 
 @NgModule({
   declarations: [
@@ -120,6 +121,7 @@ import {DividerModule} from 'primeng/divider';
     ToolbarModule,
     BreadcrumbModule,
     DividerModule,
+    ScrollTopModule
 
   ],
   providers: [MessageService,

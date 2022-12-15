@@ -1,4 +1,10 @@
 <div class="container center">
+    <p-scrollTop [threshold]="200"></p-scrollTop>
+    <div class="grid">
+        <div class="col-12">
+          <p-breadcrumb [model]="items" [home]="home" class="mb-5"></p-breadcrumb>
+        </div>
+      </div>
     <div class="grid">
         <div class="col mt-5 mb-2">
             <h1>Proposition name : {{ proposition.prop_name }}</h1>

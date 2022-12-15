@@ -36,7 +36,7 @@ export class QuizListComponent implements OnInit {
       {label: 'Quiz'}
     ];
 
-    this.home = { icon: 'pi pi-home', routerLink: '/props' };
+    this.home = { icon: 'pi pi-home', routerLink: '/props', label: ' Home' };
   }
 
   DeleteQuiz(index: number) {

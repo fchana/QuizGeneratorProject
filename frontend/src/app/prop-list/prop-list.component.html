@@ -28,7 +28,7 @@
             start date
           </th>
           <th>
-            Panel
+            Tools panel items
           </th>
           <th>
             Status
@@ -57,12 +57,12 @@
           </td>
           <td style="padding-right:80px">
             <button style="width: 28%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-eye"
-              iconPos="left" [routerLink]="['/props/preview/'+rowIndex]"></button>
+              iconPos="left" [routerLink]="['/props/preview/'+rowIndex]" class="p-button-rounded p-button-text p-button-help"></button>
             <button style="width: 28%; margin-right: 10px;" class="p-button-success" pButton type="button" pButton
-              icon="pi pi-pencil" iconPos="left" [routerLink]="['/editProp/'+rowIndex]"
-              [disabled]="active[rowIndex]"></button>
+              icon="pi pi-pencil" iconPos="left" [routerLink]="['/editProp/'+rowIndex] "
+              [disabled]="active[rowIndex]" class="p-button-rounded p-button-text "></button>
             <button style="width: 28%;" type="button" pButton class="p-button-danger" icon="pi pi-trash" iconPos="left"
-              (click)="DeleteProp(rowIndex)"></button>
+              (click)="DeleteProp(rowIndex)" class="p-button-rounded p-button-text p-button-danger"></button>
           </td>
           <td>
             <p-toggleButton (onChange)="Active(rowIndex)" onLabel="Activated" offLabel="Unactivated"

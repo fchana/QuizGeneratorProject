@@ -8,7 +8,7 @@ import { Choice } from 'app/shared/Model/choice';
 import { Proposition } from 'app/shared/Model/proposition';
 import { Quiz } from 'app/shared/Model/quiz';
 import { User } from 'app/shared/Model/user';
-import { MessageService } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
 
 
 @Component({
@@ -31,6 +31,9 @@ export class EditChoicePageComponent implements OnInit {
   choiceContentInput: String;
   choiceCorrectInput: boolean;
   choices: Array<Choice> = [];
+  items: MenuItem[];
+
+  home: MenuItem;
   constructor(private http: HttpClient, public auth: AuthService, private route: ActivatedRoute, private messageService: MessageService, private router: Router) {
     this.gfg = [
       { label: "Off", value: false },
@@ -50,6 +53,13 @@ export class EditChoicePageComponent implements OnInit {
     this.cid = this.route.snapshot.paramMap.get('cid');
     this.qid = this.route.snapshot.paramMap.get('qid');
     this.pid = this.route.snapshot.paramMap.get('pid');
+
+    this.home = { icon: 'pi pi-home', routerLink: '/props', label: ' Home' };
+    this.items = [
+      {label: 'Quiz', routerLink: '/props/' + this.pid + '/quizs'},
+      {label: 'Choice', routerLink: '/props/' + this.pid + '/quizs/' + this.qid + '/choice'}
+    ];
+
     this.auth.idTokenClaims$.subscribe(
       (profile) => (
         this.http.get<User>('/api/user/' + profile?.email).subscribe((response) => {

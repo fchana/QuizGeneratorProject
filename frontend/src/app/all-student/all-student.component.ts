@@ -3,6 +3,7 @@ import { User } from 'app/shared/Model/user';
 import { Proposition } from 'app/shared/Model/proposition';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '@auth0/auth0-angular';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-all-student',
@@ -20,12 +21,16 @@ export class AllStudentComponent implements OnInit {
   targetProducts: User[];
   profileJson?: User;
   proposition!: Proposition[];
+  items: MenuItem[];
+
+  home: MenuItem;
 
   constructor(private http: HttpClient, public auth: AuthService) { }
 
   ngOnInit(): void {
     this.CallProfile();
     console.log(this.sourceProducts)
+    this.home = { icon: 'pi pi-home', routerLink: '/props', label: ' Home' };
   }
 
   CallProfile() {

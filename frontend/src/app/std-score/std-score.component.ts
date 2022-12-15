@@ -5,7 +5,7 @@ import { AuthService } from '@auth0/auth0-angular';
 import { Proposition } from 'app/shared/Model/proposition';
 import { Score } from 'app/shared/Model/score';
 import { User } from 'app/shared/Model/user';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmationService, MenuItem, MessageService } from 'primeng/api';
 import { map, Observable } from 'rxjs';
 
 
@@ -23,6 +23,9 @@ export class StdScoreComponent implements OnInit {
   scores: Array<Score> = [];
   state$: Observable<object>;
   email: string;
+  items: MenuItem[];
+
+  home: MenuItem;
   constructor(public activatedRoute: ActivatedRoute, private http: HttpClient, public auth: AuthService, private messageService: MessageService, private confirmationService: ConfirmationService, private route: ActivatedRoute) { }
 
   async ngOnInit(): Promise<void> {
@@ -31,6 +34,10 @@ export class StdScoreComponent implements OnInit {
     this.email = window.history.state.email;
     console.log("Email : ", this.email)
     this.CallProfile();
+    this.home = { icon: 'pi pi-home', routerLink: '/props', label: ' Home' };
+    this.items = [
+      {label: 'Student list', routerLink: '/allStudent'},
+    ];
   }
 
   CallProfile() {
