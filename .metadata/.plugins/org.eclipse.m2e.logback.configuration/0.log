@@ -66,3 +66,24 @@
 2022-12-12 08:43:57,668 [Worker-14: Launching New_configuration (2)] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
 2022-12-12 08:43:57,669 [Worker-14: Launching New_configuration (2)] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=62765 -B compile quarkus:dev
 2022-12-12 20:06:01,895 [Worker-8: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-12-12 20:12:44,946 [Worker-30: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: org.acme:mongodb-panache-quickstart:1.0.0-SNAPSHOT @ D:\QuizGeneratorProject\backend\mongodb-panache-quickstart\pom.xml.
+2022-12-12 20:13:05,744 [Worker-30: Launching New_configuration] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-12-12 20:13:05,748 [Worker-30: Launching New_configuration] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2022-12-12 20:13:05,766 [Worker-30: Launching New_configuration] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-12-12 20:13:05,766 [Worker-30: Launching New_configuration] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\QuizGeneratorProject\backend\mongodb-panache-quickstart\src\test\resources
+2022-12-12 20:13:07,087 [Worker-30: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
+2022-12-12 20:13:07,091 [Worker-30: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=62313 -B compile quarkus:dev
+2022-12-12 20:13:09,508 [Worker-33: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
+2022-12-12 20:13:09,508 [Worker-33: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=62316 -B compile quarkus:dev
+2022-12-13 08:05:32,364 [Worker-8: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2022-12-13 08:05:39,373 [Worker-5: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
+2022-12-13 08:05:39,375 [Worker-5: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=60879 -B compile quarkus:dev
+2022-12-14 08:34:37,332 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2022-12-14 08:34:58,328 [Worker-4: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
+2022-12-14 08:34:58,330 [Worker-4: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=61218 -B compile quarkus:dev
+2022-12-14 21:20:29,125 [Worker-3: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-12-14 21:47:52,310 [Worker-1: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
+2022-12-14 21:47:52,586 [Worker-1: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=58338 -B compile quarkus:dev
+2022-12-15 09:33:09,111 [Worker-7: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2022-12-15 09:33:37,367 [Worker-5: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
+2022-12-15 09:33:37,369 [Worker-5: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=63153 -B compile quarkus:dev
