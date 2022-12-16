@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { Proposition } from 'app/shared/Model/proposition';
 import { User } from 'app/shared/Model/user';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-give-permission',
@@ -21,6 +22,9 @@ export class GivePermissionComponent implements OnInit {
 
   profileJson?: User;
   proposition!: Proposition[];
+  items: MenuItem[];
+
+  home: MenuItem;
 
   constructor(private http: HttpClient, public auth: AuthService) { }
 
@@ -29,6 +33,10 @@ export class GivePermissionComponent implements OnInit {
     this.targetProducts = [];
     // this.productService.getProductsSmall().then(products => this.availableProducts = products);
     this.CallProfile();
+    this.items = [
+
+    ];
+    this.home = {icon: 'pi pi-home', routerLink: '/props', label: ' Home'};
   }
 
   onChangeDropDown() {

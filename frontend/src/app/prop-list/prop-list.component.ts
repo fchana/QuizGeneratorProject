@@ -1,10 +1,8 @@
   import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
   import { Component, OnInit } from '@angular/core';
   import { AuthService } from '@auth0/auth0-angular';
-  import { Proposition } from 'app/shared/Model/proposition';
-  import { Quiz } from 'app/shared/Model/quiz';
-  import { User } from 'app/shared/Model/user';
-  import { ConfirmationService, MessageService } from 'primeng/api';
+  import { Proposition } from 'app/shared/Model/proposition';  import { User } from 'app/shared/Model/user';
+  import { ConfirmationService, MenuItem, MessageService } from 'primeng/api';
 
   @Component({
     selector: 'app-prop-list',
@@ -18,11 +16,19 @@
     proposition: Proposition[] = [];
     allUser!: Array<User>;
     active: Array<boolean> = [];
+    items: MenuItem[];
+
+    home: MenuItem;
 
 
     constructor(private http: HttpClient, public auth: AuthService, private messageService: MessageService, private confirmationService: ConfirmationService) { }
 
     ngOnInit(): void {
+      this.items = [
+
+    ];
+
+    this.home = {icon: 'pi pi-home', routerLink: '/props', label: ' Home'};
 
       this.CallProfile();
     }
@@ -105,18 +111,22 @@
         }
       });
       if (contentEr != 0) {
+        this.active[index] = false;
         hasEr += 1;
         this.messageService.add({ severity: 'error', summary: 'Proposition Activation Failed', detail: 'Please complete your quiz. ' + contentEr + ' quiz amount error found. ' + errorAr });
       }
       if (this.proposition[index].active == false && propScore != Number(this.proposition[index].max_score)) {
+        this.active[index] = false;
         hasEr += 1;
         this.messageService.add({ severity: 'error', summary: 'Proposition Activation Failed', detail: 'Please enter a valid proposition score.' });
       }
       if (this.proposition[index].active == false && propTime > Number(this.proposition[index].prop_time)) {
+        this.active[index] = false;
         hasEr += 1;
         this.messageService.add({ severity: 'error', summary: 'Proposition Activation Failed', detail: 'Please enter a valid propposition time limit.' });
       }
       if (this.proposition[index].active == false && new Date(this.proposition[index].start_date).getTime() < Date.now()) {
+        this.active[index] = false;
         hasEr += 1;
         this.messageService.add({ severity: 'error', summary: 'Proposition Activation Failed', detail: 'Please enter a valid date.' });
       }

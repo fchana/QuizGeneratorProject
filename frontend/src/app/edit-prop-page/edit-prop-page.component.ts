@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { Proposition } from 'app/shared/Model/proposition';
 import { User } from 'app/shared/Model/user';
-import { MessageService } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -36,6 +36,9 @@ export class EditPropPageComponent implements OnInit {
   enable_score: boolean;
   enableScoreInput: boolean;
   gfg: { label: string; value: boolean; }[];
+  items: MenuItem[];
+
+  home: MenuItem;
 
   constructor(private http: HttpClient, public auth: AuthService, private route: ActivatedRoute, private messageService: MessageService, private router: Router) {
     this.gfg = [
@@ -45,6 +48,11 @@ export class EditPropPageComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.items = [
+
+    ];
+
+    this.home = {icon: 'pi pi-home', routerLink: '/props', label: ' Home'};
     this.id = this.route.snapshot.paramMap.get('id');
     this.auth.idTokenClaims$.subscribe(
       (profile) => (

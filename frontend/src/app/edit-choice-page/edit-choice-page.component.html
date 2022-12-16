@@ -1,6 +1,11 @@
 <div class="grid">
     <div class="container">
-        <form #loginForm="ngForm">
+        <div class="grid">
+            <div class="col-5">
+                <p-breadcrumb [model]="items" [home]="home" class="mb-5"></p-breadcrumb>
+            </div>
+        </div>
+        <form #loginForm="ngForm" class="mt-5">
             <!-- {{loginForm.value | json}} -->
             <div class="grid">
                 <div class="col-5 center">
@@ -42,5 +47,8 @@
                 </div>
             </div>
         </form>
+    </div>
+    <div class="footer">
+        <h1>Quiz generateror</h1>
     </div>
 </div>

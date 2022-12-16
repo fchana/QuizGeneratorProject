@@ -1,6 +1,11 @@
 <div class="grid">
     <div class="container">
-        <form #loginForm="ngForm">
+        <div class="grid">
+            <div class="col-5">
+                <p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
+            </div>
+        </div>
+        <form #loginForm="ngForm" class="mt-5">
             <div class="grid">
                 <div class="col-5 center">
                     <!-- <p-toolbar styleClass="mb-4 gap-2">

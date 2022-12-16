@@ -1,4 +1,5 @@
 <div class="propCont propCent">
+    <p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
     <p-toolbar styleClass="mb-4 gap-2">
         <ng-template pTemplate="left">
             <button pButton pRipple label="Add Choice" (click)="AddChoice()" icon="pi pi-plus"
@@ -34,16 +35,16 @@
                     {{ choice.correct }}
                 </td>
                 <td>
-                    <button *ngIf="choice.content === undefined; else elseBtn" style="width: 40%; margin-right: 10px;"
-                        pButton type="button" pButton icon="pi pi-pencil" iconPos="left" class="p-button-success"
+                    <button *ngIf="choice.content === undefined; else elseBtn" style="margin-right: 10px;"
+                        pButton type="button" pButton icon="pi pi-pencil" iconPos="left" class="p-button-rounded p-button-text"
                         [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]"></button>
                     <ng-template #elseBtn>
-                        <button style="width: 40%; margin-right: 10px;" disabled="true" pButton type="button" pButton
-                            icon="pi pi-pencil" iconPos="left" class="p-button-success"
+                        <button style="margin-right: 10px;" disabled="true" pButton type="button" pButton
+                            icon="pi pi-pencil" iconPos="left" class="p-button-rounded p-button-text"
                             [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]"></button>
                     </ng-template>
-                    <button style="width: 40%;" type="button" pButton icon="pi pi-trash" iconPos="left"
-                        class="p-button-danger" (click)="DeleteChoice(rowIndex)"></button>
+                    <button type="button" pButton icon="pi pi-trash" iconPos="left"
+                        class="p-button-rounded p-button-text p-button-danger" (click)="DeleteChoice(rowIndex)"></button>
                 </td>
             </tr>
             <ng-template #next>
@@ -58,11 +59,14 @@
                         {{ choice.correct }}
                     </td>
                     <td>
-                        <button style="width: 40%; margin-right: 10px;" pButton type="button" pButton
+                        <!-- <button style="width: 40%; margin-right: 10px;" pButton type="button" pButton
                             icon="pi pi-pencil" iconPos="left" class="p-button-success"
-                            [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]"></button>
-                        <button style="width: 40%;" type="button" pButton icon="pi pi-trash" iconPos="left"
-                            (click)="DeleteChoice(rowIndex)" class="p-button-danger"></button>
+                            [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]"></button> -->
+                        <button pButton pRipple type="button" icon="pi pi-pencil"
+                            [routerLink]="['/props/'+this.pid+'/quizs/'+this.qid+'/editchoice/'+rowIndex]"
+                            class="p-button-rounded p-button-text"></button>
+                        <button type="button" pButton icon="pi pi-trash" iconPos="left"
+                            (click)="DeleteChoice(rowIndex)" class="p-button-rounded p-button-text p-button-danger"></button>
                     </td>
                 </tr>
             </ng-template>

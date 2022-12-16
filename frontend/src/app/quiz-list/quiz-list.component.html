@@ -1,4 +1,5 @@
 <div class="propCont propCent">
+    <p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
     <p-toolbar styleClass="mb-4 gap-2">
         <ng-template pTemplate="left">
             <button pButton pRipple label="Add Quiz" (click)="AddQuiz()" icon="pi pi-plus"
@@ -53,17 +54,17 @@
                 </td>
                 <td>
                     <button *ngIf="quiz.content === undefined || quiz.content !== ''; else elseBtn"
-                        style="width: 40%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-pencil"
+                        style="margin-right: 10px;" pButton type="button" pButton icon="pi pi-pencil"
                         iconPos="left" [routerLink]="['/props/'+this.id+'/editQuiz/'+rowIndex]"
-                        class="p-button-success"></button>
+                        class="p-button-rounded p-button-text "></button>
                     <ng-template #elseBtn>
-                        <button style="width: 40%; margin-right: 10px;" disabled="true" pButton type="button" pButton
-                            icon="pi pi-pencil" iconPos="left" class="p-button-success"
+                        <button style=" margin-right: 10px;" disabled="true" pButton type="button" pButton
+                            icon="pi pi-pencil" iconPos="left" class="p-button-rounded p-button-text "
                             [routerLink]="['/props/'+this.id+'/editQuiz/'+rowIndex]"></button>
                     </ng-template>
-                    <button style="width: 40%;" type="button" pButton icon="pi pi-trash" iconPos="left"
+                    <button type="button" pButton icon="pi pi-trash" iconPos="left"
                         (click)="DeleteQuiz(rowIndex)"
-                        class="p-button-danger"></button>
+                        class="p-button-rounded p-button-text p-button-danger"></button>
                 </td>
             </tr>
             <ng-template #next>
@@ -88,16 +89,16 @@
                     </td>
                     <td>
                         <button *ngIf="quiz.content === undefined || quiz.content !== ''; else elseBtn"
-                            style="width: 40%; margin-right: 10px;" pButton type="button" pButton icon="pi pi-pencil"
+                            style="margin-right: 10px;" pButton type="button" pButton icon="pi pi-pencil"
                             iconPos="left" [routerLink]="['/props/'+this.id+'/editQuiz/'+rowIndex]"
-                            class="p-button-success"></button>
+                            class="p-button-rounded p-button-text "></button>
                         <ng-template #elseBtn>
-                            <button style="width: 40%; margin-right: 10px;" disabled="true" pButton type="button"
-                                pButton icon="pi pi-pencil" iconPos="left" class="p-button-success"
+                            <button style="margin-right: 10px;" disabled="true" pButton type="button"
+                                pButton icon="pi pi-pencil" iconPos="left" class="p-button-rounded p-button-text "
                                 [routerLink]="['/props/'+this.id+'/editQuiz/'+rowIndex]"></button>
                         </ng-template>
-                        <button style="width: 40%;" type="button" pButton icon="pi pi-trash" iconPos="left"
-                            (click)="DeleteQuiz(rowIndex)" class="p-button-danger"></button>
+                        <button  type="button" pButton icon="pi pi-trash" iconPos="left"
+                            (click)="DeleteQuiz(rowIndex)" class="p-button-rounded p-button-text p-button-danger"></button>
                     </td>
                 </tr>
             </ng-template>

@@ -1,11 +1,6 @@
 <div class="quiz-container center">
-    <p-toolbar styleClass="mb-4 gap-2">
-        <ng-template pTemplate="left">
-            <button pButton pRipple label="Back to proposition page" [routerLink]="['/props/']"
-                class="p-button-success mr-2"></button>
-        </ng-template>
-    </p-toolbar>
-    <div class="quiz-header">
+    <p-breadcrumb [model]="items" [home]="home" class="mb-5"></p-breadcrumb>
+    <div class="quiz-header mt-5">
         <label class="quiz-header-content">{{ quizs[first].content }}</label>
     </div>
     <div class="quiz-content" *ngFor="let choice of quizs[first].choice; let i = index">

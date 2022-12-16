@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-register-page',
@@ -23,7 +25,7 @@ export class RegisterPageComponent implements OnInit {
   lastNameInput?: string;
   usernameInput?: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private messageService: MessageService, private router: Router) { }
 
 
   ngOnInit(): void {
@@ -55,6 +57,8 @@ export class RegisterPageComponent implements OnInit {
 
     this.http.post('/api/user', userInfo).subscribe((response) => {
       console.log(response);
+      this.messageService.add({ severity: 'success', summary: 'Register account', detail: 'Register success.' });
+      this.router.navigate(['/login'])
     })
 
   }

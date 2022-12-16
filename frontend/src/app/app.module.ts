@@ -55,7 +55,9 @@ import { AllStudentComponent } from './all-student/all-student.component';
 import { StdScoreComponent } from './std-score/std-score.component';
 import { TViewAnsComponent } from './t-view-ans/t-view-ans.component';
 import {ToolbarModule} from 'primeng/toolbar';
-
+import {BreadcrumbModule} from 'primeng/breadcrumb';
+import {DividerModule} from 'primeng/divider';
+import {ScrollTopModule} from 'primeng/scrolltop';
 
 @NgModule({
   declarations: [
@@ -116,7 +118,10 @@ import {ToolbarModule} from 'primeng/toolbar';
       ...env.auth,
     }),
     TableModule,
-    ToolbarModule
+    ToolbarModule,
+    BreadcrumbModule,
+    DividerModule,
+    ScrollTopModule
 
   ],
   providers: [MessageService,
