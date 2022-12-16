@@ -84,3 +84,13 @@
 2022-12-14 21:20:29,125 [Worker-3: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
 2022-12-14 21:47:52,310 [Worker-1: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
 2022-12-14 21:47:52,586 [Worker-1: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=58338 -B compile quarkus:dev
+2022-12-15 09:33:09,111 [Worker-7: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2022-12-15 09:33:37,367 [Worker-5: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
+2022-12-15 09:33:37,369 [Worker-5: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=63153 -B compile quarkus:dev
+2022-12-16 08:38:47,753 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-12-16 08:39:03,772 [Worker-1: Launching New_configuration] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-12-16 08:39:03,778 [Worker-1: Launching New_configuration] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2022-12-16 08:39:03,788 [Worker-1: Launching New_configuration] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-12-16 08:39:03,789 [Worker-1: Launching New_configuration] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\QuizGeneratorProject\backend\mongodb-panache-quickstart\src\test\resources
+2022-12-16 08:39:06,265 [Worker-1: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
+2022-12-16 08:39:06,267 [Worker-1: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=64383 -B compile quarkus:dev
