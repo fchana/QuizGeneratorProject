@@ -508,6 +508,7 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 !ENTRY org.eclipse.jdt.ls.core 1 0 2022-12-11 21:32:38.940
 !MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
 <<<<<<< HEAD
+<<<<<<< HEAD
 !SESSION 2022-12-12 20:05:49.488 -----------------------------------------------
 eclipse.buildId=4.24.0.I20220607-0700
 java.version=17.0.4.1
@@ -567,6 +568,10 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.jdt.launching 4 4 2022-12-12 20:12:35.554
 >>>>>>> feature
+=======
+
+!ENTRY org.eclipse.jdt.launching 4 4 2022-12-12 20:12:35.554
+>>>>>>> feature
 !MESSAGE The system cannot find the path specified
 !STACK 0
 java.io.IOException: The system cannot find the path specified
@@ -583,7 +588,10 @@ java.io.IOException: The system cannot find the path specified
 	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> feature
 
 !ENTRY org.eclipse.jdt.ls.core 1 0 2022-12-12 20:12:36.736
 !MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
@@ -986,6 +994,7 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.jdt.ls.core 1 0 2022-12-15 09:33:11.732
 !MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+<<<<<<< HEAD
 >>>>>>> feature
 
 !ENTRY org.eclipse.jdt.ls.core 1 0 2022-12-15 16:36:36.354
@@ -1358,3 +1367,5 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.jdt.ls.core 1 0 2022-12-16 08:38:49.783
 !MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+=======
+>>>>>>> feature
