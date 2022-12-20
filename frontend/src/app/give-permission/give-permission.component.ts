@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { Proposition } from 'app/shared/Model/proposition';
 import { User } from 'app/shared/Model/user';
@@ -26,7 +27,7 @@ export class GivePermissionComponent implements OnInit {
 
   home: MenuItem;
 
-  constructor(private http: HttpClient, public auth: AuthService) { }
+  constructor(private http: HttpClient, public auth: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.sourceProducts = [];
@@ -36,22 +37,22 @@ export class GivePermissionComponent implements OnInit {
     this.items = [
 
     ];
-    this.home = {icon: 'pi pi-home', routerLink: '/props', label: ' Home'};
+    this.home = { icon: 'pi pi-home', routerLink: '/props', label: ' Home' };
   }
 
   onChangeDropDown() {
-      this.avaliableStudent = this.sourceProducts;
-      this.targetProducts = this.sourceProducts;
-      this.targetProducts = this.targetProducts.filter((check) => {
-        return this.selectedProp.allowed.includes(check.id);
-      })
-      // console.log(this.targetProducts)
-      this.avaliableStudent = this.avaliableStudent.filter((check) => {
-        return !this.selectedProp.allowed.includes(check.id)
-      })
+    this.avaliableStudent = this.sourceProducts;
+    this.targetProducts = this.sourceProducts;
+    this.targetProducts = this.targetProducts.filter((check) => {
+      return this.selectedProp.allowed.includes(check.id);
+    })
+    // console.log(this.targetProducts)
+    this.avaliableStudent = this.avaliableStudent.filter((check) => {
+      return !this.selectedProp.allowed.includes(check.id)
+    })
     // else
     //   this.avaliableStudent = this.selectedProp;
-    
+
   }
 
   CallProfile() {
@@ -66,9 +67,12 @@ export class GivePermissionComponent implements OnInit {
       (test) => (this.http.get<User>('/api/user/' + test?.email).subscribe((response) => {
         this.profileJson = response;
         this.proposition = this.profileJson.proposition;
-        console.log(this.profileJson.proposition[0].allowed)
+        console.log(this.profileJson.account_type)
       }))
     )
+
+    // if (this.profileJson?.account_type != true)
+    //   this.router.navigateByUrl('/props')
   }
 
   Update() {

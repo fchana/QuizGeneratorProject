@@ -4,6 +4,7 @@ import { Proposition } from 'app/shared/Model/proposition';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '@auth0/auth0-angular';
 import { MenuItem } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-student',
@@ -25,7 +26,7 @@ export class AllStudentComponent implements OnInit {
 
   home: MenuItem;
 
-  constructor(private http: HttpClient, public auth: AuthService) { }
+  constructor(private http: HttpClient, public auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.CallProfile();
@@ -42,6 +43,8 @@ export class AllStudentComponent implements OnInit {
         })
       )
     );
+    // if (this.profileJson?.account_type != true)
+    // this.router.navigateByUrl('/props')
   }
 
 }

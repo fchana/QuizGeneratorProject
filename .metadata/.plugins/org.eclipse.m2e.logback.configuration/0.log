@@ -94,3 +94,6 @@
 2022-12-16 08:39:03,789 [Worker-1: Launching New_configuration] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\QuizGeneratorProject\backend\mongodb-panache-quickstart\src\test\resources
 2022-12-16 08:39:06,265 [Worker-1: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
 2022-12-16 08:39:06,267 [Worker-1: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=64383 -B compile quarkus:dev
+2022-12-19 08:42:24,333 [Worker-7: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2022-12-19 08:43:09,236 [Worker-0: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate - D:\QuizGeneratorProject\backend\mongodb-panache-quickstart
+2022-12-19 08:43:09,239 [Worker-0: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ddebug=54667 -B compile quarkus:dev

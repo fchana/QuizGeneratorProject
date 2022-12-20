@@ -150,7 +150,7 @@
                 <div class="form-group centerBtn">
                     <button class="loginBtn" style="margin: 20px;" pButton type="button" label="Cancel"
                         [routerLink]="['/props']"></button>
-                    <button class="loginBtn" [disabled]="invalid()" style="margin: 20px;" pButton type="button" label="Create"></button>
+                    <button class="loginBtn" [disabled]="invalid()" style="margin: 20px;" pButton type="button" label="Create" (click)="CreateProp()"></button>
                 </div>
             </div>
             <div class="col-6">

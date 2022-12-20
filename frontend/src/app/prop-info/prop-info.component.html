@@ -1,18 +1,25 @@
 <div class="container center2">
     <div class="card">
         <div class="card-container">
-            <div class="block font-bold text-center p-4 border-round mb-5"><h1>Proposition name : {{
-                prop.prop_name }} information</h1></div>
+            <div class="block font-bold text-center p-4 border-round mb-5">
+                <h1>Proposition name : {{
+                    prop.prop_name }} information</h1>
+            </div>
             <!-- <div class="block font-bold text-center p-4 border-round mb-3"></div> -->
         </div>
     </div>
     <div class="card">
         <div class="flex card-container">
-            <div class="flex-1 h-4rem font-bold text-center p-4 border-round"><h2>Time limit : {{
-                propTime | timeConvertor }} hours</h2></div>
-            <div class="flex-1 h-4rem font-bold text-center p-4 border-round"><h2>Start at : {{
-                prop.start_date | date : 'short' }} <!-- - {{ DateAdder(prop.start_date, prop.prop_time) | date : 'medium' }} -->
-            </h2></div>
+            <div class="flex-1 h-4rem font-bold text-center p-4 border-round">
+                <h2>Time limit : {{
+                    propTime | timeConvertor }} hours</h2>
+            </div>
+            <div class="flex-1 h-4rem font-bold text-center p-4 border-round">
+                <h2>Start at : {{
+                    prop.start_date | date : 'short' }}
+                    <!-- - {{ DateAdder(prop.start_date, prop.prop_time) | date : 'medium' }} -->
+                </h2>
+            </div>
         </div>
     </div>
     <div class="card">
@@ -23,21 +30,27 @@
     </div>
     <div class="card">
         <div class="flex card-container">
-            <div class="flex-1 h-4rem font-bold text-center p-4 border-round"><h2>Quiz amount : {{
-                prop.quiz_amount }}</h2></div>
-            <div class="flex-1 h-4rem font-bold text-center p-4 border-round"><h2>Max score : {{
-                prop.max_score }}</h2></div>
+            <div class="flex-1 h-4rem font-bold text-center p-4 border-round">
+                <h2>Quiz amount : {{
+                    prop.quiz_amount }}</h2>
+            </div>
+            <div class="flex-1 h-4rem font-bold text-center p-4 border-round">
+                <h2>Max score : {{
+                    prop.max_score }}</h2>
+            </div>
         </div>
     </div>
     <div class="card">
         <div class="flex card-container">
             <div class="flex-1 h-4rem font-bold text-center p-5 border-round">
-                <p-button style="margin: 20px; width: 200px;" [disabled]="disable" Button type="button" label="Start exam" [routerLink]="['/props/' + this.id + '/start']"
-                ></p-button>
+                <p-button Button [disabled]="disable" type="button" label="Start exam"
+                   (click)="doExam()"></p-button>
+                <!-- <p-button Button [disabled]="disable" type="button" label="Start exam"
+                    [routerLink]="['/props/' + this.id + '/start']"></p-button> -->
             </div>
         </div>
     </div>
     <div class="footer">
         <h1>Quiz generateror</h1>
-      </div>
+    </div>
 </div>

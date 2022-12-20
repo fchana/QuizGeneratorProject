@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { Proposition } from 'app/shared/Model/proposition';
 import { Quiz } from 'app/shared/Model/quiz';
@@ -21,7 +21,7 @@ export class PropInfoComponent implements OnInit {
   propTime: number;
   disable: boolean = true;
 
-  constructor(private http: HttpClient, public auth: AuthService, private route: ActivatedRoute) {
+  constructor(private http: HttpClient, public auth: AuthService, private route: ActivatedRoute, private router: Router) {
     this.id = this.route.snapshot.paramMap.get('id');
    }
 
@@ -63,10 +63,7 @@ export class PropInfoComponent implements OnInit {
                   if (p.allowed.includes(this.profileJson?.id) && p.active == true && new Date(Date.now()) <= new Date(this.DateAdder(p.start_date, p.prop_time).getTime())) {
                     // console.log(Date.now() <= this.DateAdder(p.start_date, p.prop_time).getTime() )
                     // console.log("Start date : ", && new Date(Date.now()) <= new Date(this.DateAdder(p.start_date, p.prop_time).getTime()))
-                    console.log("Date now : ", new Date(Date.now()), "\nStart date : " , new Date(p.start_date), Date.now() >= new Date(p.start_date).getTime())
-                    if((Date.now() >= new Date(p.start_date).getTime())){
-                      this.disable = false;
-                    }
+                    // console.log("Date now : ", new Date(Date.now()), "\nStart date : " , new Date(p.start_date), Date.now() >= new Date(p.start_date).getTime())
                     this.proposition.push(p);
                   }
                 })
@@ -74,6 +71,12 @@ export class PropInfoComponent implements OnInit {
               this.prop = this.proposition[this.id];
               this.propTime = Number(this.prop.prop_time);
               console.log("prop: ", this.prop.prop_name, " id: ", this.id, " propTime : ", typeof(this.propTime));
+              if((Date.now() >= new Date(this.prop.start_date).getTime())){
+                console.log("Now : ",new Date(Date.now()), "\nTime2 : ", (new Date(this.prop.start_date)),
+                "\nBoolean : ",  (Date.now() >= new Date(this.prop.start_date).getTime()))
+                this.disable = false;
+              }
+
             })
           }
         })
@@ -81,5 +84,8 @@ export class PropInfoComponent implements OnInit {
     );
   }
 
+  doExam(){
+    this.router.navigateByUrl('/props/' + this.id + '/start');
+  }
 
 }
